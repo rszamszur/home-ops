@@ -1,0 +1,641 @@
+additionalPrometheusRulesMap: {}
+alertmanager:
+  alertmanagerSpec:
+    additionalPeers: []
+    affinity: {}
+    alertmanagerConfigNamespaceSelector: {}
+    alertmanagerConfigSelector: {}
+    clusterAdvertiseAddress: false
+    configMaps: []
+    containers: []
+    externalUrl: null
+    forceEnableClusterMode: false
+    image:
+      repository: quay.io/prometheus/alertmanager
+      sha: ""
+      tag: v0.22.2
+    initContainers: []
+    listenLocal: false
+    logFormat: logfmt
+    logLevel: info
+    nodeSelector: {}
+    paused: false
+    podAntiAffinity: ""
+    podAntiAffinityTopologyKey: kubernetes.io/hostname
+    podMetadata: {}
+    portName: web
+    priorityClassName: ""
+    replicas: 1
+    resources: {}
+    retention: 120h
+    routePrefix: /
+    secrets: []
+    securityContext:
+      fsGroup: 2000
+      runAsGroup: 2000
+      runAsNonRoot: true
+      runAsUser: 1000
+    storage: {}
+    tolerations: []
+    topologySpreadConstraints: []
+    useExistingSecret: false
+    volumeMounts: []
+    volumes: []
+  annotations: {}
+  apiVersion: v2
+  config:
+    global:
+      resolve_timeout: 5m
+    receivers:
+    - name: "null"
+    route:
+      group_by:
+      - job
+      group_interval: 5m
+      group_wait: 30s
+      receiver: "null"
+      repeat_interval: 12h
+      routes:
+      - match:
+          alertname: Watchdog
+        receiver: "null"
+    templates:
+    - /etc/alertmanager/config/*.tmpl
+  enabled: true
+  ingress:
+    annotations: {}
+    enabled: true
+    hosts:
+    - alert-manager.192.168.0.40.nip.io
+    labels: {}
+    pathType: ImplementationSpecific
+    paths:
+    - /
+    tls: []
+  ingressPerReplica:
+    annotations: {}
+    enabled: false
+    hostDomain: ""
+    hostPrefix: ""
+    labels: {}
+    paths: []
+    tlsSecretName: ""
+    tlsSecretPerReplica:
+      enabled: false
+      prefix: alertmanager
+  podDisruptionBudget:
+    enabled: false
+    maxUnavailable: ""
+    minAvailable: 1
+  secret:
+    annotations: {}
+  service:
+    additionalPorts: []
+    annotations: {}
+    clusterIP: ""
+    externalIPs: []
+    labels: {}
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: 30903
+    port: 9093
+    targetPort: 9093
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: ""
+  serviceMonitor:
+    bearerTokenFile: null
+    interval: ""
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+    scheme: ""
+    selfMonitor: true
+    tlsConfig: {}
+  servicePerReplica:
+    annotations: {}
+    enabled: false
+    loadBalancerSourceRanges: []
+    nodePort: 30904
+    port: 9093
+    targetPort: 9093
+    type: ClusterIP
+  templateFiles: {}
+  tplConfig: false
+commonLabels: {}
+coreDns:
+  enabled: true
+  service:
+    port: 9153
+    targetPort: 9153
+  serviceMonitor:
+    interval: ""
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+defaultRules:
+  additionalRuleLabels: {}
+  annotations: {}
+  appNamespacesTarget: .*
+  create: true
+  labels: {}
+  rules:
+    alertmanager: true
+    etcd: true
+    general: true
+    k8s: true
+    kubeApiserver: true
+    kubeApiserverAvailability: true
+    kubeApiserverError: true
+    kubeApiserverSlos: true
+    kubePrometheusGeneral: true
+    kubePrometheusNodeAlerting: true
+    kubePrometheusNodeRecording: true
+    kubeScheduler: true
+    kubeStateMetrics: true
+    kubelet: true
+    kubernetesAbsent: true
+    kubernetesApps: true
+    kubernetesResources: true
+    kubernetesStorage: true
+    kubernetesSystem: true
+    network: true
+    node: true
+    prometheus: true
+    prometheusOperator: true
+    time: true
+  runbookUrl: https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#
+fullnameOverride: ""
+global:
+  imagePullSecrets: []
+  rbac:
+    create: true
+    pspAnnotations: {}
+    pspEnabled: true
+grafana:
+  additionalDataSources: []
+  adminPassword: prom-operator
+  defaultDashboardsEnabled: true
+  enabled: true
+  extraConfigmapMounts: []
+  forceDeployDashboards: false
+  forceDeployDatasources: false
+  ingress:
+    annotations: {}
+    enabled: true
+    hosts:
+    - grafana.192.168.0.40.nip.io
+    labels: {}
+    path: /
+    tls: []
+  namespaceOverride: ""
+  service:
+    portName: service
+  serviceMonitor:
+    interval: ""
+    metricRelabelings: []
+    path: /metrics
+    relabelings: []
+    selfMonitor: true
+  sidecar:
+    dashboards:
+      annotations: {}
+      enabled: true
+      label: grafana_dashboard
+      multicluster: false
+    datasources:
+      annotations: {}
+      createPrometheusReplicasDatasources: false
+      defaultDatasourceEnabled: true
+      enabled: true
+      label: grafana_datasource
+kube-state-metrics:
+  namespaceOverride: ""
+  podSecurityPolicy:
+    enabled: true
+  rbac:
+    create: true
+kubeApiServer:
+  enabled: true
+  serviceMonitor:
+    interval: ""
+    jobLabel: component
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+    selector:
+      matchLabels:
+        component: apiserver
+        provider: kubernetes
+  tlsConfig:
+    insecureSkipVerify: false
+    serverName: kubernetes
+kubeControllerManager:
+  enabled: true
+  endpoints: []
+  service:
+    enabled: true
+    port: 10252
+    targetPort: 10252
+  serviceMonitor:
+    enabled: true
+    https: false
+    insecureSkipVerify: null
+    interval: ""
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+    serverName: null
+kubeDns:
+  enabled: false
+  service:
+    dnsmasq:
+      port: 10054
+      targetPort: 10054
+    skydns:
+      port: 10055
+      targetPort: 10055
+  serviceMonitor:
+    dnsmasqMetricRelabelings: []
+    dnsmasqRelabelings: []
+    interval: ""
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+kubeEtcd:
+  enabled: true
+  endpoints: []
+  service:
+    enabled: true
+    port: 2379
+    targetPort: 2379
+  serviceMonitor:
+    caFile: ""
+    certFile: ""
+    enabled: true
+    insecureSkipVerify: false
+    interval: ""
+    keyFile: ""
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+    scheme: http
+    serverName: ""
+kubeProxy:
+  enabled: true
+  endpoints: []
+  service:
+    enabled: true
+    port: 10249
+    targetPort: 10249
+  serviceMonitor:
+    enabled: true
+    https: false
+    interval: ""
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+kubeScheduler:
+  enabled: true
+  endpoints: []
+  service:
+    enabled: true
+    port: 10251
+    targetPort: 10251
+  serviceMonitor:
+    enabled: true
+    https: false
+    insecureSkipVerify: null
+    interval: ""
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+    serverName: null
+kubeStateMetrics:
+  enabled: true
+  serviceMonitor:
+    interval: ""
+    metricRelabelings: []
+    namespaceOverride: ""
+    proxyUrl: ""
+    relabelings: []
+    selectorOverride: {}
+kubeTargetVersionOverride: ""
+kubeVersionOverride: ""
+kubelet:
+  enabled: true
+  namespace: kube-system
+  serviceMonitor:
+    cAdvisor: true
+    cAdvisorMetricRelabelings: []
+    cAdvisorRelabelings:
+    - sourceLabels:
+      - __metrics_path__
+      targetLabel: metrics_path
+    https: true
+    interval: ""
+    metricRelabelings: []
+    probes: true
+    probesMetricRelabelings: []
+    probesRelabelings:
+    - sourceLabels:
+      - __metrics_path__
+      targetLabel: metrics_path
+    proxyUrl: ""
+    relabelings:
+    - sourceLabels:
+      - __metrics_path__
+      targetLabel: metrics_path
+    resource: false
+    resourcePath: /metrics/resource/v1alpha1
+    resourceRelabelings:
+    - sourceLabels:
+      - __metrics_path__
+      targetLabel: metrics_path
+nameOverride: ""
+namespaceOverride: ""
+nodeExporter:
+  enabled: true
+  jobLabel: jobLabel
+  serviceMonitor:
+    interval: ""
+    metricRelabelings: []
+    proxyUrl: ""
+    relabelings: []
+    scrapeTimeout: ""
+prometheus:
+  additionalPodMonitors: []
+  additionalRulesForClusterRole: []
+  additionalServiceMonitors: []
+  annotations: {}
+  enabled: true
+  ingress:
+    annotations: {}
+    enabled: true
+    hosts:
+    - prometheus.192.168.0.40.nip.io
+    labels: {}
+    pathType: ImplementationSpecific
+    paths:
+    - /
+    tls: []
+  ingressPerReplica:
+    annotations: {}
+    enabled: false
+    hostDomain: ""
+    hostPrefix: ""
+    labels: {}
+    paths: []
+    tlsSecretName: ""
+    tlsSecretPerReplica:
+      enabled: false
+      prefix: prometheus
+  podDisruptionBudget:
+    enabled: false
+    maxUnavailable: ""
+    minAvailable: 1
+  podSecurityPolicy:
+    allowedCapabilities: []
+    allowedHostPaths: []
+    volumes: []
+  prometheusSpec:
+    additionalAlertManagerConfigs: []
+    additionalAlertRelabelConfigs: []
+    additionalPrometheusSecretsAnnotations: {}
+    additionalRemoteRead: []
+    additionalRemoteWrite: []
+    additionalScrapeConfigs:
+    - job_name: airgradient
+      metrics_path: /metrics
+      scrape_interval: 30s
+      static_configs:
+      - targets:
+        - 192.168.0.190:9926
+    additionalScrapeConfigsSecret: {}
+    affinity: {}
+    alertingEndpoints: []
+    allowOverlappingBlocks: false
+    apiserverConfig: {}
+    arbitraryFSAccessThroughSMs: false
+    configMaps: []
+    containers: []
+    disableCompaction: false
+    enableAdminAPI: false
+    enableFeatures: []
+    enforcedNamespaceLabel: ""
+    enforcedSampleLimit: false
+    evaluationInterval: ""
+    externalLabels: {}
+    externalUrl: ""
+    ignoreNamespaceSelectors: false
+    image:
+      repository: quay.io/prometheus/prometheus
+      sha: ""
+      tag: v2.27.1
+    initContainers: []
+    listenLocal: false
+    logFormat: logfmt
+    logLevel: info
+    nodeSelector: {}
+    overrideHonorLabels: false
+    overrideHonorTimestamps: false
+    paused: false
+    podAntiAffinity: ""
+    podAntiAffinityTopologyKey: kubernetes.io/hostname
+    podMetadata: {}
+    podMonitorNamespaceSelector: {}
+    podMonitorSelector: {}
+    podMonitorSelectorNilUsesHelmValues: true
+    portName: web
+    priorityClassName: ""
+    probeNamespaceSelector: {}
+    probeSelector: {}
+    probeSelectorNilUsesHelmValues: true
+    prometheusExternalLabelName: ""
+    prometheusExternalLabelNameClear: false
+    prometheusRulesExcludedFromEnforce: []
+    query: {}
+    queryLogFile: false
+    remoteRead: []
+    remoteWrite: []
+    remoteWriteDashboards: false
+    replicaExternalLabelName: ""
+    replicaExternalLabelNameClear: false
+    replicas: 1
+    resources: {}
+    retention: 10d
+    retentionSize: ""
+    routePrefix: /
+    ruleNamespaceSelector: {}
+    ruleSelector: {}
+    ruleSelectorNilUsesHelmValues: true
+    scrapeInterval: ""
+    scrapeTimeout: ""
+    secrets: []
+    securityContext:
+      fsGroup: 2000
+      runAsGroup: 2000
+      runAsNonRoot: true
+      runAsUser: 1000
+    serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector: {}
+    serviceMonitorSelectorNilUsesHelmValues: true
+    shards: 1
+    storageSpec: {}
+    thanos: {}
+    tolerations: []
+    topologySpreadConstraints: []
+    volumeMounts: []
+    volumes: []
+    walCompression: false
+  service:
+    annotations: {}
+    clusterIP: ""
+    externalIPs: []
+    labels: {}
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: 30090
+    port: 9090
+    sessionAffinity: ""
+    targetPort: 9090
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: ""
+  serviceMonitor:
+    bearerTokenFile: null
+    interval: ""
+    metricRelabelings: []
+    relabelings: []
+    scheme: ""
+    selfMonitor: true
+    tlsConfig: {}
+  servicePerReplica:
+    annotations: {}
+    enabled: false
+    loadBalancerSourceRanges: []
+    nodePort: 30091
+    port: 9090
+    targetPort: 9090
+    type: ClusterIP
+  thanosIngress:
+    annotations: {}
+    enabled: false
+    hosts: []
+    labels: {}
+    nodePort: 30901
+    paths: []
+    servicePort: 10901
+    tls: []
+  thanosService:
+    annotations: {}
+    clusterIP: None
+    enabled: false
+    labels: {}
+    nodePort: 30901
+    port: 10901
+    portName: grpc
+    targetPort: grpc
+    type: ClusterIP
+  thanosServiceExternal:
+    annotations: {}
+    enabled: false
+    labels: {}
+    nodePort: 30901
+    port: 10901
+    portName: grpc
+    targetPort: grpc
+    type: LoadBalancer
+prometheus-node-exporter:
+  extraArgs:
+  - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+  - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+  namespaceOverride: ""
+  podLabels:
+    jobLabel: node-exporter
+prometheusOperator:
+  admissionWebhooks:
+    caBundle: ""
+    certManager:
+      enabled: false
+    enabled: true
+    failurePolicy: Fail
+    patch:
+      affinity: {}
+      enabled: true
+      image:
+        pullPolicy: IfNotPresent
+        repository: jettech/kube-webhook-certgen
+        sha: ""
+        tag: v1.5.2
+      nodeSelector: {}
+      podAnnotations: {}
+      priorityClassName: ""
+      resources: {}
+      securityContext:
+        runAsGroup: 2000
+        runAsNonRoot: true
+        runAsUser: 2000
+      tolerations: []
+  affinity: {}
+  alertmanagerInstanceNamespaces: []
+  configReloaderCpu: 100m
+  configReloaderMemory: 50Mi
+  denyNamespaces: []
+  dnsConfig: {}
+  enabled: true
+  hostNetwork: false
+  image:
+    pullPolicy: IfNotPresent
+    repository: quay.io/prometheus-operator/prometheus-operator
+    sha: ""
+    tag: v0.48.1
+  kubeletService:
+    enabled: true
+    namespace: kube-system
+  namespaces: {}
+  nodeSelector: {}
+  podAnnotations: {}
+  podLabels: {}
+  prometheusConfigReloaderImage:
+    repository: quay.io/prometheus-operator/prometheus-config-reloader
+    sha: ""
+    tag: v0.48.1
+  prometheusInstanceNamespaces: []
+  resources: {}
+  secretFieldSelector: ""
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+  service:
+    additionalPorts: []
+    annotations: {}
+    clusterIP: ""
+    externalIPs: []
+    labels: {}
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: 30080
+    nodePortTls: 30443
+    type: ClusterIP
+  serviceAccount:
+    create: true
+    name: ""
+  serviceMonitor:
+    interval: ""
+    metricRelabelings: []
+    relabelings: []
+    scrapeTimeout: ""
+    selfMonitor: true
+  thanosRulerInstanceNamespaces: []
+  tls:
+    enabled: true
+    internalPort: 10250
+    tlsMinVersion: VersionTLS13
+  tolerations: []
