@@ -1,0 +1,14 @@
+---
+- name: Propagate ssh pub key to hosts
+  hosts: rock64nodes
+  vars_prompt:
+    - name: ssh_pub_key
+      prompt: Public ssh key to propagate
+      default: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+  tasks:
+  - name: Ensure ssh key entry in authorized_key
+    authorized_key:
+      user: rock64
+      state: present
+      key: "{{ ssh_pub_key }}"

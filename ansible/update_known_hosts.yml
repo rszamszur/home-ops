@@ -1,0 +1,30 @@
+---
+- name: Store known hosts of 'all' the hosts in the inventory file
+  hosts: localhost
+  connection: local
+
+  vars:
+    ssh_known_hosts_file: "{{ lookup('env','HOME') + '/.ssh/known_hosts' }}"
+    ssh_known_hosts: "{{ groups['all'] }}"
+
+  tasks:
+  - name: For each host, scan for its ssh public key
+    shell: "ssh-keyscan {{ item }}"
+    with_items: "{{ ssh_known_hosts }}"
+    register: ssh_known_host_results
+
+  - name: Ensure user .ssh directory exists
+    file:
+      state: directory
+      path: "{{ lookup('env','HOME') + '/.ssh' }}"
+      owner: "{{ ansible_facts['user_uid'] }}" 
+      group: "{{ ansible_facts['user_gid'] }}"
+      mode: "700"
+
+  - name: Add/update the public key in the '{{ ssh_known_hosts_file }}'
+    known_hosts:
+      name: "{{ item.item }}"
+      key: "{{ item.stdout }}"
+      path: "{{ ssh_known_hosts_file }}"
+    with_items: "{{ ssh_known_host_results.results }}"
+
