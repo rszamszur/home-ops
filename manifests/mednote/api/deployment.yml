@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mednote-api-deployment
+  labels: 
+    app: mednote-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mednote-api
+  template:
+    metadata:
+      labels: 
+        app : mednote-api
+    spec:
+      containers:
+        - name : mednote-api
+          image: registry.gitlab.com/rsdevelopment/rails-apps/mednote-api/arm64:0.4
+          ports:
+            - containerPort: 3000
+          env:
+            - name: RAILS_DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mednote-api-config
+                  key: rails_db_user
+            - name: RAILS_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: mednote-api-config
+                  key: rails_env
+            - name: RAILS_PUMA_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: mednote-api-config
+                  key: rails_puma_port
+            - name: RAILS_WEB_CONCURRENCY
+              valueFrom:
+                configMapKeyRef:
+                  name: mednote-api-config
+                  key: rails_web_concurrency
+            - name: RAILS_MAX_THREADS
+              valueFrom:
+                configMapKeyRef:
+                  name: mednote-api-config
+                  key: rails_max_threads
+            - name: RAILS_DB_POOL
+              valueFrom:
+                configMapKeyRef:
+                  name: mednote-api-config
+                  key: rails_db_pool
+            - name: RAILS_DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mednote-api-config
+                  key: rails_db_host
+            - name: RAILS_MAILER_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mednote-api-secret
+                  key: rails_mailer_pass
+            - name: RAILS_DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mednote-api-secret
+                  key: rails_db_pass
+          readinessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 60
+          volumeMounts:
+            - mountPath: /mednote-api/storage
+              name: storage
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: mednote-api

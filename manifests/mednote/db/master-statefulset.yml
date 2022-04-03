@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-master
+  labels:
+    app: postgres-master
+spec:
+  serviceName: "postgres"
+  selector:
+    matchLabels:
+      app: postgres-master
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgres-master
+    spec:
+      containers:
+        - name: postgres-master
+          image: postgres@sha256:a7e09abc46b46ed1a4ddc43e051e4be595c10efcd78bed723da0cce0175ac2e2
+          args: ['-c', 'config_file=/etc/postgres.conf', '-c', 'hba_file=/etc/pg_hba.conf']
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgresUser
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgresDb
+            - name: PGDATA
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: pgdata
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: password
+            - name: REPLICATION_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: replicaPassword
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - exec pg_isready --host $POD_IP
+            failureThreshold: 6
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - exec pg_isready --host $POD_IP
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: pgdata
+            - name: postgres-config
+              mountPath: /etc/pg_hba.conf
+              subPath: pg_hba.conf
+            - name: postgres-config
+              mountPath: /etc/postgres.conf
+              subPath: postgres.conf
+            - mountPath: /etc/master.conf
+              name: postgres-config
+              subPath: master.conf
+            - mountPath: /docker-entrypoint-initdb.d/create_replica_user.sh
+              name: postgres-config
+              subPath: create_replica_user.sh
+      volumes:
+          - name: postgres-config
+            configMap:
+              name: postgres-config
+          - name: pgdata
+            persistentVolumeClaim:
+              claimName: postgres-master

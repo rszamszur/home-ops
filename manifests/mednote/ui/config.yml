@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mednote-ui-config
+data:
+  mednote_api_url: "http://api.192.168.0.40.nip.io/api"
+  mednote_ui_url: "http://192.168.0.40.nip.io"
