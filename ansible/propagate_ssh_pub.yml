@@ -1,6 +1,6 @@
 ---
 - name: Propagate ssh pub key to hosts
-  hosts: rock64nodes
+  hosts: rock64cluster
   vars_prompt:
     - name: ssh_pub_key
       prompt: Public ssh key to propagate

@@ -9,7 +9,7 @@ $ ./run_ansible_env.sh
 Found podman container engine.
 bash-4.4# cd /workspace/
 bash-4.4# ansible-playbook update_known_hosts.yml
-bash-4.4# ansible rock64nodes -m ping --user YOUR_USERNAME --ask-pass
+bash-4.4# ansible rock64cluster -m ping --user YOUR_USERNAME --ask-pass
 SSH password:
 [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
 192.168.0.47 | SUCCESS => {
@@ -54,7 +54,7 @@ or with `nix-shell`:
 ```shell
 nix-shell shell.nix
 ansible-playbook update_known_hosts.yml
-ansible rock64nodes -m ping --user YOUR_USERNAME --ask-pass
+ansible rock64cluster -m ping --user YOUR_USERNAME --ask-pass
 ```
 
 ### Usage
@@ -68,7 +68,7 @@ ansible-playbook $PLAYBOOK --user YOUR_USERNAME --ask-pass --ask-become-pass
 
 Alternatively, you can provide secrets via hosts file although it's not recommended.
 ```
-[rock64nodes:vars]
+[rock64cluster:vars]
 ansible_ssh_pass=***
 ansible_sudo_pass=****
 ```
@@ -84,9 +84,9 @@ ansible-playbook $PLAYBOOK --user YOUR_USERNAME --ask-pass --ask-become-pass --l
 
 ### Hosts
 
-#### rock64nodes
+#### rock64cluster
 
-[Clustered Pine64 Rock64 boards]() - worker nodes.
+[Clustered Pine64 Rock64 boards](https://github.com/rszamszur/home-k8s/blob/master/rock64cluster.jpg?raw=true) - worker nodes.
 
 * 192.168.0.45
 * 192.168.0.46
@@ -108,7 +108,7 @@ Store known hosts of all the hosts in the inventory file:
 
 ### propagate_ssh_pub
 
-Hosts: rock64nodes
+Hosts: rock64cluster
 
 Propagate ssh pub key to hosts:
 * Ensure ssh key entry in authorized_key
