@@ -16,10 +16,9 @@ spec:
         value: "false"
       - name: ingress.enabled
         value: "false"
-    path: charts/
-    chart: example
-    repoURL: https://github.com/fastapi-mvc/example
-    targetRevision: 6b29b3fe3dc9004aa7492c4d2ecd569fdf7e3ec3
+    path: charts/example
+    repoURL: https://github.com/fastapi-mvc/example.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true
