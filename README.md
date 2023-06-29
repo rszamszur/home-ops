@@ -66,6 +66,51 @@ cluster-home/ # 1
 | 4. | `core` | This is where YAML for the core functionality of the cluster live. Here is where the Kubernetes administrator will put things that is necissary for the functionality of the cluster (like cluster configs or cluster workloads).<br /><br />Under `gitops-controller` is where you are using Argo CD to manage itself. The `kustomization.yaml` file uses `cluster-home/bootstrap/overlays/default` in it's `bases` configuration. This `core` directory gets deployed as an applicationset which can be found under `cluster-home/components/applicationsets/core-components-appset.yaml`.<br /><br />To add a new "core functionality" workoad, one needs to add a directory with some yaml in the `core` directory. See the `sample-admin-config` directory as an example.|
 | 5. | `tenants` | This is where the workloads for this cluster live.<br /><br />Similar to `core`, the `tenants` directory gets loaded as part of an ApplicationSet that is under `cluster-home/components/applicationsets/tenants-appset.yaml`.<br /><br />This is where Devlopers/Release Engineers do the work. They just need to commit a directory with some YAML and the applicationset takes care of creating the workload.<br /><br />|
 
+### Bootstrapping
+
+To see this in action, first get yourself a cluster (using [minikube](https://minikube.sigs.k8s.io/docs/start/) as an example)
+
+```shell
+minikube start --driver=docker
+```
+
+Then, just apply this repo:
+
+```shell
+until kubectl apply -k https://github.com/rszamszur/home-k8s/cluster-home/bootstrap/overlays/default; do sleep 3; done
+```
+
+This should give you 3 applications:
+
+```shell
+$ kubectl get applications -n argocd
+NAME                    SYNC STATUS   HEALTH STATUS
+foobar-app              Synced        Healthy
+gitops-controller       Synced        Healthy
+sample-admin-workload   Synced        Healthy
+```
+
+Backed by 2 applicationsets:
+
+```shell
+$ kubectl get appsets -n argocd
+NAME      AGE
+cluster   19m
+tenants   19m
+```
+
+To see the Argo CD UI, you'll first need the password:
+
+```shell
+kubectl get secret/argocd-initial-admin-secret -n argocd -o jsonpath='{.data.password}' | base64 -d ; echo
+```
+
+Then port-forward to see it in your browser (using admin as the username):
+
+```shell
+kubectl -n argocd port-forward service/argocd-server 8080:443
+```
+
 ## Resources
 
 * [christianh814/example-kubernetes-go-repo](https://github.com/christianh814/example-kubernetes-go-repo)
