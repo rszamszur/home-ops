@@ -5,3 +5,4 @@ namespace: argocd
 resources:
 - ../../base
 - ../../../components/applicationsets
+- ../../../components/applications
