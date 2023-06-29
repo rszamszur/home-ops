@@ -29,6 +29,8 @@ spec:
         duration: 15s
         factor: 2
         maxDuration: 5m
+    syncOptions:
+    - CreateNamespace=true
   destination:
     namespace: fastapi-mvc-example
     server: https://kubernetes.default.svc
