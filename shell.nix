@@ -6,5 +6,7 @@ pkgs.mkShell {
     pkgs.kubernetes-helm
     pkgs.jq
     pkgs.kubectl
+    pkgs.yamllint
+    pkgs.kubeconform
   ];
 }
