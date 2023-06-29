@@ -1,0 +1,13 @@
+# ansible
+xanmanning.k3s*
+# terraform
+.terraform
+*.tfvars
+# sops
+.decrypted~*
+*.agekey
+*.pub
+*.key
+*.pem
+# direnv
+.direnv/
