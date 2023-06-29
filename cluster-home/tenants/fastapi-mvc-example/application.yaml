@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fastapi-mvc-example
+  namespace: argocd
+spec:
+  project: default
+  source:
+    helm:
+      parameters:
+      - name: image.repository
+        value: "ghcr.io/fastapi-mvc/example"
+      - name: image.tag
+        value: "6b29b3f"
+      - name: configMap.useRedis
+        value: "false"
+      - name: ingress.enabled
+        value: "false"
+    path: charts/
+    chart: example
+    repoURL: https://github.com/fastapi-mvc/example
+    targetRevision: 6b29b3fe3dc9004aa7492c4d2ecd569fdf7e3ec3
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+  destination:
+    namespace: fastapi-mvc-example
+    server: https://kubernetes.default.svc
