@@ -2,8 +2,9 @@
 
 pkgs.mkShell {
   buildInputs = [
-    pkgs.talosctl
+    pkgs.minikube
     pkgs.kubernetes-helm
+    pkgs.jq
     pkgs.kubectl
   ];
 }
