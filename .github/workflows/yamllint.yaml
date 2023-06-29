@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
+      build: ${{ steps.filter.outputs.build }}
     steps:
       - uses: actions/checkout@v3
       - id: skip_check
