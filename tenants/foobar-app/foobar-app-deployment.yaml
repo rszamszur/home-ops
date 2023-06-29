@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: welcome-php
+  name: welcome-php
+  namespace: foobar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: welcome-php
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: welcome-php
+    spec:
+      containers:
+      - image: quay.io/redhatworkshops/welcome-php
+        name: welcome-php
+        resources: {}
+status: {}
