@@ -80,11 +80,12 @@ Then, just apply this repo:
 until kubectl apply -k https://github.com/rszamszur/home-k8s/cluster-home/bootstrap/overlays/default; do sleep 3; done
 ```
 
-This should give you 3 applications:
+This should give you 4 applications:
 
 ```shell
 $ kubectl get applications -n argocd
 NAME                    SYNC STATUS   HEALTH STATUS
+fastapi-mvc-example     Synced        Healthy
 foobar-app              Synced        Healthy
 gitops-controller       Synced        Healthy
 sample-admin-workload   Synced        Healthy
