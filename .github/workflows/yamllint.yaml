@@ -1,0 +1,40 @@
+name: Yamllint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+env:
+  NIX_CHANNEL: nixpkgs=channel:nixos-23.05
+
+jobs:
+  # This job checks if an identical workflow is being triggered by different
+  # event and skips it. For instance there is no need to run the same pipeline
+  # twice for pull_request and push for identical commit sha.
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v5.3.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          concurrent_skipping: same_content
+          do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
+  kubeconform:
+    needs: pre_job
+    if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: cachix/install-nix-action@v22
+        with:
+          nix_path: ${{ env.NIX_CHANNEL }}
+      - uses: actions/checkout@v3
+      - name: Run yamllint checks
+        run: nix-shell -p yamllint --run "yamllint -f github cluster-home/"
