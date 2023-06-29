@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/rszamszur/home-k8s
       revision: master
       directories:
-      - path: core/*
+      - path: cluster-home/core/*
   template:
     metadata:
       name: '{{path.basename}}'
