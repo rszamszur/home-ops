@@ -51,4 +51,5 @@ jobs:
             -schema-location default \
             -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
             -schema-location "http://json.schemastore.org/kustomization.json" \
-            -summary -output junit cluster-home"
+            -ignore-filename-pattern ".*.json" \
+            -summary -output json cluster-home"
