@@ -1,0 +1,73 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 47.1.0
+    helm:
+      version: v3
+      values: |
+        alertmanager:
+          ingress:
+            annotations: {}
+            enabled: false
+            hosts:
+            - alert-manager.192.168.0.40.nip.io
+            labels: {}
+            pathType: ImplementationSpecific
+            paths:
+            - /
+            tls: []
+        grafana:
+          ingress:
+            annotations: {}
+            enabled: false
+            hosts:
+            - grafana.192.168.0.40.nip.io
+            labels: {}
+            path: /
+            tls: []
+        prometheus:
+          ingress:
+            annotations: {}
+            enabled: false
+            hosts:
+            - prometheus.192.168.0.40.nip.io
+            labels: {}
+            pathType: ImplementationSpecific
+            paths:
+            - /
+            tls: []
+          prometheusSpec:
+            additionalScrapeConfigs:
+            - job_name: airgradient
+              metrics_path: /metrics
+              scrape_interval: 30s
+              static_configs:
+              - targets:
+                - 192.168.0.190:9926
+              metric_relabel_configs:
+              - source_labels: [ __name__ ]
+                target_label: __name__
+                replacement: airgradient_${1}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
