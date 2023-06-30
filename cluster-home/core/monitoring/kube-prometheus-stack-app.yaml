@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring
+  name: kube-prometheus-stack
   namespace: argocd
 spec:
   project: default
@@ -69,5 +69,5 @@ spec:
     - CreateNamespace=true
     - ServerSideApply=true
   destination:
-    namespace: monitoring
+    namespace: kube-prometheus-stack
     server: https://kubernetes.default.svc
