@@ -1,22 +1,40 @@
 <div align="center">
 
-<img src="https://camo.githubusercontent.com/5b298bf6b0596795602bd771c5bddbb963e83e0f/68747470733a2f2f692e696d6775722e636f6d2f7031527a586a512e706e67" align="center" width="144px" height="144px"/>
+<img src="docs/assets/logo.png" align="center" width="144px" height="144px"/>
 
-### Home Kubernetes Cluster GitOps Repo
+### Home Lab Repository
 
-_... managed with ArgoCD and GitHub Actions_ 🤖
+_... managed with ArgoCD, Renovate and GitHub Actions_ 🤖
 
 </div>
 
-![cluster](https://github.com/rszamszur/home-k8s/blob/master/rock64cluster.jpg?raw=true)
-
+![t630](docs/assets/dell_t630_front.jpg?raw=true) 
 ---
 
 ## 📖 Overview
 
-This is a mono repository for my home infrastructure and Kubernetes cluster. I try to adhere to Infrastructure as Code (IaC) and GitOps practices using the tools like [Ansible](https://www.ansible.com/), [Kubernetes](https://kubernetes.io/), [ArgoCD](https://github.com/argoproj/argo-cd), and [GitHub Actions](https://github.com/features/actions).
+This is a mono repository for my home infrastructure and Kubernetes cluster. I try to adhere to Infrastructure as Code (IaC) and GitOps practices using the tools like [Terraform](https://www.terraform.io/), [Kubernetes](https://kubernetes.io/), [ArgoCD](https://github.com/argoproj/argo-cd), [Renovate](https://github.com/renovatebot/renovate) and [GitHub Actions](https://github.com/features/actions).
 
 ---
+
+## 🔧 Hardware
+
+### [Dell PowerEdge T630 GPU Rack](https://www.dell.com/learn/gh/en/ghpad1/shared-content~data-sheets~en/documents~dell-poweredge-t630-spec-sheet.pdf)
+
+<details>
+  <summary>Click to see the insides</summary>
+
+  ![t630_inside](docs/assets/dell_t630_inside.jpg?raw=true)
+</details>
+
+* Motherboard: Dell 0NT78X
+  * CPU: 2x [Intel Xenon E5-2697 v4](https://www.intel.com/content/www/us/en/products/sku/91755/intel-xeon-processor-e52697-v4-45m-cache-2-30-ghz/specifications.html) (18 cores, 2.30 Ghz)
+  * Memory: 16x 16Gb DDR4-2400 RDIMM ([SK Hynix HMA82GR7AFR8N-UH](https://memory.net/product/hma82gr7afr8n-uh-sk-hynix-1x-16gb-ddr4-2400-rdimm-pc4-19200t-r-dual-rank-x8-module/))
+  * Network: 2x I350 Gigabit Network Connection
+* Storage:
+  * [Dell PowerEdge Raid Controller H330](https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/Dell-PowerEdge-RAID-Controller-H330.pdf) (in HBA mode)
+  * 4x Seagate Exos X16 12TB 7.2k SATA 6Gbps ([ST12000NM001G-2M](https://www.seagate.com/www-content/product-content/enterprise-hdd-fam/exos-x-16/en-us/docs/100845789f.pdf))
+  * 2x Goodram CX400 1TB 2,5" Sata3 (SSDPR-CX400-01T-)
 
 ## ⛵ Kubernetes
 
