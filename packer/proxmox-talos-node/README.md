@@ -4,13 +4,11 @@
 
 Prerequsites:
 
-* Packer
-* Decrypt `secrets.auto.pkvars.hcl.age`
-* Make (optional)
+* Bazel
 
 ```shell
-make init
-make build
+bazel run :init --action_env=AGE_IDENTITY_KEY=<PATH_TO_AGE_KEY>
+bazel run :build --action_env=AGE_IDENTITY_KEY=<PATH_TO_AGE_KEY>
 ```
 
 ## Resources
