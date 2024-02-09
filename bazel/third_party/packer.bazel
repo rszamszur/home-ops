@@ -1,0 +1,7 @@
+exports_files(["packer"], visibility = ["//visibility:public"])
+
+sh_binary(
+    name = "bin",
+    srcs = ["packer"],
+    visibility = ["//visibility:public"],
+)
