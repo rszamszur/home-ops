@@ -11,3 +11,5 @@ xanmanning.k3s*
 *.pem
 # direnv
 .direnv/
+# bazel
+bazel-*
