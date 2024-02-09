@@ -7,10 +7,10 @@ packer {
   }
 }
 
-source "proxmox" "talos" {
-  proxmox_url              = var.proxmox_api_url
-  username                 = var.proxmox_api_token_id
-  token                    = var.proxmox_api_token_secret
+source "proxmox" "talos-node" {
+  proxmox_url              = "https://${var.proxmox_host}:8006/api2/json"
+  username                 = var.proxmox_token_id
+  token                    = var.proxmox_token_secret
   node                     = var.proxmox_nodename
   insecure_skip_tls_verify = true
 
@@ -18,6 +18,7 @@ source "proxmox" "talos" {
   iso_checksum     = "sha256:891ebab4661cedb0ae3b8fe15a906ae2ba22e284551dc293436d5247220933c5"
   iso_storage_pool = "local"
   unmount_iso = true
+  vm_id = "200"
 
   network_adapters {
     bridge   = "vmbr0"
@@ -36,7 +37,8 @@ source "proxmox" "talos" {
   }
 
   cpu_type = "host"
-  memory   = 3072
+  cores = 3
+  memory   = 12288 
   # vga {
   #   type = "serial0"
   # }
@@ -51,7 +53,7 @@ source "proxmox" "talos" {
   # ssh_bastion_username   = "root"
   # ssh_bastion_agent_auth = true
 
-  template_name        = "talos"
+  template_name        = "talos-node"
   template_description = "Talos system disk, version ${var.talos_version}"
 
   boot_wait = "15s"
@@ -62,8 +64,8 @@ source "proxmox" "talos" {
 }
 
 build {
-  name    = "talos-node"
-  sources = ["source.proxmox.talos"]
+  name    = "vm-template"
+  sources = ["source.proxmox.talos-node"]
 
   provisioner "shell" {
     inline = [
