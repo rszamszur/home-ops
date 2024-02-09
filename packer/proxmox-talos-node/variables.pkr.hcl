@@ -1,29 +1,36 @@
-variable "proxmox_api_url" {
-  type = string
+variable "proxmox_host" {
+  description = "Proxmox host"
+  type        = string
+  default     = "192.168.0.10"
 }
 
-variable "proxmox_api_token_id" {
-  type = string
+variable "proxmox_token_id" {
+  description = "Proxmox token id"
+  type        = string
 }
 
-variable "proxmox_api_token_secret" {
-  type = string
-  sensitive = true
+variable "proxmox_token_secret" {
+  description = "Proxmox token secret"
+  type        = string
+  sensitive   = true
 }
 
 variable "proxmox_nodename" {
-  type = string
-  default = "pve"
+  description = "Proxmox node name"
+  type        = string
+  default     = "pve"
 }
 
 variable "proxmox_storage" {
-  type = string
-  default = "local-zfs"
+  description = "Proxmox storage name"
+  type        = string
+  default     = "local-zfs"
 }
 
 variable "talos_version" {
-  type = string
-  default = "v1.6.4"
+  description = "Talos release version"
+  type        = string
+  default     = "v1.6.4"
 }
 
 locals {
