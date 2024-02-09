@@ -18,4 +18,4 @@ init: ## Initialize packer
 
 .PHONY: build
 build: init ## Build talos-node vm template
-	packer build -only=talos-node.proxmox.talos .
+	packer build -only=vm-template.proxmox.talos-node .
