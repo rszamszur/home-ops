@@ -1,0 +1,5 @@
+sh_binary(
+    name = "bin",
+    srcs = ["age/age"],
+    visibility = ["//visibility:public"],
+)
