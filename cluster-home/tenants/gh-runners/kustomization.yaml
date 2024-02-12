@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
 - https://github.com/actions/actions-runner-controller/releases/download/v0.27.6/actions-runner-controller.yaml
-- nixos-config-runner.yaml
+# - nixos-config-runner.yaml
 
 patches:
   - target:
