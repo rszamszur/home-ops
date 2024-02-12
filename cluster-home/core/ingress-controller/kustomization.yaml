@@ -24,3 +24,10 @@ patches:
       - op: replace
         path: /spec/template/spec/hostNetwork
         value: true
+  - target:
+      kind: Namespace
+      name: ingress-nginx
+    patch: |-
+      - op: add
+        path: /metadata/labels/pod-security.kubernetes.io~1enforce
+        value: privileged
