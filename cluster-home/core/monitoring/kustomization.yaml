@@ -3,3 +3,13 @@ kind: Kustomization
 
 resources:
 - kube-prometheus-stack-app.yaml
+
+patches:
+  - target:
+      kind: Namespace
+      name: kube-prometheus-stack
+    patch: |-
+      - op: add
+        path: /metadata/labels
+        value:
+          pod-security.kubernetes.io/enforce: privileged
