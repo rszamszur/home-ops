@@ -17,7 +17,7 @@ spec:
             annotations: {}
             enabled: false
             hosts:
-            - alert-manager.192.168.0.40.nip.io
+            - alert-manager.pve-talos-k8s.local
             labels: {}
             pathType: ImplementationSpecific
             paths:
@@ -28,7 +28,7 @@ spec:
             annotations: {}
             enabled: false
             hosts:
-            - grafana.192.168.0.40.nip.io
+            - grafana.pve-talos-k8s.local
             labels: {}
             path: /
             tls: []
@@ -37,7 +37,7 @@ spec:
             annotations: {}
             enabled: false
             hosts:
-            - prometheus.192.168.0.40.nip.io
+            - prometheus.pve-talos-k8s.local
             labels: {}
             pathType: ImplementationSpecific
             paths:
