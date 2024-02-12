@@ -10,6 +10,7 @@ pkgs.mkShell {
     pkgs.k9s
     pkgs.yamllint
     pkgs.kubeconform
+    pkgs.kustomize
     pkgs.terraform
     pkgs.packer
     pkgs.talosctl
