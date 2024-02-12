@@ -14,6 +14,7 @@ spec:
       values: |
         alertmanager:
           ingress:
+            ingressClassName: nginx
             annotations: {}
             enabled: true
             hosts:
@@ -25,6 +26,7 @@ spec:
             tls: []
         grafana:
           ingress:
+            ingressClassName: nginx
             annotations: {}
             enabled: true
             hosts:
@@ -34,6 +36,7 @@ spec:
             tls: []
         prometheus:
           ingress:
+            ingressClassName: nginx
             annotations: {}
             enabled: true
             hosts:
