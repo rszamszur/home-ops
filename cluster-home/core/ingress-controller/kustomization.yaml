@@ -21,3 +21,7 @@ patches:
                   operator: In
                   values:
                   - ingress
+      - op: add
+        path: /spec/template/spec
+        value:
+          hostNetwork: true
