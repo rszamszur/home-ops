@@ -7,6 +7,7 @@ pkgs.mkShell {
     pkgs.kubernetes-helm
     pkgs.jq
     pkgs.kubectl
+    pkgs.k9s
     pkgs.yamllint
     pkgs.kubeconform
     pkgs.terraform
