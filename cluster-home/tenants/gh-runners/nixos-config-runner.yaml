@@ -1,0 +1,9 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: nixos-config-runner
+spec:
+  replicas: 4
+  template:
+    spec:
+      repository: rszamszur/nixos-config
