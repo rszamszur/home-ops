@@ -5,7 +5,7 @@ metadata:
   namespace: actions-runner-system
 spec:
   replicas: 4
-  containerMode: kubernetes
+  dockerEnabled: false
   template:
     spec:
       ephemeral: true
