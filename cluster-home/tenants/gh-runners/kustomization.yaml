@@ -4,3 +4,26 @@ kind: Kustomization
 resources:
 - https://github.com/actions/actions-runner-controller/releases/download/v0.22.0/actions-runner-controller.yaml
 - nixos-config-runner.yaml
+
+patches:
+  - target:
+      kind: CustomResourceDefinition
+      name: runners.actions.summerwind.dev
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-options 
+        value: ServerSideApply=true
+  - target:
+      kind: CustomResourceDefinition
+      name: runnerreplicasets.actions.summerwind.dev
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-options 
+        value: ServerSideApply=true
+  - target:
+      kind: CustomResourceDefinition
+      name: runnerdeployments.actions.summerwind.dev
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-options 
+        value: ServerSideApply=true
