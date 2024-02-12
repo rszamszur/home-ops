@@ -15,7 +15,7 @@ spec:
         alertmanager:
           ingress:
             annotations: {}
-            enabled: false
+            enabled: true
             hosts:
             - alert-manager.pve-talos-k8s.local
             labels: {}
@@ -26,7 +26,7 @@ spec:
         grafana:
           ingress:
             annotations: {}
-            enabled: false
+            enabled: true
             hosts:
             - grafana.pve-talos-k8s.local
             labels: {}
@@ -35,7 +35,7 @@ spec:
         prometheus:
           ingress:
             annotations: {}
-            enabled: false
+            enabled: true
             hosts:
             - prometheus.pve-talos-k8s.local
             labels: {}
