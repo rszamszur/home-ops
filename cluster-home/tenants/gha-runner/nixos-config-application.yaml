@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gha-runner-nixos-config
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+    chart: gha-runner-scale-set
+    targetRevision: 0.8.2
+    helm:
+      version: v3
+      values: |-
+        githubConfigUrl: "https://github.com/rszamszur/nixos-config"
+        githubConfigSecret: gha-runner-nixos-config-secret
+
+        minRunners: 2
+        maxRunners: 8
+
+        runnerScaleSetName: pve-talos
+
+        controllerServiceAccount:
+          namespace: gha-runner-controller
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+  destination:
+    namespace: gha-runner-nixos-config
+    server: https://kubernetes.default.svc
