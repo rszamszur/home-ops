@@ -21,6 +21,8 @@ spec:
         duration: 15s
         factor: 2
         maxDuration: 5m
+    syncOptions:
+    - ServerSideApply=true
   destination:
     namespace: gha-runner-controller
     server: https://kubernetes.default.svc
