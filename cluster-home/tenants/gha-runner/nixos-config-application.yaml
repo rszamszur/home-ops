@@ -20,6 +20,9 @@ spec:
 
         runnerScaleSetName: pve-talos
 
+        containerMode:
+          type: "dind"
+
         controllerServiceAccount:
           namespace: gha-runner-controller
           name: gha-runner-controller-gha-rs-controller
