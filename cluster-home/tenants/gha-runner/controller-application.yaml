@@ -5,10 +5,12 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+  sources:
+  - repoURL: ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
     chart: gha-runner-scale-set-controller
     targetRevision: 0.8.2
+    helm:
+      version: v3
   syncPolicy:
     automated:
       prune: true
