@@ -22,6 +22,7 @@ spec:
 
         controllerServiceAccount:
           namespace: gha-runner-controller
+          name: gha-runner-controller-gha-rs-controller
   syncPolicy:
     automated:
       prune: true
