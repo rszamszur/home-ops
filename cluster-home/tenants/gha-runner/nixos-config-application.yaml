@@ -20,6 +20,10 @@ spec:
 
         runnerScaleSetName: pve-talos
 
+        controllerServiceAccount:
+          namespace: gha-runner-controller
+          name: gha-runner-controller-gha-rs-controller
+
         containerMode:
           type: "dind"
         
@@ -72,10 +76,6 @@ spec:
               emptyDir: {}
             - name: dind-externals
               emptyDir: {}
-
-          controllerServiceAccount:
-            namespace: gha-runner-controller
-            name: gha-runner-controller-gha-rs-controller
   syncPolicy:
     automated:
       prune: true
