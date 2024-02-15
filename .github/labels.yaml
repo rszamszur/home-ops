@@ -20,6 +20,8 @@
   color: "027fa0"
 - name: renovate/terraform
   color: "027fa0"
+- name: renovate/bazel
+  color: "027fa0"
 # Semantic Types
 - name: type/digest
   color: "ffeC19"
