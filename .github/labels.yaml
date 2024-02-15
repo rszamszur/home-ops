@@ -1,0 +1,56 @@
+# Areas
+- name: area/packer
+  color: "0e8a16"
+- name: area/github
+  color: "0e8a16"
+- name: area/kubernetes
+  color: "0e8a16"
+- name: area/terraform
+  color: "0e8a16"
+- name: area/bazel
+  color: "0e8a16"
+# Renovate Types
+- name: renovate/packer
+  color: "027fa0"
+- name: renovate/container
+  color: "027fa0"
+- name: renovate/github-action
+  color: "027fa0"
+- name: renovate/helm
+  color: "027fa0"
+- name: renovate/terraform
+  color: "027fa0"
+# Semantic Types
+- name: type/digest
+  color: "ffeC19"
+- name: type/patch
+  color: "ffeC19"
+- name: type/minor
+  color: "ff9800"
+- name: type/major
+  color: "f6412d"
+# Defaults
+- name: "bug"
+  color: "d73a4a"
+  description: "Something isn't working"
+- name: "documentation"
+  color: "0075ca"
+  description: "Improvements or additions to documentation"
+- name: "duplicate"
+  color: "cfd3d7"
+  description: "This issue or pull request already exists"
+- name: "enhancement"
+  color: "a2eeef"
+  description: "New feature or request"
+- name: "good first issue"
+  color: "7057ff"
+  description: "Good for newcomers"
+- name: "help wanted"
+  color: "008672"
+  description: "Extra attention is needed"
+- name: "question"
+  color: "d876e3"
+  description: "Further information is requested"
+- name: "wontfix"
+  color: "ffffff"
+  description: "This will not be worked on"
