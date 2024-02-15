@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: ingress-nginx
 
 resources:
+# renovate: datasource=github-releases depName=kubernetes/ingress-nginx
 - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/baremetal/deploy.yaml
 
 patches:
