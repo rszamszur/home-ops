@@ -53,9 +53,9 @@ python_register_toolchains(
 
 http_archive(
     name = "rules_file",
-    sha256 = "ee31f2ebcd09e289090420012d19ffaecb71c005e74f511301f1fd47cbd5f971",
-    strip_prefix = "rules_file-7e07245edcc54d419a52d141b3c8e86e3dc0d5c5",
-    url = "https://github.com/rivethealth/rules_file/archive/7e07245edcc54d419a52d141b3c8e86e3dc0d5c5.zip",
+    sha256 = "1a9c25cb2a0aa240838175f86e42ca48683a914270641f8eae17c27bc78e9299",
+    strip_prefix = "rules_file-a79a1036c27eb545cc6e7e08d99de525544bac4f",
+    url = "https://github.com/rivethealth/rules_file/archive/a79a1036c27eb545cc6e7e08d99de525544bac4f.zip",
 )
 
 load("@rules_file//rules:init.bzl", "file_init")
