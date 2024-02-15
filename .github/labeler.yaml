@@ -1,0 +1,36 @@
+# Areas
+area/packer:
+  - changed-files:
+      - any-glob-to-any-file: 
+          - "packer/**/*"
+area/github:
+  - changed-files:
+      - any-glob-to-any-file: 
+          - ".github/**/*"
+area/kubernetes:
+  - changed-files:
+      - any-glob-to-any-file: 
+          - "cluster-home/**/*"
+area/terraform:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "terraform/**/*"
+          - "**/*.tf"
+area/bazel:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "WORKSPACE"
+          - "**/BUILD"
+          - "**/*.bzl"
+          - "bazel/**/*"
+# Clusters
+cluster/home:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "cluster-home/**/*"
+# Generic
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**/*"
+          - "README.md"
