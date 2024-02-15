@@ -26,7 +26,15 @@ spec:
           name: gha-runner-controller-gha-rs-controller
 
         containerMode:
-          type: "dind"
+          type: "kubernetes"
+          kubernetesModeWorkVolumeClaim:
+            accessModes: ["ReadWriteOnce"]
+            storageClassName: "nfs"
+            resources:
+              requests:
+                storage: 5Gi
+          kubernetesModeServiceAccount:
+            annotations:
 
         template:
           spec:
