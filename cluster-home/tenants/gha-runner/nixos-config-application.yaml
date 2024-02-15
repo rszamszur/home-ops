@@ -34,6 +34,25 @@ spec:
               - name: runner
                 image: ghcr.io/rszamszur/actions-runner:latest
                 command: ["/home/runner/run.sh"]
+                volumeMounts:
+                  - name: work
+                    mountPath: /home/runner/_work
+                  - name: dind-sock
+                    mountPath: /run/docker
+                  - name: dind-externals
+                    mountPath: /home/runner/externals
+                  - mountPath: "/nix"
+                    name: nix-cache
+            volumes:
+              - name: work
+                emptyDir: {}
+              - name: dind-sock
+                emptyDir: {}
+              - name: dind-externals
+                emptyDir: {}
+              - name: nix-cache
+                persistentVolumeClaim:
+                  claimName: nix-cache
   syncPolicy:
     automated:
       prune: true
