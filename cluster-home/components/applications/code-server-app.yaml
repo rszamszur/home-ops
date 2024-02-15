@@ -8,6 +8,7 @@ spec:
   source:
     repoURL: https://github.com/coder/code-server.git
     path: ci/helm-chart
+    # renovate: datasource=github-releases depName=coder/code-server
     targetRevision: v4.14.1
     helm:
       version: v3
