@@ -29,7 +29,7 @@ spec:
           type: "kubernetes"
           kubernetesModeWorkVolumeClaim:
             accessModes: ["ReadWriteOnce"]
-            storageClassName: "nfs"
+            storageClassName: "iscsi"
             resources:
               requests:
                 storage: 5Gi

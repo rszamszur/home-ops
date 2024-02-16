@@ -4,7 +4,7 @@ metadata:
   name: nix-cache
   namespace: gha-runner-nixos-config
 spec:
-  storageClassName: nfs
+  storageClassName: iscsi
   accessModes:
     - ReadWriteMany
   resources:
