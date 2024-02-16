@@ -49,9 +49,20 @@ spec:
                   - mountPath: "/nix"
                     name: nix-cache
             volumes:
-              - name: nix-cache
-                persistentVolumeClaim:
-                  claimName: nix-cache
+              - ephemeral:
+                  volumeClaimTemplate:
+                    spec:
+                      accessModes:
+                        - ReadWriteOnce
+                      resources:
+                        requests:
+                          storage: 20Gi
+                      storageClassName: iscsi
+                      volumeMode: Filesystem
+                name: nix-cache
+              # - name: nix-cache
+              #   persistentVolumeClaim:
+              #     claimName: nix-cache
   syncPolicy:
     automated:
       prune: true
