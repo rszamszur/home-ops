@@ -45,6 +45,8 @@ spec:
                 volumeMounts:
                   - name: work
                     mountPath: /home/runner/_work
+                  - mountPath: "/nix"
+                    name: nix-cache
             containers:
               - name: runner
                 image: ghcr.io/rszamszur/actions-runner:latest
