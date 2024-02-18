@@ -41,7 +41,7 @@ spec:
             initContainers:
               - name: kube-init
                 image: ghcr.io/rszamszur/actions-runner:latest
-                command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work"]
+                command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work", "/nix"]
                 volumeMounts:
                   - name: work
                     mountPath: /home/runner/_work
@@ -56,9 +56,20 @@ spec:
                   - mountPath: "/nix"
                     name: nix-cache
             volumes:
-              - name: nix-cache
-                persistentVolumeClaim:
-                  claimName: nix-cache
+              - ephemeral:
+                  volumeClaimTemplate:
+                    spec:
+                      accessModes:
+                        - ReadWriteOnce
+                      resources:
+                        requests:
+                          storage: 40Gi
+                      storageClassName: iscsi
+                      volumeMode: Filesystem
+                name: nix-cache
+              # - name: nix-cache
+              #   persistentVolumeClaim:
+              #     claimName: nix-cache
   syncPolicy:
     automated:
       prune: true

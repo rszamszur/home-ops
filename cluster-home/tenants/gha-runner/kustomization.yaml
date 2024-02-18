@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
 - controller-namespace.yaml
 - controller-application.yaml
-- nix-pvc.yaml
+#- nix-pvc.yaml
 - nixos-config-namespace.yaml
 - nixos-config-application.yaml
