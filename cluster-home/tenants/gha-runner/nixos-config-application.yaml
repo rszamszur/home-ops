@@ -44,7 +44,7 @@ spec:
                 command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work"]
                 volumeMounts:
                   - name: work
-                  mountPath: /home/runner/_work
+                    mountPath: /home/runner/_work
             containers:
               - name: runner
                 image: ghcr.io/rszamszur/actions-runner:latest
