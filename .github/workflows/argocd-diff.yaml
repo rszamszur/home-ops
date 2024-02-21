@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+env:
+  NODE_TLS_REJECT_UNAUTHORIZED: 0
+
 jobs:
   argocd-diff:
     name: Generate ArgoCD Diff
@@ -14,7 +17,7 @@ jobs:
       - uses: argocd-diff-action/argocd-diff-action@main
         name: ArgoCD diff
         with:
-          argocd-server-fqdn: argocd.pve-talos-k8s.local
+          argocd-server-fqdn: argocd-server.argocd.svc.cluster.local
           argocd-token: ${{ secrets.ARGOCD_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           argocd-extra-cli-args: "--grpc-web --insecure"

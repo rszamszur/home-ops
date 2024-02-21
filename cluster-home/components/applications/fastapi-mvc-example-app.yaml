@@ -15,7 +15,7 @@ spec:
       - name: configMap.useRedis
         value: "false"
       - name: ingress.enabled
-        value: "false"
+        value: "true"
     path: charts/example
     repoURL: https://github.com/fastapi-mvc/example.git
     targetRevision: master
