@@ -6,3 +6,5 @@ resources:
 - controller-application.yaml
 - nixos-config-namespace.yaml
 - nixos-config-application.yaml
+- home-ops-namespace.yaml
+- home-ops-application.yaml

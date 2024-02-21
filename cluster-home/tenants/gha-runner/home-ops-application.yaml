@@ -1,0 +1,67 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gha-runner-home-ops
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: ghcr.io/actions/actions-runner-controller-charts
+    chart: gha-runner-scale-set
+    # renovate: datasource=docker depName=ghcr.io/actions/actions-runner-controller-charts
+    targetRevision: 0.8.2
+    helm:
+      version: v3
+      values: |-
+        githubConfigUrl: "https://github.com/rszamszur/home-ops"
+        githubConfigSecret: gha-runner-nixos-config-secret
+
+        minRunners: 8
+        maxRunners: 20
+
+        runnerScaleSetName: pve-talos
+
+        controllerServiceAccount:
+          namespace: gha-runner-controller
+          name: gha-runner-controller-gha-rs-controller
+
+        containerMode:
+          type: "kubernetes"
+          kubernetesModeWorkVolumeClaim:
+            accessModes: ["ReadWriteOnce"]
+            storageClassName: "iscsi"
+            resources:
+              requests:
+                storage: 4Gi
+          kubernetesModeServiceAccount:
+            annotations:
+
+        template:
+          spec:
+            initContainers:
+              - name: kube-init
+                image: ghcr.io/rszamszur/actions-runner:latest
+                command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work"]
+                volumeMounts:
+                  - name: work
+                    mountPath: /home/runner/_work
+            containers:
+              - name: runner
+                image: ghcr.io/rszamszur/actions-runner:latest
+                command: ["/home/runner/run.sh"]
+                env:
+                  - name: ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER
+                    value: "false"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+  destination:
+    namespace: gha-runner-home-ops
+    server: https://kubernetes.default.svc
