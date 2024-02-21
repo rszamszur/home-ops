@@ -12,6 +12,8 @@ spec:
     targetRevision: 0.8.2
     helm:
       version: v3
+      values: |-
+        replicaCount: 3
   syncPolicy:
     automated:
       prune: true
