@@ -1,0 +1,64 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: democratic-csi-iscsi
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://democratic-csi.github.io/charts
+    chart: democratic-csi
+    # renovate: datasource=helm depName=democratic-csi repository=https://democratic-csi.github.io/charts
+    targetRevision: 0.14.5
+    helm:
+      version: v3
+      values: |
+        node:
+          hostPID: true
+          driver:
+            extraEnv:
+              - name: ISCSIADM_HOST_STRATEGY
+                value: nsenter
+              - name: ISCSIADM_HOST_PATH
+                value: /usr/local/sbin/iscsiadm
+            iscsiDirHostPath: /usr/local/etc/iscsi
+            iscsiDirHostPathType: ""
+        csiDriver:
+          name: "iscsi"
+        storageClasses:
+        - name: iscsi
+          defaultClass: false
+          reclaimPolicy: Delete
+          volumeBindingMode: Immediate
+          allowVolumeExpansion: true
+          parameters:
+            fsType: ext4
+            detachedVolumesFromSnapshots: "false"
+          mountOptions: []
+          secrets:
+            provisioner-secret:
+            controller-publish-secret:
+            node-stage-secret:
+            node-publish-secret:
+            controller-expand-secret:
+        volumeSnapshotClasses:
+        - name: iscsi
+          parameters:
+            detachedSnapshots: "true"
+        controller:
+          replicaCount: 3
+        driver:
+          existingConfigSecret: democratic-csi-iscsi-driver-config
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+  destination:
+    namespace: democratic-csi-iscsi
+    server: https://kubernetes.default.svc
