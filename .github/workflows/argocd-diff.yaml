@@ -1,0 +1,19 @@
+name: ArgoCD Diff
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  argocd-diff:
+    name: Generate ArgoCD Diff
+    runs-on: pve-talos
+    steps:
+      - uses: actions/checkout@v4
+      - uses: argocd-diff-action/argocd-diff-action@main
+        name: ArgoCD diff
+        with:
+          argocd-server-fqdn: argocd.pve-talos-k8s.local
+          argocd-token: ${{ secrets.ARGOCD_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
