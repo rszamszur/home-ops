@@ -49,6 +49,8 @@ spec:
           replicaCount: 3
         driver:
           existingConfigSecret: democratic-csi-iscsi-driver-config
+          config:
+            driver: freenas-api-iscsi
   syncPolicy:
     automated:
       prune: true
