@@ -14,7 +14,7 @@ spec:
       version: v3
       values: |-
         githubConfigUrl: "https://github.com/rszamszur/home-ops"
-        githubConfigSecret: gha-runner-nixos-config-secret
+        githubConfigSecret: gha-runner-home-ops-secret
 
         minRunners: 8
         maxRunners: 20
