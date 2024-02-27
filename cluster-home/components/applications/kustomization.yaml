@@ -3,4 +3,3 @@ kind: Kustomization
 
 resources:
 - fastapi-mvc-example-app.yaml
-- code-server-app.yaml
