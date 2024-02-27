@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://helm.coder.com/v2
     chart: coder
-
+    # renovate: datasource=helm depName=coder repository=https://helm.coder.com/v2
     targetRevision: 2.8.3
     helm:
       version: v3
@@ -20,15 +20,10 @@ spec:
                 secretKeyRef:
                   name: coder-db-url
                   key: url
-            # - name: CODER_ACCESS_URL
-            #   value: "https://coder.szamszur.cloud"
           ingress:
             enable: true
             host: "coder.szamszur.cloud"
             className: "nginx"
-            # tls:
-            #   enable: true
-            #   secretName: coder-tls
           service:
             type: ClusterIP
   syncPolicy:
