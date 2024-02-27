@@ -44,5 +44,15 @@
       "matchManagers": ["bazel"],
       "addLabels": ["renovate/bazel"]
     }
-  ]
+  ],
+  "helm-values": {
+    "fileMatch": [
+      "(^|/)cluster-home/.+\\.ya?ml(\\.j2)?$"
+    ]
+  },
+  "kubernetes": {
+    "fileMatch": [
+      "(^|/)cluster-home/.+\\.ya?ml(\\.j2)?$"
+    ]
+  }
 }
