@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: coder-v2
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://helm.coder.com/v2
+    chart: coder
+
+    targetRevision: 2.8.3
+    helm:
+      version: v3
+      values: |-
+        coder:
+          env:
+            - name: CODER_PG_CONNECTION_URL
+              valueFrom:
+                secretKeyRef:
+                  name: coder-db-url
+                  key: url
+            # - name: CODER_ACCESS_URL
+            #   value: "https://coder.szamszur.cloud"
+          ingress:
+            enable: true
+            host: "coder.szamszur.cloud"
+            className: "nginx"
+            # tls:
+            #   enable: true
+            #   secretName: coder-tls
+          service:
+            type: ClusterIP
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+  destination:
+    namespace: coder
+    server: https://kubernetes.default.svc
