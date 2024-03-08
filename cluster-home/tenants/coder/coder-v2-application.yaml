@@ -20,6 +20,8 @@ spec:
                 secretKeyRef:
                   name: coder-db-url
                   key: url
+            - name: CODER_ACCESS_URL
+              value: "https://coder.szamszur.cloud"
           ingress:
             enable: true
             host: "coder.szamszur.cloud"
