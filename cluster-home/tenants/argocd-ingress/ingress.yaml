@@ -19,18 +19,7 @@ spec:
             name: argocd-server
             port:
               name: https
-  - host: argocd.szamszur.cloud
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: argocd-server
-            port:
-              name: https
   tls:
   - hosts:
     - argocd.pve-talos-k8s.local
-    - argocd.szamszur.cloud
     secretName: argocd-secret

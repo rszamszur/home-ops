@@ -20,7 +20,6 @@ spec:
             enabled: true
             hosts:
             - alert-manager.pve-talos-k8s.local
-            - alert-manager.szamszur.cloud
             labels: {}
             pathType: ImplementationSpecific
             paths:
@@ -33,7 +32,6 @@ spec:
             enabled: true
             hosts:
             - grafana.pve-talos-k8s.local
-            - grafana.szamszur.cloud
             labels: {}
             path: /
             tls: []
@@ -44,7 +42,6 @@ spec:
             enabled: true
             hosts:
             - prometheus.pve-talos-k8s.local
-            - prometheus.szamszur.cloud
             labels: {}
             pathType: ImplementationSpecific
             paths:

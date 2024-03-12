@@ -21,10 +21,10 @@ spec:
                   name: coder-db-url
                   key: url
             - name: CODER_ACCESS_URL
-              value: "https://coder.szamszur.cloud"
+              value: "https://coder.pve-talos-k8s.local"
           ingress:
             enable: true
-            host: "coder.szamszur.cloud"
+            host: "coder.pve-talos-k8s.local"
             className: "nginx"
           service:
             type: ClusterIP
