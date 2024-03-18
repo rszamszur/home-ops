@@ -7,7 +7,7 @@ variable "cluster_name" {
 variable "cluster_endpoint" {
   description = "The endpoint for the Talos cluster"
   type        = string
-  default     = "https://192.168.0.127:6443"
+  default     = "https://192.168.20.10:6443"
 }
 
 variable "node_data" {
@@ -25,29 +25,29 @@ variable "node_data" {
   })
   default = {
     controlplanes = {
-      "192.168.0.127" = {
+      "192.168.20.10" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-controlplane-1"
       },
     }
     workers = {
-      "192.168.0.227" = {
+      "192.168.20.21" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-1"
       },
-      "192.168.0.173" = {
+      "192.168.20.22" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-2"
       },
-      "192.168.0.144" = {
+      "192.168.20.23" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-3"
       },
-      "192.168.0.132" = {
+      "192.168.20.24" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-4"
       },
-      "192.168.0.177" = {
+      "192.168.20.20" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-ingress-1"
         labels       = "project.io/node-pool: ingress"

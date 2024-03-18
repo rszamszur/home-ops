@@ -1,7 +1,7 @@
 variable "proxmox_host" {
   description = "Proxmox host"
   type        = string
-  default     = "192.168.0.10"
+  default     = "192.168.10.10"
 }
 
 variable "proxmox_token_id" {
@@ -48,7 +48,7 @@ variable "network_shift" {
 variable "vpc_main_cidr" {
   description = "Local proxmox subnet"
   type        = string
-  default     = "192.168.0.0/24"
+  default     = "192.168.20.0/24"
 }
 
 variable "instances" {
