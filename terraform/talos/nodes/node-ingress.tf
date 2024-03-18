@@ -54,8 +54,9 @@ resource "proxmox_virtual_environment_vm" "talos-ingress" {
   }
 
   network_device {
-    model  = "virtio"
-    bridge = "vmbr0"
+    model   = "virtio"
+    bridge  = "vmbr0"
+    vlan_id = "3"
     # firewall = true
   }
 
