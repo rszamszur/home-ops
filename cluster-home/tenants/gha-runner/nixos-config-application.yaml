@@ -45,24 +45,12 @@ spec:
             initContainers:
               - name: kube-init
                 image: ghcr.io/rszamszur/actions-runner:latest
-                command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work", "/nix", "/home/runner/.ssh"]
+                command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work", "/nix"]
                 volumeMounts:
                   - name: work
                     mountPath: /home/runner/_work
                   - mountPath: "/nix"
                     name: nix-cache
-                  - mountPath: "/home/runner/.ssh/gh-runners"
-                    subPath: gh-runners
-                    name: ssh-keys-v
-                  - mountPath: "/home/runner/.ssh/gh-runners.pub"
-                    subPath: gh-runners.pub
-                    name: ssh-keys-v
-                  - mountPath: "/home/runner/.ssh/config"
-                    subPath: config
-                    name: ssh-config-v
-                  - mountPath: "/home/runner/.ssh/known_hosts"
-                    subPath: known_hosts
-                    name: ssh-config-v
             containers:
               - name: runner
                 image: ghcr.io/rszamszur/actions-runner:latest
