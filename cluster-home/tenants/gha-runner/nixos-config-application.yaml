@@ -38,15 +38,34 @@ spec:
 
         template:
           spec:
+            securityContext:
+              runAsUser: 1001
+              runAsGroup: 123
+              fsGroup: 1001
             initContainers:
               - name: kube-init
                 image: ghcr.io/rszamszur/actions-runner:latest
-                command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work", "/nix"]
+                command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work", "/nix", "/home/runner/.ssh"]
                 volumeMounts:
                   - name: work
                     mountPath: /home/runner/_work
                   - mountPath: "/nix"
                     name: nix-cache
+                  - mountPath: "/home/runners/.ssh/gh-runners"
+                    subPath: gh-runners
+                    name: ssh-keys-v
+                    readOnly: true
+                  - mountPath: "/home/runners/.ssh/gh-runners.pub"
+                    subPath: gh-runners.pub
+                    name: ssh-keys-v
+                    readOnly: true
+                  - mountPath: "/home/runners/.ssh/config"
+                    subPath: config
+                    name: ssh-config-v
+                    readOnly: true
+                  - mountPath: "/home/runners/.ssh/known_hosts"
+                    subPath: known_hosts
+                    name: ssh-config-v
             containers:
               - name: runner
                 image: ghcr.io/rszamszur/actions-runner:latest
@@ -57,6 +76,21 @@ spec:
                 volumeMounts:
                   - mountPath: "/nix"
                     name: nix-cache
+                  - mountPath: "/home/runners/.ssh/gh-runners"
+                    subPath: gh-runners
+                    name: ssh-keys-v
+                    readOnly: true
+                  - mountPath: "/home/runners/.ssh/gh-runners.pub"
+                    subPath: gh-runners.pub
+                    name: ssh-keys-v
+                    readOnly: true
+                  - mountPath: "/home/runners/.ssh/config"
+                    subPath: config
+                    name: ssh-config-v
+                    readOnly: true
+                  - mountPath: "/home/runners/.ssh/known_hosts"
+                    subPath: known_hosts
+                    name: ssh-config-v
             volumes:
               - ephemeral:
                   volumeClaimTemplate:
@@ -69,6 +103,24 @@ spec:
                       storageClassName: iscsi
                       volumeMode: Filesystem
                 name: nix-cache
+              - name: ssh-keys-v
+                secret:
+                  secretName: ssh-keys
+                  defaultMode: 0600
+                  items:
+                    - key: gh-runners
+                      path: gh-runners
+                    - key: gh-runners.pub
+                      path: gh-runners.pub
+              - name: ssh-config-v
+                configMap:
+                  name: ssh-config
+                  defaultMode: 0600
+                  items:
+                    - key: config
+                      path: config
+                    - key: known_hosts
+                      path: known_hosts
   syncPolicy:
     automated:
       prune: true
