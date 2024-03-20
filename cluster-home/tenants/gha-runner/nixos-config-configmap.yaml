@@ -4,7 +4,7 @@ data:
     Host nixremote
          # Prevent using ssh-agent or another keyfile, useful for testing
          IdentitiesOnly yes
-         IdentityFile ~/.ssh/nixremote
+         IdentityFile ~/.ssh/gh-runners
          User nixremote
          HostName 192.168.20.67
          Port 22
