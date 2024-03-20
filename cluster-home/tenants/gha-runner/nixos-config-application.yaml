@@ -61,16 +61,16 @@ spec:
                 volumeMounts:
                   - mountPath: "/nix"
                     name: nix-cache
-                  - mountPath: "/home/runners/.ssh/gh-runners"
+                  - mountPath: "/home/runner/.ssh/gh-runners"
                     subPath: gh-runners
                     name: ssh-keys-v
-                  - mountPath: "/home/runners/.ssh/gh-runners.pub"
+                  - mountPath: "/home/runner/.ssh/gh-runners.pub"
                     subPath: gh-runners.pub
                     name: ssh-keys-v
-                  - mountPath: "/home/runners/.ssh/config"
+                  - mountPath: "/home/runner/.ssh/config"
                     subPath: config
                     name: ssh-config-v
-                  - mountPath: "/home/runners/.ssh/known_hosts"
+                  - mountPath: "/home/runner/.ssh/known_hosts"
                     subPath: known_hosts
                     name: ssh-config-v
             volumes:
