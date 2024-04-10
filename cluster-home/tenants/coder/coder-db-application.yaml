@@ -9,7 +9,7 @@ spec:
   - repoURL: https://charts.bitnami.com/bitnami
     chart: postgresql
     # renovate: datasource=helm depName=postgresql repository=https://charts.bitnami.com/bitnami
-    targetRevision: 14.3.3
+    targetRevision: 15.2.5
     helm:
       version: v3
       values: |-
