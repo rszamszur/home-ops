@@ -4,8 +4,5 @@ kind: Kustomization
 resources:
 - controller-namespace.yaml
 - controller-application.yaml
-- nixos-config-namespace.yaml
-- nixos-config-application.yaml
-- nixos-config-configmap.yaml
 - home-ops-namespace.yaml
 - home-ops-application.yaml
