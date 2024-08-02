@@ -35,6 +35,7 @@ This is a mono repository for my home infrastructure and Kubernetes cluster. I t
   * [Dell PowerEdge Raid Controller H330](https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/Dell-PowerEdge-RAID-Controller-H330.pdf) (in HBA mode)
   * 4x Seagate Exos X16 12TB 7.2k SATA 6Gbps ([ST12000NM001G-2M](https://www.seagate.com/www-content/product-content/enterprise-hdd-fam/exos-x-16/en-us/docs/100845789f.pdf))
   * 2x Goodram CX400 1TB 2,5" Sata3 (SSDPR-CX400-01T-)
+  * 2x Samsung PM963 960GB SSD NVMe U.2 Gen 3
 
 ## ⛵ Kubernetes
 
