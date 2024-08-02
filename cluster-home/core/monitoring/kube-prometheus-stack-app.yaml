@@ -25,6 +25,15 @@ spec:
             paths:
             - /
             tls: []
+          alertmanagerSpec:
+            storage:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: "iscsi"
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 50Gi
         grafana:
           ingress:
             ingressClassName: nginx
@@ -48,6 +57,14 @@ spec:
             - /
             tls: []
           prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: "iscsi"
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 50Gi
             additionalScrapeConfigs:
             - job_name: airgradient
               metrics_path: /metrics
