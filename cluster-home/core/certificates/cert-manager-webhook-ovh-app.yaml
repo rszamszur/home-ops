@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-webhook-ovh
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://aureq.github.io/cert-manager-webhook-ovh
+    chart: cert-manager-webhook-ovh
+    # renovate: datasource=helm depName=cert-manager-webhook-ovh repository=https://aureq.github.io/cert-manager-webhook-ovh
+    targetRevision: 0.6.0
+    helm:
+      version: v3
+      values: |
+        groupName: acme.szamszur.cloud
+        issuers:
+          - name: letsencrypt
+            create: true
+            kind: ClusterIssuer
+            namespace: cert-manager
+            acmeServerUrl: https://acme-v02.api.letsencrypt.org/directory
+            email: acme@szamszur.cloud
+            ovhEndpointName: ovh-eu
+            ovhAuthenticationRef:
+              applicationKeyRef:
+                name: ovh-credentials
+                key: applicationKey
+              applicationSecretRef:
+                name: ovh-credentials
+                key: applicationSecret
+              consumerKeyRef:
+                name: ovh-credentials
+                key: consumerKey
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+    - ServerSideApply=true
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc

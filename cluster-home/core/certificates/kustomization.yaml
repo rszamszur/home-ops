@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - cert-manager-namespace.yaml
 - cert-manager-app.yaml
+- cert-manager-webhook-ovh-app.yaml
