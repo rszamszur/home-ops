@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: coder-szamszur-cloud
+  namespace: coder
+spec:
+  dnsNames:
+  - "coder.szamszur.cloud"
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  secretName: coder-szamszur-cloud-tls

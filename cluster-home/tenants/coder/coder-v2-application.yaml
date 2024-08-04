@@ -28,7 +28,7 @@ spec:
             className: "nginx"
             tls:
               enable: true
-              secretName: "szamszur-cloud-tls"
+              secretName: "coder-szamszur-cloud-tls"
           service:
             type: ClusterIP
   syncPolicy:

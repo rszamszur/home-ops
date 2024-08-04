@@ -5,3 +5,4 @@ resources:
 - coder-namespace.yaml
 - coder-db-application.yaml
 - coder-v2-application.yaml
+- coder-tls.yaml
