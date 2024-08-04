@@ -1,42 +1,4 @@
 dns_records = {
-  "pkleague.pl" : [
-    {
-      fieldtype = "TXT"
-      target    = "protonmail-verification=f72bba0b676313ba513874f152e45144d80aa7f4"
-    },
-    {
-      fieldtype = "MX"
-      target    = "20 mailsec.protonmail.ch."
-    },
-    {
-      fieldtype = "MX"
-      target    = "10 mail.protonmail.ch."
-    },
-    {
-      fieldtype = "TXT"
-      target    = "v=spf1 include:_spf.protonmail.ch ~all"
-    },
-    {
-      fieldtype = "CNAME"
-      subdomain = "protonmail._domainkey"
-      target    = "protonmail.domainkey.dih24c6i4no3ngdepkkqgsqf6ckt4vxbi2kwha7ldpd43iqh35yza.domains.proton.ch."
-    },
-    {
-      fieldtype = "CNAME"
-      subdomain = "protonmail2._domainkey"
-      target    = "protonmail2.domainkey.dih24c6i4no3ngdepkkqgsqf6ckt4vxbi2kwha7ldpd43iqh35yza.domains.proton.ch."
-    },
-    {
-      fieldtype = "CNAME"
-      subdomain = "protonmail3._domainkey"
-      target    = "protonmail3.domainkey.dih24c6i4no3ngdepkkqgsqf6ckt4vxbi2kwha7ldpd43iqh35yza.domains.proton.ch."
-    },
-    {
-      fieldtype = "TXT"
-      subdomain = "_dmarc"
-      target    = "v=DMARC1; p=quarantine"
-    }
-  ],
   "mlipiec.pl" = [
     {
       fieldtype = "TXT"
