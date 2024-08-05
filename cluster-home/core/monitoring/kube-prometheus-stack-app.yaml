@@ -19,12 +19,15 @@ spec:
             annotations: {}
             enabled: true
             hosts:
-            - alert-manager.pve-talos-k8s.local
+            - alert-manager.szamszur.cloud
             labels: {}
             pathType: ImplementationSpecific
             paths:
             - /
-            tls: []
+            tls:
+              - secretName: alert-manager-szamszur-cloud-tls
+                hosts:
+                - alert-manager.szamszur.cloud
           alertmanagerSpec:
             storage:
               volumeClaimTemplate:
@@ -40,22 +43,28 @@ spec:
             annotations: {}
             enabled: true
             hosts:
-            - grafana.pve-talos-k8s.local
+            - grafana.szamszur.cloud
             labels: {}
             path: /
-            tls: []
+            tls:
+              - secretName: grafana-szamszur-cloud-tls
+                hosts:
+                - grafana.szamszur.cloud
         prometheus:
           ingress:
             ingressClassName: nginx
             annotations: {}
             enabled: true
             hosts:
-            - prometheus.pve-talos-k8s.local
+            - prometheus.szamszur.cloud
             labels: {}
             pathType: ImplementationSpecific
             paths:
             - /
-            tls: []
+            tls:
+              - secretName: prometheus-szamszur-cloud-tls
+                hosts:
+                - prometheus.szamszur.cloud
           prometheusSpec:
             storageSpec:
               volumeClaimTemplate:

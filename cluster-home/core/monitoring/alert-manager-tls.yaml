@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: alert-manager-szamszur-cloud
+  namespace: kube-prometheus-stack
+spec:
+  dnsNames:
+  - "alert-manager.szamszur.cloud"
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  secretName: alert-manage-szamszur-cloud-tls

@@ -3,5 +3,8 @@ kind: Kustomization
 
 resources:
 - namespace.yaml
+- alert-manager-tls.yaml
+- grafana-tls.yaml
+- prometheus-tls.yaml
 - airgradient-dashboard-configmap.yaml
 - kube-prometheus-stack-app.yaml
