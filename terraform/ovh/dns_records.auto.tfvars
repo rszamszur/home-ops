@@ -6,11 +6,11 @@ dns_records = {
     },
     {
       fieldtype = "MX"
-      target    = "20 mailsec.protonmail.ch."
+      target    = "10 mail.protonmail.ch."
     },
     {
       fieldtype = "MX"
-      target    = "10 mail.protonmail.ch."
+      target    = "20 mailsec.protonmail.ch."
     },
     {
       fieldtype = "TXT"
@@ -19,17 +19,17 @@ dns_records = {
     {
       fieldtype = "CNAME"
       subdomain = "protonmail._domainkey"
-      target    = "protonmail.domainkey.dnzfmeegtqt7bmahjveaekb6utn46n3i2rmnw7x34zcjb3ghz7vma.domains.proton.ch."
+      target    = "protonmail.domainkey.d4g36os6intjutvfx5wsy5k3and4ulum3ahzeow4issuw4ckwj4qa.domains.proton.ch."
     },
     {
       fieldtype = "CNAME"
       subdomain = "protonmail2._domainkey"
-      target    = "protonmail2.domainkey.dnzfmeegtqt7bmahjveaekb6utn46n3i2rmnw7x34zcjb3ghz7vma.domains.proton.ch."
+      target    = "protonmail2.domainkey.d4g36os6intjutvfx5wsy5k3and4ulum3ahzeow4issuw4ckwj4qa.domains.proton.ch."
     },
     {
       fieldtype = "CNAME"
       subdomain = "protonmail3._domainkey"
-      target    = "protonmail3.domainkey.dnzfmeegtqt7bmahjveaekb6utn46n3i2rmnw7x34zcjb3ghz7vma.domains.proton.ch."
+      target    = "protonmail3.domainkey.d4g36os6intjutvfx5wsy5k3and4ulum3ahzeow4issuw4ckwj4qa.domains.proton.ch."
     },
     {
       fieldtype = "TXT"
@@ -44,11 +44,11 @@ dns_records = {
     },
     {
       fieldtype = "MX"
-      target    = "20 mailsec.protonmail.ch."
+      target    = "10 mail.protonmail.ch."
     },
     {
       fieldtype = "MX"
-      target    = "10 mail.protonmail.ch."
+      target    = "20 mailsec.protonmail.ch."
     },
     {
       fieldtype = "TXT"
@@ -82,11 +82,11 @@ dns_records = {
     },
     {
       fieldtype = "MX"
-      target    = "20 mailsec.protonmail.ch."
+      target    = "10 mail.protonmail.ch."
     },
     {
       fieldtype = "MX"
-      target    = "10 mail.protonmail.ch."
+      target    = "20 mailsec.protonmail.ch."
     },
     {
       fieldtype = "TXT"
