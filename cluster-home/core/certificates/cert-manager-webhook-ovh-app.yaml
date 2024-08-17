@@ -9,7 +9,7 @@ spec:
   - repoURL: https://aureq.github.io/cert-manager-webhook-ovh
     chart: cert-manager-webhook-ovh
     # renovate: datasource=helm depName=cert-manager-webhook-ovh repository=https://aureq.github.io/cert-manager-webhook-ovh
-    targetRevision: 0.6.0
+    targetRevision: 0.7.0
     helm:
       version: v3
       values: |
