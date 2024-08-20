@@ -27,7 +27,6 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 28,
       "links": [],
       "liveNow": false,
       "panels": [
@@ -71,6 +70,8 @@ data:
           },
           "id": 1,
           "options": {
+            "minVizHeight": 75,
+            "minVizWidth": 75,
             "orientation": "auto",
             "reduceOptions": {
               "calcs": [
@@ -80,9 +81,10 @@ data:
               "values": false
             },
             "showThresholdLabels": false,
-            "showThresholdMarkers": true
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "pluginVersion": "9.5.5",
+          "pluginVersion": "10.4.1",
           "targets": [
             {
               "datasource": {
@@ -139,6 +141,8 @@ data:
           },
           "id": 2,
           "options": {
+            "minVizHeight": 75,
+            "minVizWidth": 75,
             "orientation": "auto",
             "reduceOptions": {
               "calcs": [
@@ -148,9 +152,10 @@ data:
               "values": false
             },
             "showThresholdLabels": false,
-            "showThresholdMarkers": true
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "pluginVersion": "9.5.5",
+          "pluginVersion": "10.4.1",
           "targets": [
             {
               "datasource": {
@@ -222,9 +227,11 @@ data:
               "fields": "",
               "values": false
             },
-            "textMode": "auto"
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "pluginVersion": "9.5.5",
+          "pluginVersion": "10.4.1",
           "targets": [
             {
               "datasource": {
@@ -292,9 +299,11 @@ data:
               "fields": "",
               "values": false
             },
-            "textMode": "auto"
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "pluginVersion": "9.5.5",
+          "pluginVersion": "10.4.1",
           "targets": [
             {
               "datasource": {
@@ -323,6 +332,7 @@ data:
                 "mode": "thresholds"
               },
               "custom": {
+                "axisBorderShow": false,
                 "axisCenteredZero": false,
                 "axisColorMode": "text",
                 "axisLabel": "",
@@ -336,6 +346,7 @@ data:
                   "tooltip": false,
                   "viz": false
                 },
+                "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
@@ -407,6 +418,26 @@ data:
             }
           ],
           "title": "CO2 Over Time",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "lowerOrEqual",
+                      "options": {
+                        "value": 0
+                      }
+                    },
+                    "fieldName": "{__name__=\"airgradient_rco2\", instance=\"192.168.0.190:9926\", job=\"airgradient\", mac=\"A8:48:FA:DC:4A:77\"}"
+                  }
+                ],
+                "match": "all",
+                "type": "exclude"
+              }
+            }
+          ],
           "type": "timeseries"
         },
         {
@@ -420,6 +451,7 @@ data:
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisBorderShow": false,
                 "axisCenteredZero": false,
                 "axisColorMode": "text",
                 "axisLabel": "",
@@ -433,6 +465,7 @@ data:
                   "tooltip": false,
                   "viz": false
                 },
+                "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
@@ -504,12 +537,31 @@ data:
             }
           ],
           "title": "PM2.5 Over Time",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "lowerOrEqual",
+                      "options": {
+                        "value": 0
+                      }
+                    },
+                    "fieldName": "{__name__=\"airgradient_pm02\", instance=\"192.168.0.190:9926\", job=\"airgradient\", mac=\"A8:48:FA:DC:4A:77\"}"
+                  }
+                ],
+                "match": "all",
+                "type": "exclude"
+              }
+            }
+          ],
           "type": "timeseries"
         }
       ],
       "refresh": "",
-      "schemaVersion": 38,
-      "style": "dark",
+      "schemaVersion": 39,
       "tags": [],
       "templating": {
         "list": []
