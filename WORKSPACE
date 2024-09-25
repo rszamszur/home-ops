@@ -65,3 +65,18 @@ file_init()
 load("@rules_file//rules:workspace.bzl", "file_repositories")
 
 file_repositories()
+
+# rules_terraform
+
+http_archive(
+    name = "tf_modules",
+    urls = ["https://github.com/theothertomelliott/bazel-terraform-rules/releases/download/0.1.5/bazel-terraform-rules-0.1.5.tar.gz"],
+    sha256 = "b5e4428bbed26e78fc60ff2b76fda910cb13ddb50900b3879dd0916f04dab107",
+)
+load("@tf_modules//toolchains/terraform:toolchain.bzl", "register_terraform_toolchain")
+
+load("@tf_modules//:deps.bzl", "bazel_terraform_rules_deps")
+bazel_terraform_rules_deps()
+
+# Register required Terraform versions
+register_terraform_toolchain("1.7.3", default=True)
