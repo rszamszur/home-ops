@@ -1,22 +1,22 @@
 # Areas
-area/packer:
+"area: packer":
   - changed-files:
       - any-glob-to-any-file: 
           - "packer/**/*"
-area/github:
+"area: github":
   - changed-files:
       - any-glob-to-any-file: 
           - ".github/**/*"
-area/kubernetes:
+"area: kubernetes":
   - changed-files:
       - any-glob-to-any-file: 
           - "cluster-home/**/*"
-area/terraform:
+"area: terraform":
   - changed-files:
       - any-glob-to-any-file:
           - "terraform/**/*"
           - "**/*.tf"
-area/bazel:
+"area: bazel":
   - changed-files:
       - any-glob-to-any-file:
           - "WORKSPACE"
@@ -29,7 +29,7 @@ cluster/home:
       - any-glob-to-any-file:
           - "cluster-home/**/*"
 # Generic
-documentation:
+"kind: documentation":
   - changed-files:
       - any-glob-to-any-file:
           - "docs/**/*"
