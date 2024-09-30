@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: buildbarn
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - args:
+        - /config/frontend.jsonnet
+        image: ghcr.io/buildbarn/bb-storage:20240810T092106Z-3f5e30c
+        name: storage
+        ports:
+        - containerPort: 8980
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /config/
+          name: configs
+          readOnly: true
+      volumes:
+        - name: configs
+          configMap:
+            name: buildbarn-config
+            items:
+              - key: common.libsonnet
+                path: common.libsonnet
+              - key: frontend.jsonnet
+                path: frontend.jsonnet
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/port: "80"
+    prometheus.io/scrape: "true"
+  name: frontend
+  namespace: buildbarn
+spec:
+  ports:
+  - port: 8980
+    protocol: TCP
+    name: grpc
+  selector:
+    app: frontend
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: buildbarn
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "grpc"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+  - host: buildbarn-grpc.szamszur.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              name: grpc
+  tls:
+  - hosts:
+    - buildbarn-grpc.szamszur.cloud
+    secretName: buildbarn-grpc-szamszur-cloud-tls
