@@ -32,7 +32,7 @@ spec:
           name: ac
       initContainers:
       - name: volume-init
-        image: busybox:1.31.1-uclibc
+        image: busybox:1.37.0-uclibc
         command:
         - sh
         - -c
