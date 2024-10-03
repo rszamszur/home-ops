@@ -113,6 +113,33 @@ root@pve:~# dmesg | grep -e DMAR -e IOMMU
 
 Network > vmbr0 > click edit > check VLAN aware > OK
 
-### 4. Test email alerts
+### 4. Set NIC Team
+
+1. Add the following bond the config to `/etc/network/interfaces`
+```shell
+auto bond0
+iface bond0 inet manual
+      bond-slaves eno1 eno2
+      bond-miimon 100
+      bond-mode 802.3ad
+      bond-xmit-hash-policy layer2+3
+```
+
+2. Replace `vmbr0` with the following config:
+```shell
+auto vmbr0
+iface vmbr0 inet static
+        address 192.168.10.10/24
+        gateway 192.168.10.1
+        bridge-ports bond0
+        bridge-stp off
+        bridge-fd 0
+        bridge-vlan-aware yes
+        bridge-vids 2-4094
+```
+
+Docs: https://pve.proxmox.com/wiki/Network_Configuration#sysadmin_network_bond
+
+### 5. Test email alerts
 
 Datacenter > Notifications > test default `mail-to-root` notificaion target
