@@ -24,7 +24,7 @@
           - "**/*.bzl"
           - "bazel/**/*"
 # Clusters
-cluster/home:
+"infra: cluster-home":
   - changed-files:
       - any-glob-to-any-file:
           - "cluster-home/**/*"
