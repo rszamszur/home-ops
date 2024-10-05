@@ -1,0 +1,26 @@
+# Packages for examples/debian_snapshot.
+#
+#  Anytime this file is changed, the lockfile needs to be regenerated.
+#
+#  To generate the apt.lock.json run the following command
+#
+#     bazel run @ubuntu-jammy//:lock
+#
+# See deb_index at WORKSPACE.bazel
+version: 1
+
+sources:
+  - channel: jammy main
+    url: https://snapshot.ubuntu.com/ubuntu/20240901T030400Z
+  - channel: jammy-updates main
+    url: https://snapshot.ubuntu.com/ubuntu/20240901T030400Z
+  - channel: jammy-security main
+    url: https://snapshot.ubuntu.com/ubuntu/20240901T030400Z
+
+archs:
+  - "amd64"
+
+packages:
+  - "git"
+  - "curl"
+  - "xz-utils"
