@@ -143,3 +143,7 @@ Docs: https://pve.proxmox.com/wiki/Network_Configuration#sysadmin_network_bond
 ### 5. Test email alerts
 
 Datacenter > Notifications > test default `mail-to-root` notificaion target
+
+### 6. Add ACME DNS-01 plugin
+
+Datacenter > ACME > Challenge Plugins > add
