@@ -15,7 +15,7 @@ resources:
 # renovate: datasource=github-releases depName=pfnet-research/meta-fuse-csi-plugin
 - https://raw.githubusercontent.com/pfnet-research/meta-fuse-csi-plugin/v0.1.0/deploy/csi-driver.yaml
 # renovate: datasource=github-releases depName=rancher/local-path-provisioner
-- https://raw.githubusercontent.com/rancher/local-path-provisioner/refs/tags/v0.0.26/deploy/local-path-storage.yaml
+- https://raw.githubusercontent.com/rancher/local-path-provisioner/refs/tags/v0.0.29/deploy/local-path-storage.yaml
 
 images:
  - name: ghcr.io/pfnet-research/meta-fuse-csi-plugin/meta-fuse-csi-plugin
