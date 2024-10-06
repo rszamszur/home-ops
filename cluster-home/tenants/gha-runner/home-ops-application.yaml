@@ -29,10 +29,10 @@ spec:
           type: "kubernetes"
           kubernetesModeWorkVolumeClaim:
             accessModes: ["ReadWriteOnce"]
-            storageClassName: "iscsi"
+            storageClassName: "local-path"
             resources:
               requests:
-                storage: 4Gi
+                storage: 2Gi
           kubernetesModeServiceAccount:
             annotations:
 
