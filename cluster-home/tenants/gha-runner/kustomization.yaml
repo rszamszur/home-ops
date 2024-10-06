@@ -5,4 +5,4 @@ resources:
 - controller-namespace.yaml
 - controller-application.yaml
 - home-ops-namespace.yaml
-- home-ops-application.yaml
+#- home-ops-application.yaml
