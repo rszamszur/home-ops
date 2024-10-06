@@ -14,6 +14,8 @@ resources:
 - https://raw.githubusercontent.com/pfnet-research/meta-fuse-csi-plugin/v0.1.0/deploy/csi-driver-daemonset.yaml
 # renovate: datasource=github-releases depName=pfnet-research/meta-fuse-csi-plugin
 - https://raw.githubusercontent.com/pfnet-research/meta-fuse-csi-plugin/v0.1.0/deploy/csi-driver.yaml
+# renovate: datasource=github-releases depName=rancher/local-path-provisioner
+- https://raw.githubusercontent.com/rancher/local-path-provisioner/refs/tags/v0.0.26/deploy/local-path-storage.yaml
 
 images:
  - name: ghcr.io/pfnet-research/meta-fuse-csi-plugin/meta-fuse-csi-plugin
@@ -29,3 +31,35 @@ patches:
         path: /metadata/labels
         value:
           pod-security.kubernetes.io/enforce: privileged
+  - target:
+      kind: Namespace
+      name: local-path-storage
+    patch: |-
+      - op: add
+        path: /metadata/labels
+        value:
+          pod-security.kubernetes.io/enforce: privileged
+  - target:
+      kind: StorageClass
+      name: local-path
+    patch: |-
+      - op: add
+        path: /metadata/annotations
+        value:
+          storageclass.kubernetes.io/is-default-class: "true"
+  - target:
+      kind: ConfigMap
+      name: local-path-config
+      namespace: local-path-storage
+    patch: |-
+      - op: replace
+        path: /data/config.json
+        value: |-
+            {
+                    "nodePathMap":[
+                    {
+                            "node":"DEFAULT_PATH_FOR_NON_LISTED_NODES",
+                            "paths":["/var/local-path-provisioner"]
+                    }
+                    ]
+            }
