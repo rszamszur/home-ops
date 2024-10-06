@@ -42,10 +42,10 @@ jobs:
   build:
     needs: pre_job
     if: ${{ needs.pre_job.outputs.should_skip != 'true' && needs.pre_job.outputs.build == 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: pve-talos
 
     steps:
       - uses: actions/checkout@v4
       - name: Bazel Build
         run: |
-          bazelisk build //images/...
+          bazel build --config=remote-exec //images/...
