@@ -144,6 +144,60 @@ Docs: https://pve.proxmox.com/wiki/Network_Configuration#sysadmin_network_bond
 
 Datacenter > Notifications > test default `mail-to-root` notificaion target
 
-### 6. Add ACME DNS-01 plugin
+### 6. Create ACME Certificate
 
-Datacenter > ACME > Challenge Plugins > add
+1. Add ACME letsencrypt account: Datacenter > ACME > Accounts > add
+2. Add ACME DNS-01 plugin: Datacenter > ACME > Challenge Plugins > add
+3. Request ACME Certficiate for given Proxmox node: <PROXMOX_NODE_NAME> > Certificates > ACME > add
+
+### 7. NVIDA GPU (Optional)
+
+1. Update GRUB Configuration, add `initcall_blacklist=sysfb_init` to `GRUB_CMDLINE_LINUX_DEFAULT`
+
+```shell
+root@pve:~# cat /etc/default/grub
+# If you change this file, run 'update-grub' afterwards to update
+# /boot/grub/grub.cfg.
+# For full documentation of the options in this file, see:
+#   info -f grub -n 'Simple configuration'
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt initcall_blacklist=sysfb_init"
+GRUB_CMDLINE_LINUX=""
+```
+
+Then update grub:
+
+```shell
+update-grub
+```
+
+2. Blacklist NVDA drivers. We don't want the Proxmox host system utilizing our GPU(s), so we need to blacklist the drivers:
+
+```shell
+echo "blacklist nouveau" >> /etc/modprobe.d/blacklist.conf 
+echo "blacklist nvidia*" >> /etc/modprobe.d/blacklist.conf 
+```
+
+Some Windows applications like GeForce Experience, Passmark Performance Test and SiSoftware Sandra can crash the VM. You need to add:
+
+```shell
+echo "options kvm ignore_msrs=1" > /etc/modprobe.d/kvm.conf
+```
+
+If you see a lot of warning messages in your 'dmesg' system log, add the following instead:
+
+```shell
+echo "options kvm ignore_msrs=1 report_ignored_msrs=0" > /etc/modprobe.d/kvm.conf
+```
+
+3. Configure VFIO - Add the GPU and audio device IDs to the vfio configuration. 
+
+```shell
+root@pve:~# lspci -nn | grep -i nvidia
+02:00.0 3D controller [0302]: NVIDIA Corporation GP102GL [Tesla P40] [10de:1b38] (rev a1)
+83:00.0 3D controller [0302]: NVIDIA Corporation GP102GL [Tesla P40] [10de:1b38] (rev a1)
+echo "options vfio-pci ids=10de:1b38 disable_vga=1" > /etc/modprobe.d/vfio.conf
+```
