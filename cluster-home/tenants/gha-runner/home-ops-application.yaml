@@ -16,8 +16,8 @@ spec:
         githubConfigUrl: "https://github.com/rszamszur/home-ops"
         githubConfigSecret: gha-runner-home-ops-secret
 
-        minRunners: 1
-        maxRunners: 1
+        minRunners: 3
+        maxRunners: 10
 
         runnerScaleSetName: pve-talos
 
