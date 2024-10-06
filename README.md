@@ -4,7 +4,7 @@
 
 ### Home Lab Repository
 
-_... managed with ArgoCD, Renovate and GitHub Actions_ 🤖
+_... managed with Terraform, Bazel, ArgoCD, Renovate and GitHub Actions_ 🤖
 
 </div>
 
@@ -13,7 +13,7 @@ _... managed with ArgoCD, Renovate and GitHub Actions_ 🤖
 
 ## 📖 Overview
 
-This is a mono repository for my home infrastructure and Kubernetes cluster. I try to adhere to Infrastructure as Code (IaC) and GitOps practices using the tools like [Terraform](https://www.terraform.io/), [Kubernetes](https://kubernetes.io/), [ArgoCD](https://github.com/argoproj/argo-cd), [Renovate](https://github.com/renovatebot/renovate) and [GitHub Actions](https://github.com/features/actions).
+This is a mono repository for my home infrastructure and Kubernetes cluster. I try to adhere to Infrastructure as Code (IaC) and GitOps practices using the tools like [Terraform](https://www.terraform.io/), [Kubernetes](https://kubernetes.io/), [Bazel](https://bazel.build), [ArgoCD](https://github.com/argoproj/argo-cd), [Renovate](https://github.com/renovatebot/renovate) and [GitHub Actions](https://github.com/features/actions).
 
 ---
 
@@ -119,9 +119,8 @@ To see this in action, first get yourself a cluster (using [minikube](https://mi
 minikube start --driver=docker
 ```
 
-#### Secrets
-
-__These cannot be applied with `kubectl` in the regular fashion due to be encrypted with age__
+First apply secrets:
+_These cannot be applied with `kubectl` in the regular fashion due to be encrypted with age_
 
 ```shell
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/argocd-ghcr-repo-secret.yaml.age | kubectl apply -f -
