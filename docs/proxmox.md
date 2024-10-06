@@ -12,8 +12,8 @@ sudo dd in=./proxmox.iso of=/dev/XYZ bs=1M conv=fdatasync
 ## Installation
 
 1. Set disk setup to ZFS (RAID 1)
-2. Set static IP to 192.168.0.10
-3. Set FQDN to pve.rsd.sh
+2. Set static IP to 192.168.10.10
+3. Set FQDN to pve.szamszur.cloud
 
 ## Post installation setup
 
