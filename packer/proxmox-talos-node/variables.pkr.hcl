@@ -34,5 +34,6 @@ variable "talos_version" {
 }
 
 locals {
-  image = "https://github.com/talos-systems/talos/releases/download/${var.talos_version}/metal-amd64.raw.xz"
+  # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Fiscsi-tools&platform=nocloud&target=cloud&version=1.7.7
+  image = "https://factory.talos.dev/image/c9078f9419961640c712a8bf2bb9174933dfcf1da383fd8ea2b7dc21493f8bac/${var.talos_version}/nocloud-amd64.raw.xz"
 }
