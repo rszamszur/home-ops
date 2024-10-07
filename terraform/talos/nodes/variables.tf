@@ -57,22 +57,28 @@ variable "instances" {
   default = {
     "pve" = {
       "controlplane" : {
-        id    = 600
-        cpu   = 4,
-        mem   = 16384,
-        count = 1,
+        id      = 600
+        cpu     = 4,
+        sockets = 2,
+        mem     = 16384,
+        numa    = true,
+        count   = 1,
       },
       "worker" : {
-        id    = 1000
-        cpu   = 3,
-        mem   = 12288,
-        count = 4,
+        id      = 1000
+        cpu     = 4,
+        sockets = 2,
+        mem     = 16384,
+        numa    = true,
+        count   = 4,
       },
       "ingress" : {
-        id    = 2000
-        cpu   = 2,
-        mem   = 8192,
-        count = 1,
+        id      = 2000
+        cpu     = 2,
+        sockets = 2,
+        mem     = 8192,
+        numa    = true,
+        count   = 1,
       }
     }
   }

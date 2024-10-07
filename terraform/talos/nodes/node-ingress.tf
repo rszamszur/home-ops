@@ -8,7 +8,9 @@ locals {
         zone : zone
         node_name : zone
         cpu : lookup(try(var.instances[zone]["ingress"], {}), "cpu", 1)
+        cpu_sockets : lookup(try(var.instances[zone]["ingress"], {}), "sockets", 1)
         mem : lookup(try(var.instances[zone]["ingress"], {}), "mem", 2048)
+        numa : lookup(try(var.instances[zone]["ingress"], {}), "numa", false)
         ipv4 : "${cidrhost(local.subnets[zone], inx)}/24"
         gwv4 : local.gwv4
       }
@@ -45,9 +47,10 @@ resource "proxmox_virtual_environment_vm" "talos-ingress" {
   }
   cpu {
     cores   = each.value.cpu
-    sockets = 1
+    sockets = each.value.cpu_sockets
     type    = "host"
     flags   = ["+aes"]
+    numa    = each.value.numa
   }
   memory {
     dedicated = each.value.mem

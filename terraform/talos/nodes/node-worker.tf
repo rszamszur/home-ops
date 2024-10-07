@@ -8,7 +8,9 @@ locals {
         zone : zone
         node_name : zone
         cpu : lookup(try(var.instances[zone]["worker"], {}), "cpu", 1)
+        cpu_sockets : lookup(try(var.instances[zone]["worker"], {}), "sockets", 1)
         mem : lookup(try(var.instances[zone]["worker"], {}), "mem", 2048)
+        numa : lookup(try(var.instances[zone]["ingress"], {}), "numa", false)
         ipv4 : "${cidrhost(local.subnets[zone], 3 + inx)}/24"
         gwv4 : local.gwv4
       }
@@ -45,9 +47,10 @@ resource "proxmox_virtual_environment_vm" "talos-worker" {
   }
   cpu {
     cores   = each.value.cpu
-    sockets = 1
+    sockets = each.value.cpu_sockets
     type    = "host"
     flags   = ["+aes"]
+    numa    = each.value.numa
   }
   memory {
     dedicated = each.value.mem

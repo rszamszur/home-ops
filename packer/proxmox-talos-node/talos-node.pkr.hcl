@@ -38,6 +38,8 @@ source "proxmox" "talos-node" {
 
   cpu_type = "host"
   cores = 3
+  sockets = 2
+  numa = true
   memory   = 12288 
   # vga {
   #   type = "serial0"
