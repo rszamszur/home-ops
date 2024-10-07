@@ -8,7 +8,9 @@ locals {
         zone : zone
         node_name : zone
         cpu : lookup(try(var.instances[zone]["controlplane"], {}), "cpu", 2)
+        cpu_sockets : lookup(try(var.instances[zone]["controlplane"], {}), "sockets", 1)
         mem : lookup(try(var.instances[zone]["controlplane"], {}), "mem", 8192)
+        numa : lookup(try(var.instances[zone]["controlplane"], {}), "numa", false)
         ipv4 : "${cidrhost(local.controlplane_subnet, index(local.zones, zone) + inx)}/24"
         gwv4 : local.gwv4
       }
@@ -45,9 +47,10 @@ resource "proxmox_virtual_environment_vm" "talos-controlplane" {
   }
   cpu {
     cores   = each.value.cpu
-    sockets = 1
+    sockets = each.value.cpu_sockets
     type    = "host"
     flags   = ["+aes"]
+    numa    = each.value.numa
   }
   memory {
     dedicated = each.value.mem
