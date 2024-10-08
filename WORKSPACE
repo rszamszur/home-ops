@@ -175,3 +175,21 @@ deb_index(
 
 load("@ubuntu_jammy//:packages.bzl", "ubuntu_jammy_packages")
 ubuntu_jammy_packages()
+
+# rules_terraform
+
+http_archive(
+    name = "tf_modules",
+    urls = ["https://github.com/theothertomelliott/bazel-terraform-rules/releases/download/0.2.6/bazel-terraform-rules-0.2.6.tar.gz"],
+    sha256 = "f8070448022403c95a86a287df5f5093ffc368d5fd7052fe9bedf4cb4e2d53d7",
+)
+load("@tf_modules//terraform:versions.bzl", "register_terraform_version")
+
+load("@tf_modules//:deps.bzl", "bazel_terraform_rules_deps")
+bazel_terraform_rules_deps()
+
+# Register required Terraform versions
+register_terraform_version("1.7.3", default=True)
+
+load("//terraform/ovh:providers.bzl", "ovh_module_terraform_providers")
+ovh_module_terraform_providers()

@@ -1,0 +1,28 @@
+load("@tf_modules//rules:module.bzl", "terraform_module")
+
+genrule(
+    name = "secrets_file",
+    outs = ["secrets.auto.tfvars"],
+    srcs = ["secrets.auto.tfvars.age"],
+    tools = [
+      "@age//:bin"
+    ],
+    cmd = """
+set -euo pipefail
+./$(location @age//:bin) -d -i $$AGE_IDENTITY_KEY $(location :secrets.auto.tfvars.age) > $@
+""",
+)
+
+terraform_module(
+    name = "ovh",
+    srcs = [":secrets_file"] + glob(["*.tf"]),
+)
+
+terraform_working_directory(
+    name = "terraform",
+    module = ":ovh",
+    terraform = "@terraform_default//:terraform_executable",
+    providers = [
+        "@provider_ovh_ovh//:provider",
+    ],
+)
