@@ -22,6 +22,6 @@ packer_build(
   name = "build",
   data = [":secrets_file"] + glob(["**/*.hcl"]),
   options = [
-    "-only=vm-template.proxmox.talos-node"
+    "-only=vm-template.proxmox-iso.talos-node"
   ],
 )
