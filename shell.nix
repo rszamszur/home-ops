@@ -17,6 +17,5 @@ pkgs.mkShell {
     pkgs.yq
     pkgs.age
     pkgs.sops
-    pkgs.bazel
   ];
 }
