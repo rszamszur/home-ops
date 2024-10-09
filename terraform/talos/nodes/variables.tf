@@ -33,10 +33,16 @@ variable "proxmox_vm_template_id" {
   default     = 200
 }
 
-variable "proxmox_storage" {
-  description = "Proxmox storage name"
+variable "proxmox_cloudinit_storage" {
+  description = "Proxmox storage name for CloudInit"
   type        = string
   default     = "local-zfs"
+}
+
+variable "proxmox_disk_storage" {
+  description = "Proxmox storage name for main disk"
+  type        = string
+  default     = "nvme-samsung"
 }
 
 variable "network_shift" {

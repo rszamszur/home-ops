@@ -26,7 +26,7 @@ resource "proxmox_virtual_environment_vm" "talos-worker" {
   vm_id     = each.value.id
 
   initialization {
-    datastore_id = var.proxmox_storage
+    datastore_id = var.proxmox_cloudinit_storage
     ip_config {
       ipv4 {
         address = each.value.ipv4
@@ -39,7 +39,7 @@ resource "proxmox_virtual_environment_vm" "talos-worker" {
     vm_id = var.proxmox_vm_template_id
   }
   disk {
-    datastore_id = var.proxmox_storage
+    datastore_id = var.proxmox_disk_storage
     interface    = "scsi0"
     ssd          = true
     size         = 32
