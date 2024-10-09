@@ -64,11 +64,11 @@ variable "instances" {
     "pve" = {
       "controlplane" : {
         id      = 600
-        cpu     = 4,
+        cpu     = 3,
         sockets = 2,
-        mem     = 16384,
+        mem     = 12288,
         numa    = true,
-        count   = 1,
+        count   = 2,
       },
       "worker" : {
         id      = 1000
@@ -80,9 +80,9 @@ variable "instances" {
       },
       "ingress" : {
         id      = 2000
-        cpu     = 2,
+        cpu     = 3,
         sockets = 2,
-        mem     = 8192,
+        mem     = 12288,
         numa    = true,
         count   = 1,
       }
