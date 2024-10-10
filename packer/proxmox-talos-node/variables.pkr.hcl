@@ -30,7 +30,7 @@ variable "proxmox_storage" {
 variable "talos_version" {
   description = "Talos release version"
   type        = string
-  default     = "v1.6.4"
+  default     = "v1.7.7"
 }
 
 locals {
