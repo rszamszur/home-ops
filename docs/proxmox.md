@@ -144,6 +144,8 @@ Docs: https://pve.proxmox.com/wiki/Network_Configuration#sysadmin_network_bond
 
 Datacenter > Notifications > test default `mail-to-root` notificaion target
 
-### 6. Add ACME DNS-01 plugin
+### 6. Create ACME Certificate
 
-Datacenter > ACME > Challenge Plugins > add
+1. Add ACME letsencrypt account: Datacenter > ACME > Accounts > add
+2. Add ACME DNS-01 plugin: Datacenter > ACME > Challenge Plugins > add
+3. Request ACME Certficiate for given Proxmox node: <PROXMOX_NODE_NAME> > Certificates > ACME > add
