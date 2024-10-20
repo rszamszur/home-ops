@@ -19,10 +19,18 @@ resources:
 
 images:
  - name: ghcr.io/pfnet-research/meta-fuse-csi-plugin/meta-fuse-csi-plugin
-# renovate: datasource=docker depName=ghcr.io/pfnet-research/meta-fuse-csi-plugin/meta-fuse-csi-plugin
+   # renovate: datasource=docker depName=ghcr.io/pfnet-research/meta-fuse-csi-plugin/meta-fuse-csi-plugin
    newTag: v0.1.0
 
 patches:
+  # Patches for pfnet-research/meta-fuse-csi-plugin
+  - target:
+      kind: DaemonSet
+      name: meta-fuse-csi-plugin
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/tolerations
+  # Patches for rancher/local-path-provisioner
   - target:
       kind: Namespace
       name: mfcp-system
