@@ -1,0 +1,55 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: buidlbuddy-http
+  namespace: buildbuddy
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+  - host: buildbuddy.szamszur.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: buildbuddy
+            port:
+              name: http
+  tls:
+  - hosts:
+    - buildbuddy.szamszur.cloud
+    secretName: buildbuddy.szamszur.cloud-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: buidlbuddy-grpc
+  namespace: buildbuddy
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "grpc"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      grpc_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504 non_idempotent;
+      grpc_next_upstream_tries 3;
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/client-max-body-size: "0"
+    nginx.ingress.kubernetes.io/load-balande: round-robin
+spec:
+  rules:
+  - host: buildbuddy-grpc.szamszur.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: buildbuddy
+            port:
+              name: grpc
+  tls:
+  - hosts:
+    - buildbuddy-grpc.szamszur.cloud
+    secretName: buildbuddy-grpc.szamszur.cloud-tls

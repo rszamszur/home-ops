@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: buildbuddy-foss
+  namespace: argocd
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  destination:
+    namespace: buildbuddy
+    server: https://kubernetes.default.svc
+  sources:
+  - repoURL: https://helm.buildbuddy.io
+    chart: buildbuddy
+    # renovate: datasource=helm depName=buildbuddy repository=https://helm.buildbuddy.io
+    targetRevision: 0.0.268
+    helm:
+      version: v3
+      values: |-
+        replicas: 1
+        ingress:
+          enabled: false
+        disk:
+          data:
+            enabled: true
+            size: 50Gi
+            storageClass: "iscsi"
+            accessMode: ReadWriteOnce
+        mysql:
+          enabled: false
+        config:
+          database:
+            data_source: "mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@tcp(${MYSQL_SERVER}:${MYSQL_PORT})/${MYSQL_DATABASE}"
+          disable_ga: true
+          disable_telemetry: true
+          app:
+            build_buddy_url: "https://buildbuddy.szamszur.cloud"
+            events_api_url: "grpcs://buildbuddy-grpc.szamszur.cloud"
+            cache_api_url: "grpcs://buildbuddy-grpc.szamszur.cloud"
+          storage:
+            disk:
+              root_directory: "/data/blobs"
+        extraEnvVars:
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: buildbuddy-db-mysql
+                key: mysql-password
+          - name: MYSQL_USER
+            value: "buildbuddy"
+          - name: MYSQL_SERVER
+            value: "buildbuddy-db-mysql.buildbuddy.svc.cluster.local"
+          - name: MYSQL_PORT
+            value: "3306"
+          - name: MYSQL_DATABASE
+            value: "buildbuddy"
