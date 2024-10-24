@@ -11,6 +11,8 @@ configMapGenerator:
     - common.libsonnet
     - frontend.jsonnet
     - runner-ubuntu22-04.jsonnet
+    - runner-starterkit-ash.jsonnet
     - scheduler.jsonnet
     - storage.jsonnet
     - worker-ubuntu22-04.jsonnet
+    - worker-starterkit-ash.jsonnet
