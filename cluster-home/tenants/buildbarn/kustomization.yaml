@@ -9,4 +9,5 @@ resources:
   - scheduler.yaml
   - storage.yaml
   - worker-ubuntu22-04.yaml
+  - worker-starterkit-ash.yaml
   - tls.yaml

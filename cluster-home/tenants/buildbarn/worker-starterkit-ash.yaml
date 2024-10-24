@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-starterkit-ash
+  namespace: buildbarn
+  annotations:
+    prometheus.io/port: "80"
+    prometheus.io/scrape: "true"
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: worker
+      instance: starterkit-ash
+  template:
+    metadata:
+      labels:
+        app: worker
+        instance: starterkit-ash
+    spec:
+      containers:
+      - args:
+        - /config/worker-starterkit-ash.jsonnet
+        image: ghcr.io/buildbarn/bb-worker:20240716T044555Z-9850e82
+        name: worker
+        volumeMounts:
+        - mountPath: /config/
+          name: configs
+          readOnly: true
+        - mountPath: /worker
+          name: worker
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+      - command: [/bb/tini, -v, --, /bb/bb_runner, /config/runner-starterkit-ash.jsonnet]
+        image: harbor.apps.morrigna.rules-nix.build/explore-bzl/ash:5mfaxwh59bw9g7747j33v4psf2g604vl
+        name: runner
+        securityContext:
+          runAsUser: 65534
+          allowPrivilegeEscalation: false
+        volumeMounts:
+        - mountPath: /config/
+          name: configs
+          readOnly: true
+        - mountPath: /worker
+          name: worker
+        - mountPath: /bb
+          name: empty
+          readOnly: true
+      initContainers:
+      - name: bb-runner-installer
+        image: ghcr.io/buildbarn/bb-runner-installer:20240716T044555Z-9850e82
+        volumeMounts:
+        - mountPath: /bb/
+          name: empty
+      - name: volume-init
+        image: busybox:1.37.0-uclibc
+        command:
+        - sh
+        - -c
+        - mkdir -pm 0777 /worker/build && mkdir -pm 0700 /worker/cache && chmod 0777 /worker
+        volumeMounts:
+        - mountPath: /worker
+          name: worker
+      volumes:
+      - name: empty
+        emptyDir: {}
+      - name: configs
+        configMap:
+          name: buildbarn-config
+          items:
+          - key: common.libsonnet
+            path: common.libsonnet
+          - key: runner-starterkit-ash.jsonnet
+            path: runner-starterkit-ash.jsonnet
+          - key: worker-starterkit-ash.jsonnet
+            path: worker-starterkit-ash.jsonnet
+      - emptyDir: {}
+        name: worker
