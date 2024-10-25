@@ -10,4 +10,5 @@ resources:
   - storage.yaml
   - worker-ubuntu22-04.yaml
   - worker-starterkit-ash.yaml
+  - worker-starterkit-ash-x86_64-cc.yaml
   - tls.yaml
