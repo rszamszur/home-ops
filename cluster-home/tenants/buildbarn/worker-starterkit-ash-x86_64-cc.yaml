@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: worker-starterkit-ash-x86_64-cc
+  name: worker-starterkit-ash-x86-64-cc
   namespace: buildbarn
   annotations:
     prometheus.io/port: "80"
@@ -11,12 +11,12 @@ spec:
   selector:
     matchLabels:
       app: worker
-      instance: starterkit-ash-x86_64-cc
+      instance: starterkit-ash-x86-64-cc
   template:
     metadata:
       labels:
         app: worker
-        instance: starterkit-ash-x86_64-cc
+        instance: starterkit-ash-x86-64-cc
     spec:
       containers:
       - args:
@@ -39,7 +39,7 @@ spec:
             fieldRef:
               fieldPath: metadata.name
       - command: [/bb/tini, -v, --, /bb/bb_runner, /config/runner-starterkit-ash-x86_64-cc.jsonnet]
-        image: ghcr.io/catthehacker/ubuntu:act-22.04@sha256:5f9c35c25db1d51a8ddaae5c0ba8d3c163c5e9a4a6cc97acd409ac7eae239448
+        image: harbor.apps.morrigna.rules-nix.build/explore-bzl/ash-x86_64-cc:v9m6v8m5wcrpxgrlsmn7sfxf4f0053fy
         name: runner
         securityContext:
           runAsUser: 65534
