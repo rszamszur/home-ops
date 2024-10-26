@@ -21,7 +21,7 @@ local common = import 'common.libsonnet';
       concurrency: 8,
       platform: {
         properties: [
-          { name: 'OSFamily', value: 'linux' },
+          { name: 'OSFamily', value: 'Linux' },
           { name: 'container-image', value: 'docker://harbor.apps.morrigna.rules-nix.build/explore-bzl/ash:5mfaxwh59bw9g7747j33v4psf2g604vl' },
         ],
       },
