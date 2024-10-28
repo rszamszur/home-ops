@@ -9,6 +9,7 @@ curl -fsSL https://code-server.dev/install.sh | sh -s -- --method=standalone --p
 WORKDIR=$(mktemp -d)
 NIX_VERSION="2.23.3"
 NIX_CHANNEL="https://nixos.org/channels/nixpkgs-unstable"
+HM_CHANNEL="https://github.com/rycee/home-manager/archive/master.tar.gz"
 NIX_INSTALLER_OUT="${WORKDIR}/install"
 
 cd ${WORKDIR}
@@ -18,6 +19,7 @@ curl -o ${NIX_INSTALLER_OUT} --fail -L "https://releases.nixos.org/nix/nix-${NIX
 chmod 755 ${NIX_INSTALLER_OUT}
 
 cat > ${WORKDIR}/nix.conf << EOF
+max-jobs = auto
 build-users-group = coder
 trusted-users = root coder
 experimental-features = nix-command flakes
@@ -29,10 +31,16 @@ if [[ ! -e "${HOME}/.bash_profile" ]]; then
   touch ${HOME}/.bash_profile
 fi
 
-${NIX_INSTALLER_OUT} --no-daemon --no-channel-add --yes
+${NIX_INSTALLER_OUT} --no-daemon --no-channel-add --yes --nix-extra-conf-file ${WORKDIR}/nix.conf
+
+# It seems that single user installation do not create nix.conf
+mkdir -p ${HOME}/.config/nix
+cp ${WORKDIR}/nix.conf ${HOME}/.config/nix/nix.conf
 
 . /home/coder/.nix-profile/etc/profile.d/nix.sh
 nix-channel --add ${NIX_CHANNEL} nixpkgs
+# Needed for manix
+nix-channel --add ${HM_CHANNEL} home-manager
 nix-channel --update
 
 cd -
