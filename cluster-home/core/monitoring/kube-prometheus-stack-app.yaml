@@ -85,6 +85,16 @@ spec:
               - source_labels: [ __name__ ]
                 target_label: __name__
                 replacement: airgradient_${1}
+            - job_name: comin
+              metrics_path: /metrics
+              scrape_interval: 30s
+              static_configs:
+              - targets:
+                - 192.168.20.200:4243
+              metric_relabel_configs:
+              - source_labels: [ __name__ ]
+                target_label: __name__
+                replacement: comin_${1}
   syncPolicy:
     automated:
       prune: true
