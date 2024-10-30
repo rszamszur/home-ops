@@ -24,7 +24,7 @@ variable "proxmox_nodename" {
 variable "proxmox_storage" {
   description = "Proxmox storage name"
   type        = string
-  default     = "local-zfs"
+  default     = "hddexos"
 }
 
 variable "talos_version" {
