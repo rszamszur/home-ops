@@ -91,6 +91,9 @@ spec:
               static_configs:
               - targets:
                 - 192.168.20.200:4243
+                - 192.168.20.60:4243
+                - 192.168.20.61:4243
+                - 192.168.20.62:4243
               metric_relabel_configs:
               - source_labels: [ __name__ ]
                 target_label: __name__
