@@ -50,7 +50,11 @@ jobs:
         run: |
           INVOCATION="$(cat /proc/sys/kernel/random/uuid)"
           echo "INVOCATION=${INVOCATION}" >> $GITHUB_ENV
-          bazel build --config=remote-exec --invocation_id=${INVOCATION} //images/...
+          bazel build \
+            --config=remote-exec \
+            --invocation_id=${INVOCATION} \
+            --build_tag_filters="-age-secret" \
+            //...
       - name: Build results
         if: always()
         uses: actions/github-script@v7
