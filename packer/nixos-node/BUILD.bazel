@@ -4,6 +4,7 @@ genrule(
     name = "secrets_file",
     outs = ["secrets.auto.pkrvars.hcl"],
     srcs = ["secrets.auto.pkrvars.hcl.age"],
+    tags = ["no-cache", "no-remote-cache"],
     tools = [
       "@age//:bin"
     ],
