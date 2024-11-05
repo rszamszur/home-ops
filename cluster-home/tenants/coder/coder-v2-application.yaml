@@ -22,6 +22,8 @@ spec:
                   key: url
             - name: CODER_ACCESS_URL
               value: "https://coder.szamszur.cloud"
+            - name: CODER_TELEMETRY
+              value: "false"
           ingress:
             enable: true
             host: "coder.szamszur.cloud"
