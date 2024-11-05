@@ -28,13 +28,5 @@ jobs:
       CODER_SESSION_TOKEN: ${{ secrets.CODER_SESSION_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install coder CLI
-        run: curl -L https://coder.com/install.sh | sh
-      - name: Ensure coder auth
-        run: coder login
       - name: Upload templates
-        run: |
-          coder templates push \
-            k8s-ubuntu-nix \
-            --yes \
-            --directory terraform/coder/k8s-ubuntu-nix/
+        run: bazel run //terraform/coder/k8s-ubuntu-nix:coder.publish

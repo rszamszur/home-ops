@@ -20,6 +20,15 @@ http_archive(
     url = "https://releases.hashicorp.com/packer/1.8.4/packer_1.8.4_linux_386.zip",
 )
 
+# Coder binary
+
+http_archive(
+    name = "coder",
+    build_file = "@home-ops//bazel/third_party:coder.bazel",
+    sha256 = "32ffb8c45ba2973194e1c70385cf97864e7e70df22c40f00a62e72389b50db16",
+    url = "https://github.com/coder/coder/releases/download/v2.16.1/coder_2.16.1_linux_amd64.tar.gz",
+)
+
 # Bazelisk binary
 
 http_file(
