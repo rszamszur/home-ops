@@ -9,7 +9,7 @@ spec:
   - repoURL: https://democratic-csi.github.io/charts
     chart: democratic-csi
     # renovate: datasource=helm depName=democratic-csi repository=https://democratic-csi.github.io/charts
-    targetRevision: 0.14.6
+    targetRevision: 0.14.7
     helm:
       version: v3
       values: |
