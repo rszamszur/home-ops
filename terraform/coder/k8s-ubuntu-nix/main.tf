@@ -8,6 +8,7 @@ resource "coder_agent" "main" {
   os             = "linux"
   arch           = "amd64"
   startup_script = data.local_file.startup_script.content
+  startup_script_behavior = "blocking"
 
   # The following metadata blocks are optional. They are used to display
   # information about your workspace in the dashboard. You can remove them
