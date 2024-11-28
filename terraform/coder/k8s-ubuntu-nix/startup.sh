@@ -23,8 +23,8 @@ max-jobs = auto
 build-users-group = coder
 trusted-users = root coder
 experimental-features = nix-command flakes
-substituters = https://cache.nixos.org/ https://nix-community.cachix.org ssh-ng://nix-rbe
-trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= tyr:bbjBCfYPxGt0i2LGCDy802CbgqkRRoRGL2h3u7QVeVg=
+substituters = https://cache.nixos.org/ https://nix-community.cachix.org
+trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
 EOF
 
 if [[ ! -e "${HOME}/.bash_profile" ]]; then
