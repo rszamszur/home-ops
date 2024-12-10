@@ -34,8 +34,8 @@ http_archive(
 http_file(
     name = "bazelisk",
     executable=True,
-    sha256 = "0aee09c71828b0012750cb9b689ce3575da8e230f265bf8d6dcd454eee6ea842",
-    url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.24.1/bazelisk-linux-amd64",
+    sha256 = "fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4",
+    url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64",
 )
 
 # Skylib
