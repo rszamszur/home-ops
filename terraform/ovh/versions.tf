@@ -2,7 +2,7 @@ terraform {
   required_providers {
     ovh = {
       source  = "ovh/ovh"
-      version = "0.51.0"
+      version = "1.6.0"
     }
   }
   required_version = ">= 1.5"
