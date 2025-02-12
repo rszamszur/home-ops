@@ -54,7 +54,7 @@ spec:
                     value: "false"
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
     retry:
       limit: 15
