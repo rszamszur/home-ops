@@ -158,7 +158,8 @@ resource "kubernetes_persistent_volume_claim" "nix" {
 resource "kubernetes_deployment" "main" {
   count = data.coder_workspace.me.start_count
   depends_on = [
-    kubernetes_persistent_volume_claim.home
+    kubernetes_persistent_volume_claim.home,
+    kubernetes_persistent_volume_claim.nix
   ]
   wait_for_rollout = false
   metadata {
