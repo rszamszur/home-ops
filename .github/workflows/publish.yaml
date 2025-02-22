@@ -17,16 +17,18 @@ jobs:
         with:
           filters: |
             coder:
-              - "terraform/coder/k8s-ubuntu-nix/**"
+              - "terraform/coder/**"
   coder:
     needs: pre_job
     if: ${{ needs.pre_job.outputs.coder == 'true' }}
-    name: Publish Coder templates
+    name: Publish Coder template
     runs-on: pve-talos
+    matrix:
+      template: ["k8s-ubuntu-nix", "k8s-ubuntu"]
     env:
       CODER_URL: https://coder.szamszur.cloud
       CODER_SESSION_TOKEN: ${{ secrets.CODER_SESSION_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Upload templates
-        run: bazel run //terraform/coder/k8s-ubuntu-nix:coder.publish
+        run: bazel run //terraform/coder/${{ matrix.template }}:coder.publish
