@@ -23,8 +23,9 @@ jobs:
     if: ${{ needs.pre_job.outputs.coder == 'true' }}
     name: Publish Coder template
     runs-on: pve-talos
-    matrix:
-      template: ["k8s-ubuntu-nix", "k8s-ubuntu"]
+    strategy:
+      matrix:
+        template: ["k8s-ubuntu-nix", "k8s-ubuntu"]
     env:
       CODER_URL: https://coder.szamszur.cloud
       CODER_SESSION_TOKEN: ${{ secrets.CODER_SESSION_TOKEN }}
