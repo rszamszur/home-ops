@@ -19,7 +19,7 @@ variable "talos_version" {
 variable "kubernetes_version" {
   description = "The version of kubernetes to use"
   type        = string
-  default     = "1.29.0"
+  default     = "1.30.0"
 }
 
 variable "node_data" {
