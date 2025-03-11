@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - argocd-ns.yaml
 # renovate: datasource=github-releases depName=argoproj/argo-cd
-- https://raw.githubusercontent.com/argoproj/argo-cd/v2.14.4/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.14.5/manifests/install.yaml
