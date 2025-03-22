@@ -8,8 +8,8 @@ resources:
 - https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-7.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
 # renovate: datasource=github-releases depName=kubernetes-csi/external-snapshotter
 - https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-7.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
-- democratic-csi-iscsi-namespace.yaml
-- democratic-csi-iscsi-application.yaml
+- democratic-csi-iscsi.Namespace.yaml
+- democratic-csi-iscsi.Application.yaml
 # renovate: datasource=github-releases depName=pfnet-research/meta-fuse-csi-plugin
 - https://raw.githubusercontent.com/pfnet-research/meta-fuse-csi-plugin/v0.2.2/deploy/csi-driver-daemonset.yaml
 # renovate: datasource=github-releases depName=pfnet-research/meta-fuse-csi-plugin

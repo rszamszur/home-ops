@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: buildbarn
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "grpc"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/client-max-body-size: "0"
+spec:
+  rules:
+  - host: buildbarn-grpc.szamszur.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              name: grpc
+  tls:
+  - hosts:
+    - buildbarn-grpc.szamszur.cloud
+    secretName: buildbarn-grpc-szamszur-cloud-tls

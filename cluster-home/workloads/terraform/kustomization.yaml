@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- terraform.Namespace.yaml
+- terraform-state.RoleBinding.yaml
+- terraform-state.Role.yaml
+- terraform-state.Secret.yaml
+- terraform-state.ServiceAccount.yaml

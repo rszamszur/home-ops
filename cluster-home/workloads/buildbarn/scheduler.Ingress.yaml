@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: scheduler
+  namespace: buildbarn
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: buildbarn-scheduler.szamszur.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: scheduler
+            port:
+              name: http
+  tls:
+  - hosts:
+    - buildbarn-scheduler.szamszur.cloud
+    secretName: buildbarn-scheduler-szamszur-cloud-tls

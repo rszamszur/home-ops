@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: buildbarn
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - args:
+        - /config/frontend.jsonnet
+        image: ghcr.io/buildbarn/bb-storage:20240810T092106Z-3f5e30c
+        name: storage
+        ports:
+        - containerPort: 8980
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /config/
+          name: configs
+          readOnly: true
+      volumes:
+        - name: configs
+          configMap:
+            name: buildbarn-config
+            items:
+              - key: common.libsonnet
+                path: common.libsonnet
+              - key: frontend.jsonnet
+                path: frontend.jsonnet

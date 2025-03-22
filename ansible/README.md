@@ -2,7 +2,7 @@
 
 ## Getting started
 
-To have a reproducible environment for Ansible execution run the following [script](https://github.com/rszamszur/home-k8s/blob/master/ansible/run_ansible_env.sh):
+To have a reproducible environment for Ansible execution run the following [script](https://github.com/rszamszur/home-ops/blob/master/ansible/run_ansible_env.sh):
 
 ```shell
 $ ./run_ansible_env.sh
@@ -86,7 +86,7 @@ ansible-playbook $PLAYBOOK --user YOUR_USERNAME --ask-pass --ask-become-pass --l
 
 #### rock64cluster
 
-[Clustered Pine64 Rock64 boards](https://github.com/rszamszur/home-k8s/blob/master/rock64cluster.jpg?raw=true) - worker nodes.
+[Clustered Pine64 Rock64 boards](https://github.com/rszamszur/home-ops/blob/master/rock64cluster.jpg?raw=true) - worker nodes.
 
 * 192.168.0.45
 * 192.168.0.46
