@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: browser
+  namespace: buildbarn
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: buildbarn.szamszur.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: browser
+            port:
+              name: http
+  tls:
+  - hosts:
+    - buildbarn.szamszur.cloud
+    secretName: buildbarn-szamszur-cloud-tls
