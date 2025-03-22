@@ -68,48 +68,56 @@ principal when it comes to YAML files.
 cluster-XXX/ #1
 ├── bootstrap #2
 │   ├── base
-│   │   ├── argocd-ns.yaml
+│   │   ├── argocd.Namespace.yaml
 │   │   ├── kustomization.yaml
 │   │   └── secrets
 │   │       └── ...
 │   └── overlays
 │       └── default
 │           └── kustomization.yaml
-├── components #3
+├── gitops-controller #3
 │   ├── applications
-│   │   ├── ...
+│   │   ├── gitops-controller.Application.yaml
 │   │   └── kustomization.yaml
 │   ├── applicationsets
-│   │   ├── core-components-appset.yaml
+│   │   ├── core-components.ApplicationSet.yaml
 │   │   ├── kustomization.yaml
-│   │   └── tenants-appset.yaml
-│   └── argocdproj
-│       ├── ...
-│       └── kustomization.yaml
+│   │   └── workloads.ApplicationSet.yaml
+│   ├── init
+│   │   └── kustomization.yaml
+│   ├── kustomization.yaml
+│   └── projects
+│       ├── kustomization.yaml
+│       └── test-project.AppProject.yaml
 ├── core #4
-│   ├── gitops-controller
+│   ├── certificates
+│   │   ├── cert-manager.Application.yaml
+│   │   ├── cert-manager.Namespace.yaml
+│   │   ├── cert-manager-webhook-ovh.Application.yaml
+│   │   └── kustomization.yaml
+│   ├── ingress-controller
 │   │   └── kustomization.yaml
 │   ├── monitoring
-│   │   ├── airgradient-dashboard-configmap.yaml
+│   │   ├── airgradient-dashboard.ConfigMap.yaml
 │   │   ├── airgradient-dashboard.json
-│   │   ├── alert-manager-tls.yaml
-│   │   ├── grafana-tls.yaml
-│   │   ├── kube-prometheus-stack-app.yaml
+│   │   ├── alert-manager.Certificate.yaml
+│   │   ├── grafana-tls.Certificate.yaml
+│   │   ├── kube-prometheus-stack.Application.yaml
+│   │   ├── kube-prometheus-stack.Namespace.yaml
 │   │   ├── kustomization.yaml
-│   │   ├── namespace.yaml
-│   │   └── prometheus-tls.yaml
+│   │   └── prometheus-tls.Certificate.yaml
 │   └── ...
-└── tenants #5
+└── workloads #5
     └── ...
 ```
 
 |#|Directory Name|Description|
 |---|----------------|-----------------|
 | 1. |`cluster-XXX`| This is the cluster name. This name should be unique to the specific cluster you're targeting. If you're using CAPI, this should be the name of your cluster, the output of `kubectl get cluster`|
-| 2. | `bootstrap` | This is where bootstrapping specifc configurations are stored. These are items that get the cluster/automation started. They are usually install manifests.<br /><br />`base` is where are the "common" YAML would live and `overlays` are configurations specific to the cluster.<br /><br />The `kustomization.yaml` file in `default` has `cluster-XXX/components/applicationsets/` and `cluster-XXX/components/argocdproj/` as a part of it's `bases` config.|
-| 3. | `components` | This is where specific components for the GitOps Controller lives (in this case [Argo CD](https://github.com/argoproj/argo-cd)).<br /><br />`applicationsets` is where all the ApplicationSets YAMLs live, `aplications` is where all the `Application` YAML's live and lastly `argocdproj` is where the ArgoAppProject YAMLs live.<br /><br />Other things that can live here are RBAC, Git repo, and other Argo CD specific configurations (each in their repsective directories).|
-| 4. | `core` | This is where YAML for the core functionality of the cluster live. Here is where the Kubernetes administrator will put things that is necissary for the functionality of the cluster (like cluster configs or cluster workloads).<br /><br />Under `gitops-controller` is where you are using Argo CD to manage itself. The `kustomization.yaml` file uses `cluster-XXX/bootstrap/overlays/default` in it's `bases` configuration. This `core` directory gets deployed as an applicationset which can be found under `cluster-XXX/components/applicationsets/core-components-appset.yaml`.<br /><br />To add a new "core functionality" workoad, one needs to add a directory with some yaml in the `core` directory. See the `monitoring` directory as an example.|
-| 5. | `tenants` | This is where the workloads for this cluster live.<br /><br />Similar to `core`, the `tenants` directory gets loaded as part of an `ApplicationSet` that is under `cluster-XXX/components/applicationsets/tenants-appset.yaml`.<br /><br />This is where Devlopers/Release Engineers do the work. They just need to commit a directory with some YAML and the applicationset takes care of creating the workload.<br /><br />|
+| 2. | `bootstrap` | This is where bootstrapping specifc configurations are stored. These are items that get the cluster/automation started. They are usually namespaces, CRD's or install manifests.<br /><br />`base` is where are the "common" YAML would live and `overlays` are configurations specific to the cluster.<br /><br />The `kustomization.yaml` file in `default` points `base` and to `cluster-XXX/gitops-controller/`. This configuration allows the gitops-controller to bootstrap a declarative deployment cycle, taking ownership of managing its own configuration and all other specified deployments.|
+| 3. | `gitops-controller` | This is where specific components for the GitOps Controller lives (in this case [Argo CD](https://github.com/argoproj/argo-cd)).<br /><br />The directory structure is organized as follows: <ul><li>`applicationsets` contains all the ApplicationSet YAML files.</li><li>`applications` contains all the Application YAML files.</li><li>`argocdproj` contains all the ArgoAppProject YAML files</li></ul>Additionally, other configurations can be stored in their respective directories, including RBAC, Git repositories, and other Argo CD-specific settings.<br /><br />Finally, the `init` directory is a special folder that contains all the necessary manifest files required to initialize any GitOps controller. |
+| 4. | `core` | This is where YAML for the core functionality of the cluster live. Here is where the Kubernetes administrator will put things that is necissary for the functionality of the cluster (like cluster configs or cluster workloads).<br /><br />This `core` directory gets deployed as an applicationset which can be found under `cluster-XXX/gitops-controller/applicationsets/core-components-appset.yaml`.<br /><br />To add a new "core functionality" workoad, one needs to add a directory with some yaml in the `core` directory. See the `monitoring` directory as an example.|
+| 5. | `workloads` | This is where the workloads for this cluster live.<br /><br />Similar to `core`, the `workloads` directory gets loaded as part of an `ApplicationSet` that is under `cluster-XXX/gitops-controller/applicationsets/workloads-appset.yaml`.<br /><br />This is where Devlopers/Release Engineers do the work. They just need to commit a directory with some YAML and the applicationset takes care of creating the workload.<br /><br />|
 
 ### Bootstrapping
 
@@ -134,7 +142,7 @@ age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/ovh-credenti
 Then, just apply this repo:
 
 ```shell
-until kubectl apply -k https://github.com/rszamszur/home-k8s/cluster-home/bootstrap/overlays/default; do sleep 3; done
+until kubectl apply -k https://github.com/rszamszur/home-ops/cluster-home/bootstrap/overlays/default; do sleep 3; done
 ```
 
 This should give you the following applications:
@@ -167,7 +175,7 @@ Backed by 2 applicationsets:
 $ kubectl get appsets -n argocd
 NAME      AGE
 cluster   19m
-tenants   19m
+workloads   19m
 ```
 
 To see the Argo CD UI, you'll first need the password:
