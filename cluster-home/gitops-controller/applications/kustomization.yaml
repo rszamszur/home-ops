@@ -2,5 +2,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- ../../base
-- ../../../gitops-controller
+- gitops-controller.Application.yaml
+- fastapi-mvc-example.Application.yaml

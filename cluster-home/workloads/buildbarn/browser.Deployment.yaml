@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: browser
+  namespace: buildbarn
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: browser
+  template:
+    metadata:
+      labels:
+        app: browser
+    spec:
+      containers:
+      - image: ghcr.io/buildbarn/bb-browser:20240613T055327Z-f0fbe96
+        args:
+        - /config/browser.jsonnet
+        name: browser
+        ports:
+        - containerPort: 7984
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /config/
+          name: configs
+          readOnly: true
+      volumes:
+      - name: configs
+        configMap:
+          name: buildbarn-config
+          items:
+            - key: common.libsonnet
+              path: common.libsonnet
+            - key: browser.jsonnet
+              path: browser.jsonnet
