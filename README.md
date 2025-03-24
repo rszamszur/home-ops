@@ -132,6 +132,7 @@ _These cannot be applied with `kubectl` in the regular fashion due to be encrypt
 
 ```shell
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/argocd-ghcr-repo-secret.yaml.age | kubectl apply -f -
+age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/buildbuddy-db-mysql-secret.yaml.age | kubectl apply -f -
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/coder-db-postgresql-secret.yaml.age | kubectl apply -f -
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/coder-db-url-secret.yaml.age | kubectl apply -f -
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/democratic-csi-iscsi-driver-config-secret.yaml.age | kubectl apply -f -
