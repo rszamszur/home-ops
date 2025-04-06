@@ -52,7 +52,7 @@ spec:
             image:
               registry: docker.io/democraticcsi/democratic-csi
               # renovate: datasource=github-releases depName=democraticcsi/democratic-csi
-              tag: v1.9.4
+              tag: v1.9.3
         driver:
           existingConfigSecret: democratic-csi-iscsi-driver-config
           config:
