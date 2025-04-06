@@ -16,7 +16,7 @@ spec:
   - repoURL: https://helm.buildbuddy.io
     chart: buildbuddy
     # renovate: datasource=helm depName=buildbuddy repository=https://helm.buildbuddy.io
-    targetRevision: 0.0.303
+    targetRevision: 0.0.305
     helm:
       version: v3
       values: |-
