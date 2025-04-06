@@ -48,6 +48,11 @@ spec:
             detachedSnapshots: "true"
         controller:
           replicaCount: 3
+          driver:
+            image:
+              registry: docker.io/democraticcsi/democratic-csi
+              # renovate: datasource=github-releases depName=democraticcsi/democratic-csi
+              tag: v1.9.4
         driver:
           existingConfigSecret: democratic-csi-iscsi-driver-config
           config:
