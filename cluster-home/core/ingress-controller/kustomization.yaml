@@ -40,3 +40,4 @@ patches:
         path: /data
         value:
           allow-snippet-annotations: "true"
+          annotations-risk-level: "Critical"
