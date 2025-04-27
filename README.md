@@ -19,7 +19,16 @@ This is a mono repository for my home infrastructure and Kubernetes cluster. I t
 
 ## 🔧 Hardware
 
-* [Dell PowerEdge T630 GPU Rack](https://www.dell.com/learn/gh/en/ghpad1/shared-content~data-sheets~en/documents~dell-poweredge-t630-spec-sheet.pdf)
+* [Dell PowerEdge R740xd](https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/PowerEdge-R740xd-Spec-Sheet.pdf)
+  * Motherboard: Dell 08D89F
+    * CPU: 2x [Intel Xeon® Platinum 8168 Processor](https://www.intel.com/content/www/us/en/products/sku/120504/intel-xeon-platinum-8168-processor-33m-cache-2-70-ghz/specifications.html) (24 cores, 2,7 GHz)
+    * Memory: 8x 32Gb DDR4-2400 RDIMM ([SK Hynix HMA84GR7MFR4N](https://memory.net/product/hma84gr7mfr4n-uh-sk-hynix-1x-32gb-ddr4-2400-rdimm-pc4-19200t-r-dual-rank-x4-module/))
+    * Network: Dell Broadcom 57416 5720  (2x 10Gbit RJ45 + 2x 1Gbit RJ45)
+  * Storage:
+    * [Dell PowerEdge RAID Controller H330](https://i.dell.com/sites/csdocuments/Shared-Content_data-Sheets_Documents/en/Dell-PowerEdge-RAID-Controller-H330.pdf)
+    * 4x Samsung 870 EVO SSD
+    * 4x Samsung PM963 960GB SSD NVMe U.2 Gen 3
+* [Dell PowerEdge T630 GPU Rack](https://i.dell.com/sites/doccontent/shared-content/data-sheets/pl/Documents/Dell-PowerEdge-T630-Spec-Sheet.pdf)
 
   <details>
     <summary>Click to see the insides</summary>
@@ -28,7 +37,7 @@ This is a mono repository for my home infrastructure and Kubernetes cluster. I t
   </details>
   
   * Motherboard: Dell 0NT78X
-    * CPU: 2x [Intel Xenon E5-2697 v4](https://www.intel.com/content/www/us/en/products/sku/91755/intel-xeon-processor-e52697-v4-45m-cache-2-30-ghz/specifications.html) (18 cores, 2.30 Ghz)
+    * CPU: 2x [Intel Xenon E5-2697 v4](https://www.intel.com/content/www/us/en/products/sku/91755/intel-xeon-processor-e52697-v4-45m-cache-2-30-ghz/specifications.html) (18 cores, 2.30 GHz)
     * Memory: 16x 16Gb DDR4-2400 RDIMM ([SK Hynix HMA82GR7AFR8N-UH](https://memory.net/product/hma82gr7afr8n-uh-sk-hynix-1x-16gb-ddr4-2400-rdimm-pc4-19200t-r-dual-rank-x8-module/))
     * Network: 2x I350 Gigabit Network Connection
   * Storage:
@@ -36,8 +45,16 @@ This is a mono repository for my home infrastructure and Kubernetes cluster. I t
     * 4x Seagate Exos X16 12TB 7.2k SATA 6Gbps ([ST12000NM001G-2M](https://www.seagate.com/www-content/product-content/enterprise-hdd-fam/exos-x-16/en-us/docs/100845789f.pdf))
     * 2x Goodram CX400 1TB 2,5" Sata3 (SSDPR-CX400-01T-)
     * 2x Samsung PM963 960GB SSD NVMe U.2 Gen 3
+* Ollama/gaming PC
+  * Motherboard: Gigabyte X570 AORUS MASTER
+    * CPU: AMD Ryzen 9 3900X (12 cores, 3.8 GHz)
+    * Memory: 2x 16Gb Patriot Viper DDR4 3200MHz
+    * GPU: 2x MSI GeForce RTX 3090 Ventus OC
 * [Unifi Dream Machine Pro](https://eu.store.ui.com/eu/en/products/udm-pro)
 * [Unifi USW Pro Max POE](https://eu.store.ui.com/eu/en/category/switching-professional-max/products/usw-pro-max-24-poe)
+* 2x Raspberry Pi 5 16Gb
+* Raspberry pPi 4b 8Gb
+* Raspberry Pi Zero
 
 ## ⛵ Kubernetes
 
