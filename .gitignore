@@ -5,6 +5,8 @@ xanmanning.k3s*
 *.tfvars
 *.tfstate
 *.tfstate.backup
+# packer
+*.pkrvars.hcl
 # sops
 .decrypted~*
 *.agekey
