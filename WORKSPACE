@@ -147,7 +147,7 @@ oci_pull(
 
 oci_pull(
     name = "actions_runner",
-    digest = "sha256:c0f93607a231275b8da0e2a3cb87b771672346f7685795b39b0caa6efc8bab86",
+    digest = "sha256:831a2607a2618e4b79d9323b4c72330f3861768a061c2b92a845e9d214d80e5b",
     image = "ghcr.io/actions/actions-runner",
     platforms = [
         "linux/amd64",
