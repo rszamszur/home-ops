@@ -1,7 +1,7 @@
 variable "proxmox_host" {
   description = "Proxmox host"
   type        = string
-  default     = "192.168.10.10"
+  default     = "192.168.10.11"
 }
 
 variable "proxmox_token_id" {
@@ -18,7 +18,7 @@ variable "proxmox_token_secret" {
 variable "proxmox_nodename" {
   description = "Proxmox node name"
   type        = string
-  default     = "pve"
+  default     = "pve-t630"
 }
 
 variable "proxmox_storage" {
@@ -30,7 +30,7 @@ variable "proxmox_storage" {
 variable "talos_version" {
   description = "Talos release version"
   type        = string
-  default     = "v1.7.7"
+  default     = "v1.10.0"
 }
 
 locals {
