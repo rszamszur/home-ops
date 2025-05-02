@@ -20,12 +20,14 @@ source "proxmox-iso" "nixos-node" {
     efi_storage_pool = var.proxmox_storage
   }
 
-  iso_url          = var.nixos_iso
-  iso_file         = "local:iso/nixos-24.05.20241028.64b80bf-x86_64-linux.iso"
-  iso_checksum     = var.nixos_iso_checksum
-  iso_storage_pool = "local"
-  iso_download_pve = true
-  unmount_iso = true
+  boot_iso {
+    iso_storage_pool = "local"
+    iso_url = var.nixos_iso
+    iso_file = "local:iso/nixos-24.05.20241028.64b80bf-x86_64-linux.iso"
+    iso_download_pve = true
+    iso_checksum = var.nixos_iso_checksum
+    unmount = true
+  }
   vm_id = "666"
 
   network_adapters {
