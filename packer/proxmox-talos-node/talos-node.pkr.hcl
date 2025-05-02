@@ -13,12 +13,15 @@ source "proxmox-iso" "talos-node" {
   token                    = var.proxmox_token_secret
   node                     = var.proxmox_nodename
   insecure_skip_tls_verify = true
-  
-  iso_url  = "https://mirror.rackspace.com/archlinux/iso/2024.02.01/archlinux-2024.02.01-x86_64.iso"
-  iso_file = "local:iso/archlinux-2024.02.01-x86_64.iso"
-  iso_storage_pool = "local"
-  iso_checksum = "sha256:891ebab4661cedb0ae3b8fe15a906ae2ba22e284551dc293436d5247220933c5"
-  unmount_iso = true
+
+  boot_iso {
+    iso_storage_pool = "local"
+    iso_url  = "https://mirror.rackspace.com/archlinux/iso/2025.05.01/archlinux-2025.05.01-x86_64.iso"
+    #iso_file = "local:iso/archlinux-2024.02.01-x86_64.iso"
+    iso_download_pve = true
+    iso_checksum = "sha256:2008e6becc86d207272625c94a388d2ee3b14d6a24b401552d8105c4e82c96db"
+    unmount = true
+  }
   vm_id = "200"
 
   network_adapters {
