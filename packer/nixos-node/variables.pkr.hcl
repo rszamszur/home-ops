@@ -27,6 +27,18 @@ variable "proxmox_storage" {
   default     = "hddexos"
 }
 
+variable "proxmox_interface" {
+  description = "Proxmox network interface name"
+  type        = string
+  default     = "vmbr1"
+}
+
+variable "network_vlan_tag" {
+  description = "Network VLAN tag"
+  type        = string
+  default     = ""
+}
+
 variable "nixos_iso" {
   description = "NixOS installation iso url"
   type        = string
