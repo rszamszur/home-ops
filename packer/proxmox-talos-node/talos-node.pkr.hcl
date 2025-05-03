@@ -25,9 +25,9 @@ source "proxmox-iso" "talos-node" {
   vm_id = "200"
 
   network_adapters {
-    bridge   = "vmbr0"
+    bridge   = var.proxmox_interface
     model    = "virtio"
-    vlan_tag = "3"
+    vlan_tag = var.network_vlan_tag
     firewall = true
   }
 
