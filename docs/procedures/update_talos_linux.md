@@ -39,7 +39,7 @@ NODE            NAMESPACE   TYPE              ID   VERSION   NAME          VERSI
 ### 2. Construct Talos Linux image url
 
 ```shell
-export TALOS_LINUX_VERSION="1.7.7"
+export TALOS_LINUX_VERSION="v1.7.7"
 export TALOS_LINUX_SCHEMATIC_ID="c9078f9419961640c712a8bf2bb9174933dfcf1da383fd8ea2b7dc21493f8bac"
 export TALOS_IMAGE_URL="factory.talos.dev/installer/$TALOS_LINUX_SCHEMATIC_ID:$TALOS_LINUX_VERSION"
 ```
@@ -84,3 +84,4 @@ N/A
 
 * https://www.talos.dev/v1.8/talos-guides/upgrading-talos/
 * https://www.talos.dev/v1.8/learn-more/image-factory/
+* https://www.talos.dev/v1.10/advanced/disaster-recovery/
