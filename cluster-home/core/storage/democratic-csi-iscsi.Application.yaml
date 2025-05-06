@@ -21,7 +21,7 @@ spec:
                 value: nsenter
               - name: ISCSIADM_HOST_PATH
                 value: /usr/local/sbin/iscsiadm
-            iscsiDirHostPath: /usr/local/etc/iscsi
+            iscsiDirHostPath: /var/iscsi
             iscsiDirHostPathType: ""
         csiDriver:
           version: 1.5.0
