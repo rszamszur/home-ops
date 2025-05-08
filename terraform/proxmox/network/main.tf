@@ -24,6 +24,18 @@ resource "proxmox_virtual_environment_network_linux_bridge" "pve-r740xd_vmbr1" {
   ]
 }
 
+resource "proxmox_virtual_environment_network_linux_bridge" "pve-r740xd_vmbr2" {
+  node_name = "pve-r740xd"
+  name      = "vmbr2"
+
+  vlan_aware = true
+  comment = "Bridge for puqu. Native VLAN: servers-puqu. Managed by terraform"
+
+  ports = [
+    "eno2np1"
+  ]
+}
+
 resource "proxmox_virtual_environment_network_linux_bridge" "pve-t630_vmbr0" {
   node_name = "pve-t630"
   name      = "vmbr0"
@@ -47,5 +59,17 @@ resource "proxmox_virtual_environment_network_linux_bridge" "pve-t630_vmbr1" {
 
   ports = [
     "enp129s0f0"
+  ]
+}
+
+resource "proxmox_virtual_environment_network_linux_bridge" "pve-t630_vmbr2" {
+  node_name = "pve-t630"
+  name      = "vmbr2"
+
+  vlan_aware = true
+  comment = "Bridge for puqu. Native VLAN: servers-puqu. Managed by terraform"
+
+  ports = [
+    "enp129s0f1"
   ]
 }
