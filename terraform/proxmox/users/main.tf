@@ -54,6 +54,11 @@ resource "proxmox_virtual_environment_user" "puqu-user" {
     role_id   = "NoAccess"
   }
   acl {
+    path     = "/sdn/zones/localnetwork/vmbr1"
+    propagate = true
+    role_id   = "NoAccess"
+  }
+  acl {
     path      = "/"
     propagate = true
     role_id   = proxmox_virtual_environment_role.puqu-admin.role_id
