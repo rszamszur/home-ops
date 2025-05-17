@@ -32,7 +32,7 @@ variable "node_data" {
     workers = map(object({
       install_disk = string
       hostname     = optional(string)
-      labels       = optional(string)
+      labels       = optional(list(string))
     }))
   })
   default = {
@@ -70,7 +70,10 @@ variable "node_data" {
       "192.168.20.20" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-ingress-1"
-        labels       = "project.io/node-pool: ingress"
+        labels       = [
+          "project.io/node-pool: worker",
+          "project.io/node-pool: ingress",
+        ]
       }
     }
   }
