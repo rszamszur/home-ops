@@ -8,6 +8,9 @@ resources:
 - https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v8.2.1/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
 # renovate: datasource=github-releases depName=kubernetes-csi/external-snapshotter
 - https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v8.2.1/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+- csi-proxmox-backup-enable.VolumeAttributesClass.yaml
+- csi-proxmox.Namespace.yaml
+- csi-proxmox.Application.yaml
 - democratic-csi-iscsi.Namespace.yaml
 - democratic-csi-iscsi.Application.yaml
 # renovate: datasource=github-releases depName=pfnet-research/meta-fuse-csi-plugin
