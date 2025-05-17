@@ -1,0 +1,11 @@
+cluster:
+  apiServer:
+    extraArgs:
+      feature-gates: VolumeAttributesClass=true
+      runtime-config: storage.k8s.io/v1beta1=true
+  controllerManager:
+    extraArgs:
+      feature-gates: VolumeAttributesClass=true
+  scheduler:
+    extraArgs:
+        feature-gates: VolumeAttributesClass=true
