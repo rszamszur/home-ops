@@ -68,6 +68,23 @@ data "coder_parameter" "memory" {
   }
 }
 
+data "coder_parameter" "storage_class" {
+  name         = "storage_class"
+  display_name = "StorageClass name"
+  description  = "The name of the storage class to use when creating the PVC."
+  default      = "iscsi"
+  icon         = "/emojis/1f4be.png"
+  mutable      = false
+  option {
+    name  = "TrueNAS iscsi"
+    value = "iscsi"
+  }
+  option {
+    name  = "Proxmox hddexos pool"
+    value = "pve-hddexos"
+  }
+}
+
 data "coder_parameter" "home_disk_size" {
   name         = "home_disk_size"
   display_name = "Home disk size"

@@ -115,7 +115,7 @@ resource "kubernetes_persistent_volume_claim" "home" {
   wait_until_bound = false
   spec {
     access_modes       = ["ReadWriteOnce"]
-    storage_class_name = "iscsi"
+    storage_class_name = "${data.coder_parameter.storage_class.value}"
     resources {
       requests = {
         storage = "${data.coder_parameter.home_disk_size.value}Gi"
@@ -146,7 +146,7 @@ resource "kubernetes_persistent_volume_claim" "nix" {
   wait_until_bound = false
   spec {
     access_modes       = ["ReadWriteOnce"]
-    storage_class_name = "iscsi"
+    storage_class_name = "${data.coder_parameter.storage_class.value}"
     resources {
       requests = {
         storage = "${data.coder_parameter.nix_disk_size.value}Gi"
