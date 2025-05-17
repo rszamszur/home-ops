@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: proxmox-csi-plugin
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: ghcr.io/sergelogvinov/charts
+    chart: proxmox-csi-plugin
+    # renovate: datasource=helm depName=proxmox-csi-plugin repository=oci://ghcr.io/sergelogvinov/charts
+    targetRevision: 0.3.6
+    helm:
+      version: v3
+      values: |
+        replicaCount: 3
+        createNamespace: false
+        existingConfigSecret: proxmox-csi-plugin-config
+        existingConfigSecretKey: config.yaml
+        storageClass:
+          - name: pve-hddexos
+            storage: hddexos
+            ssd: false
+            reclaimPolicy: Delete
+            fstype: ext4
+        controller:
+          provisioner:
+            args:
+              - --default-fstype=ext4
+              - --feature-gates=VolumeAttributesClass=true
+          resizer:
+            args:
+              - --feature-gates=VolumeAttributesClass=true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+  destination:
+    namespace: csi-proxmox
+    server: https://kubernetes.default.svc

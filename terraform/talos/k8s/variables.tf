@@ -54,25 +54,46 @@ variable "node_data" {
       "192.168.20.21" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-1"
+        labels       = [
+          "project.io/node-pool: worker",
+          "topology.kubernetes.io/region: homelab", 
+          "topology.kubernetes.io/zone: pve-t630"
+        ]
       },
       "192.168.20.22" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-2"
+        labels       = [
+          "project.io/node-pool: worker",
+          "topology.kubernetes.io/region: homelab", 
+          "topology.kubernetes.io/zone: pve-t630"
+        ]
       },
       "192.168.20.23" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-3"
+        labels       = [
+          "project.io/node-pool: worker",
+          "topology.kubernetes.io/region: homelab", 
+          "topology.kubernetes.io/zone: pve-t630"
+        ]
       },
       "192.168.20.24" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-4"
+        labels       = [
+          "project.io/node-pool: worker",
+          "topology.kubernetes.io/region: homelab", 
+          "topology.kubernetes.io/zone: pve-t630"
+        ]
       },
       "192.168.20.20" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-ingress-1"
         labels       = [
-          "project.io/node-pool: worker",
           "project.io/node-pool: ingress",
+          "topology.kubernetes.io/region: homelab", 
+          "topology.kubernetes.io/zone: pve-t630"
         ]
       }
     }
