@@ -49,7 +49,7 @@ resource "talos_machine_configuration_apply" "worker" {
       install_disk = each.value.install_disk
     }),
     templatefile("${path.module}/templates/node-labels.yaml.tmpl", {
-      labels = each.value.labels == null ? "project.io/node-pool: worker" : each.value.labels
+      labels = each.value.labels == null ? "project.io/node-pool: worker" : join(indent(4, "\n"), each.value.labels)
     })
   ]
 }
