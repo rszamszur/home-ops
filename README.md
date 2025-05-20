@@ -52,9 +52,11 @@ This is a mono repository for my home infrastructure and Kubernetes cluster. I t
     * GPU: 2x MSI GeForce RTX 3090 Ventus OC
 * [Unifi Dream Machine Pro](https://eu.store.ui.com/eu/en/products/udm-pro)
 * [Unifi USW Pro Max POE](https://eu.store.ui.com/eu/en/category/switching-professional-max/products/usw-pro-max-24-poe)
+* [Unifi EnterpriseXG 24 (Gen1)](https://eu.store.ui.com/eu/en/products/usw-enterprisexg-24)
 * 2x Raspberry Pi 5 16Gb
 * Raspberry pPi 4b 8Gb
 * Raspberry Pi Zero
+* GMKTec Nucbox G9
 
 ## ⛵ Kubernetes
 
