@@ -1,0 +1,14 @@
+filegroup(
+  name = "actions-runner",
+  srcs = glob([
+    "externals/**",
+    "bin/**",
+    "config.sh",
+    "safe_sleep.sh",
+    "run-helper.cmd.template",
+    "run.sh",
+    "run-helper.sh.template",
+    "env.sh",
+  ]),
+  visibility = ["//visibility:public"],
+)

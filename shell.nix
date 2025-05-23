@@ -18,4 +18,7 @@ pkgs.mkShell {
     pkgs.age
     pkgs.sops
   ];
+  shellHook = ''
+    export PATH="$HOME/.local/bin:$PATH"
+  '';
 }
