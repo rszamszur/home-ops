@@ -4,7 +4,7 @@
 #
 #  To generate the apt.lock.json run the following command
 #
-#     bazel run @ubuntu-jammy//:lock
+#     bazel run @ubuntu_jammy//:lock
 #
 # See deb_index at WORKSPACE.bazel
 version: 1
@@ -21,6 +21,27 @@ archs:
   - "amd64"
 
 packages:
+  # base
+  - "libc-bin"
+  - "ca-certificates"
+  # libs
+  - "libicu70"
+  - "libssl3"
+  - "libstdc++6"
+  - "tzdata"
+  - "zlib1g"
+  # packages
+  - "gcc"
   - "git"
   - "curl"
+  - "gawk"
   - "xz-utils"
+  - "sudo"
+  - "lsb-release"
+  - "gpg-agent"
+  - "software-properties-common"
+  - "unzip"
+  - "coreutils"
+  - "bash"
+  - "jq"
+  - "grep"
