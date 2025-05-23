@@ -27,7 +27,7 @@ This is a mono repository for my home infrastructure and Kubernetes cluster. I t
   * Storage:
     * [Dell PowerEdge RAID Controller H330](https://i.dell.com/sites/csdocuments/Shared-Content_data-Sheets_Documents/en/Dell-PowerEdge-RAID-Controller-H330.pdf)
     * 4x Samsung 870 EVO SSD
-    * 4x Samsung PM963 960GB SSD NVMe U.2 Gen 3
+    * 6x Samsung PM963 960GB SSD NVMe U.2 Gen 3
 * [Dell PowerEdge T630 GPU Rack](https://i.dell.com/sites/doccontent/shared-content/data-sheets/pl/Documents/Dell-PowerEdge-T630-Spec-Sheet.pdf)
 
   <details>
@@ -44,7 +44,12 @@ This is a mono repository for my home infrastructure and Kubernetes cluster. I t
     * [Dell PowerEdge Raid Controller H330](https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/Dell-PowerEdge-RAID-Controller-H330.pdf) (in HBA mode)
     * 4x Seagate Exos X16 12TB 7.2k SATA 6Gbps ([ST12000NM001G-2M](https://www.seagate.com/www-content/product-content/enterprise-hdd-fam/exos-x-16/en-us/docs/100845789f.pdf))
     * 2x Goodram CX400 1TB 2,5" Sata3 (SSDPR-CX400-01T-)
-    * 2x Samsung PM963 960GB SSD NVMe U.2 Gen 3
+    * 4x Samsung PM963 960GB SSD NVMe U.2 Gen 3
+  * PCI:
+    * [4 M.2 NVMe SSD PCIe x16 Adapter with PLX 8747 PCI Express 3.0 x16](https://www.aliexpress.com/item/1005006013613064.html)
+    * 10GB NIC Intel X550T2
+    * Dell T630 4* 2.5" PCIE U.2 nvme Backplane Expansion Hdd Cage kit WYNC0
+    * SSD NVMe PCIe EXTENDER EXPANSION CARD GY1TD
 * Ollama/gaming PC
   * Motherboard: Gigabyte X570 AORUS MASTER
     * CPU: AMD Ryzen 9 3900X (12 cores, 3.8 GHz)

@@ -38,6 +38,15 @@ http_file(
     url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazelisk-linux-amd64",
 )
 
+# GitHub Actions runner
+
+http_archive(
+    name = "runner",
+    build_file = "@home-ops//bazel/third_party:runner.bazel",
+    sha256 = "e8e24a3477da17040b4d6fa6d34c6ecb9a2879e800aa532518ec21e49e21d7b4",
+    url = "https://github.com/actions/runner/releases/download/v2.324.0/actions-runner-linux-x64-2.324.0.tar.gz",
+)
+
 # Skylib
 
 http_archive(
@@ -140,15 +149,6 @@ oci_pull(
     name = "distroless_base",
     digest = "sha256:27769871031f67460f1545a52dfacead6d18a9f197db77110cfc649ca2a91f44",
     image = "gcr.io/distroless/base",
-    platforms = [
-        "linux/amd64",
-    ],
-)
-
-oci_pull(
-    name = "actions_runner",
-    digest = "sha256:831a2607a2618e4b79d9323b4c72330f3861768a061c2b92a845e9d214d80e5b",
-    image = "ghcr.io/actions/actions-runner",
     platforms = [
         "linux/amd64",
     ],

@@ -1,0 +1,102 @@
+load("@aspect_bazel_lib//lib:tar.bzl", "tar")
+load("@rules_distroless//distroless:defs.bzl", "group", "home", "passwd")
+load(":variables.bzl", "MTIME", "NONROOT", "ROOT")
+
+package(default_visibility = ["//visibility:public"])
+
+tar(
+    name = "rootfs",
+    srcs = [],
+    args = [
+        "--format",
+        "gnutar",
+    ],
+    compress = "gzip",
+    mtree = ["./ type=dir uid=0 gid=0 time=0.0"],
+)
+
+tar(
+    name = "tmp",
+    srcs = [],
+    args = [
+        "--format",
+        "gnutar",
+    ],
+    compress = "gzip",
+    mtree = ["./tmp gname=root uname=root time=1501783453.0 mode=1777 gid=0 uid=0 type=dir"],
+)
+
+group(
+    name = "group",
+    entries = [
+        {
+            "name": "root",  # root_group
+            "gid": ROOT,
+            "password": "x",
+        },
+        {
+            "name": "tty",  # tty_group
+            "gid": 5,
+            "password": "x",
+        },
+        {
+            "name": "staff",  # staff_group
+            "gid": 50,
+            "password": "x",
+        },
+        {
+            "name": "nonroot",  # nonroot_group
+            "gid": NONROOT,
+            "password": "x",
+        },
+    ],
+    time = MTIME,
+)
+
+passwd(
+    name = "passwd",
+    entries = [
+        {
+            "gecos": ["root"],
+            "gid": ROOT,
+            "shell": "/sbin/nologin",
+            "home": "/root",
+            "uid": ROOT,
+            "password": "x",
+            "username": "root",
+        },
+        {
+            "gecos": ["nonroot"],
+            "gid": NONROOT,
+            "home": "/home/nonroot",
+            "shell": "/sbin/nologin",
+            "uid": NONROOT,
+            "password": "x",
+            "username": "nonroot",
+        },
+    ],
+)
+
+home(
+    name = "home",
+    dirs = [
+        {
+            "home": "/root",
+            "uid": ROOT,
+            "gid": ROOT,
+            "mode": 700,
+        },
+        {
+            "home": "/home",
+            "uid": ROOT,
+            "gid": ROOT,
+            "mode": 755,
+        },
+        {
+            "home": "/home/nonroot",
+            "uid": NONROOT,
+            "gid": NONROOT,
+            "mode": 700,
+        },
+    ],
+)
