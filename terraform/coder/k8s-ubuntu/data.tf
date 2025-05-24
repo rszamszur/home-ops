@@ -83,6 +83,14 @@ data "coder_parameter" "storage_class" {
     name  = "Proxmox hddexos pool"
     value = "pve-hddexos"
   }
+  option {
+    name  = "Proxmox nvme-pm963 pool"
+    value = "pve-nvme-pm963"
+  }
+  option {
+    name  = "Proxmox nvme-wd-blue pool"
+    value = "pve-nvme-wd-blue"
+  }
 }
 
 data "coder_parameter" "home_disk_size" {
