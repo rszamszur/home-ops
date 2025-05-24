@@ -26,8 +26,8 @@ spec:
         disk:
           data:
             enabled: true
-            size: 50Gi
-            storageClass: "iscsi"
+            size: 10Gi
+            storageClass: "pve-nvme-wd-blue"
             accessMode: ReadWriteOnce
         mysql:
           enabled: false

@@ -57,16 +57,16 @@ spec:
     spec:
       accessModes:
       - ReadWriteOnce
-      storageClassName: "iscsi"
+      storageClassName: "pve-nvme-wd-blue"
       resources:
         requests:
-          storage: 33Gi
+          storage: 50Gi
   - metadata:
       name: ac
     spec:
       accessModes:
       - ReadWriteOnce
-      storageClassName: "iscsi"
+      storageClassName: "pve-nvme-wd-blue"
       resources:
         requests:
-          storage: 1Gi
+          storage: 10Gi
