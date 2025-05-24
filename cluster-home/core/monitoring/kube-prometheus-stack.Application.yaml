@@ -32,11 +32,11 @@ spec:
             storage:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: "iscsi"
+                  storageClassName: "pve-nvme-wd-blue"
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
-                      storage: 50Gi
+                      storage: 10Gi
         grafana:
           ingress:
             ingressClassName: nginx
@@ -69,7 +69,7 @@ spec:
             storageSpec:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: "iscsi"
+                  storageClassName: "pve-nvme-wd-blue"
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
