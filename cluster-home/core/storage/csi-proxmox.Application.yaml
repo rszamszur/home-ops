@@ -23,6 +23,16 @@ spec:
             ssd: false
             reclaimPolicy: Delete
             fstype: ext4
+          - name: pve-nvme-pm963
+            storage: nvme-PM963
+            ssd: true
+            reclaimPolicy: Delete
+            fstype: ext4
+          - name: pve-nvme-wd-blue
+            storage: nvme-wd-blue
+            ssd: true
+            reclaimPolicy: Delete
+            fstype: ext4
         controller:
           provisioner:
             args:
