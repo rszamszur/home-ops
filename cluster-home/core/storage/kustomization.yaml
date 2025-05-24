@@ -11,8 +11,6 @@ resources:
 - csi-proxmox-backup-enable.VolumeAttributesClass.yaml
 - csi-proxmox.Namespace.yaml
 - csi-proxmox.Application.yaml
-- democratic-csi-iscsi.Namespace.yaml
-- democratic-csi-iscsi.Application.yaml
 # renovate: datasource=github-releases depName=pfnet-research/meta-fuse-csi-plugin
 - https://raw.githubusercontent.com/pfnet-research/meta-fuse-csi-plugin/v0.2.2/deploy/csi-driver-daemonset.yaml
 # renovate: datasource=github-releases depName=pfnet-research/meta-fuse-csi-plugin

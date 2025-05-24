@@ -72,13 +72,9 @@ data "coder_parameter" "storage_class" {
   name         = "storage_class"
   display_name = "StorageClass name"
   description  = "The name of the storage class to use when creating the PVC's."
-  default      = "iscsi"
+  default      = "pve-hddexos"
   icon         = "/emojis/1f4be.png"
   mutable      = false
-  option {
-    name  = "TrueNAS iscsi"
-    value = "iscsi"
-  }
   option {
     name  = "Proxmox hddexos pool"
     value = "pve-hddexos"
