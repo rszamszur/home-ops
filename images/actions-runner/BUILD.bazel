@@ -19,6 +19,7 @@ PACKAGES = [
     "@ubuntu_jammy//sed",
     "@ubuntu_jammy//curl",
     "@ubuntu_jammy//tar",
+    "@ubuntu_jammy//gzip",
     "@ubuntu_jammy//xz-utils",
     "@ubuntu_jammy//sudo",
     "@ubuntu_jammy//lsb-release",
