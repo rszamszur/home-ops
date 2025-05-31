@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       coder: ${{ steps.filter.outputs.coder }}
+      images: ${{ steps.filter.outputs.images }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
@@ -17,7 +18,15 @@ jobs:
         with:
           filters: |
             coder:
+              - ".github/workflows/publish.yaml"
               - "terraform/coder/**"
+            images:
+              - ".github/workflows/publish.yaml"
+              - "images/**"
+              - "bazel/**"
+              - "WORKSPACE"
+              - ".bazelrc"
+              - ".bazelversion"
   coder:
     needs: pre_job
     if: ${{ needs.pre_job.outputs.coder == 'true' }}
@@ -34,6 +43,8 @@ jobs:
       - name: Upload templates
         run: bazel run //terraform/coder/${{ matrix.template }}:coder.publish
   image:
+    needs: pre_job
+    if: ${{ needs.pre_job.outputs.images == 'true' }}
     name: Publish image
     runs-on: pve-talos
     strategy:
