@@ -40,18 +40,26 @@ spec:
           spec:
             # initContainers:
             #   - name: kube-init
-            #     image: ghcr.io/rszamszur/actions-runner:latest
+            #     image: harbor.puqu.io/rszamszur/actions-runner:latest
             #     command: ["sudo", "chown", "-R", "1001:123", "/home/runner/_work"]
             #     volumeMounts:
             #       - name: work
             #         mountPath: /home/runner/_work
             containers:
               - name: runner
-                image: ghcr.io/rszamszur/actions-runner:latest
+                image: harbor.puqu.io/rszamszur/actions-runner:latest
                 command: ["/home/runner/run.sh"]
                 env:
                   - name: ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER
                     value: "false"
+                volumeMounts:
+                  - name: docker-auth
+                    mountPath: "/home/runner/.docker"
+                    readOnly: true
+            volumes:
+              - name: docker-auth
+                secret:
+                  secretName: docker-auth
   syncPolicy:
     automated:
       prune: false
