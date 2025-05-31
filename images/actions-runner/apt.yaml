@@ -35,6 +35,7 @@ packages:
   - "git"
   - "curl"
   - "gawk"
+  - "sed"
   - "xz-utils"
   - "sudo"
   - "lsb-release"
