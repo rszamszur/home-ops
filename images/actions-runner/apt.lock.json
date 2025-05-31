@@ -1468,6 +1468,36 @@
 			"arch": "amd64",
 			"dependencies": [
 				{
+					"key": "libc6_2.35-0ubuntu3.8_amd64",
+					"name": "libc6",
+					"version": "2.35-0ubuntu3.8"
+				},
+				{
+					"key": "libcrypt1_1-4.4.27-1_amd64",
+					"name": "libcrypt1",
+					"version": "1:4.4.27-1"
+				},
+				{
+					"key": "libgcc-s1_12.3.0-1ubuntu1_22.04_amd64",
+					"name": "libgcc-s1",
+					"version": "12.3.0-1ubuntu1~22.04"
+				},
+				{
+					"key": "gcc-12-base_12.3.0-1ubuntu1_22.04_amd64",
+					"name": "gcc-12-base",
+					"version": "12.3.0-1ubuntu1~22.04"
+				}
+			],
+			"key": "gzip_1.10-4ubuntu4.1_amd64",
+			"name": "gzip",
+			"sha256": "7f1bbc6e8db8549417c9438b10f4db06c5aebfaa5be9b3d13e7ebff2de2a9d9d",
+			"url": "https://snapshot.ubuntu.com/ubuntu/20240901T030400Z/pool/main/g/gzip/gzip_1.10-4ubuntu4.1_amd64.deb",
+			"version": "1.10-4ubuntu4.1"
+		},
+		{
+			"arch": "amd64",
+			"dependencies": [
+				{
 					"key": "libsigsegv2_2.13-1ubuntu3_amd64",
 					"name": "libsigsegv2",
 					"version": "2.13-1ubuntu3"
