@@ -34,6 +34,7 @@ packages:
   - "gcc"
   - "git"
   - "curl"
+  - "tar"
   - "gawk"
   - "sed"
   - "xz-utils"
