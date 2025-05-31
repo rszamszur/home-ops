@@ -1639,6 +1639,46 @@
 			"arch": "amd64",
 			"dependencies": [
 				{
+					"key": "libselinux1_3.3-1build2_amd64",
+					"name": "libselinux1",
+					"version": "3.3-1build2"
+				},
+				{
+					"key": "libpcre2-8-0_10.39-3ubuntu0.1_amd64",
+					"name": "libpcre2-8-0",
+					"version": "10.39-3ubuntu0.1"
+				},
+				{
+					"key": "libc6_2.35-0ubuntu3.8_amd64",
+					"name": "libc6",
+					"version": "2.35-0ubuntu3.8"
+				},
+				{
+					"key": "libcrypt1_1-4.4.27-1_amd64",
+					"name": "libcrypt1",
+					"version": "1:4.4.27-1"
+				},
+				{
+					"key": "libgcc-s1_12.3.0-1ubuntu1_22.04_amd64",
+					"name": "libgcc-s1",
+					"version": "12.3.0-1ubuntu1~22.04"
+				},
+				{
+					"key": "gcc-12-base_12.3.0-1ubuntu1_22.04_amd64",
+					"name": "gcc-12-base",
+					"version": "12.3.0-1ubuntu1~22.04"
+				}
+			],
+			"key": "findutils_4.8.0-1ubuntu3_amd64",
+			"name": "findutils",
+			"sha256": "36b82c9455c45b4f1b88d07bdf30a1b62a4ad6164595b55254c0def2265ff4d6",
+			"url": "https://snapshot.ubuntu.com/ubuntu/20240901T030400Z/pool/main/f/findutils/findutils_4.8.0-1ubuntu3_amd64.deb",
+			"version": "4.8.0-1ubuntu3"
+		},
+		{
+			"arch": "amd64",
+			"dependencies": [
+				{
 					"key": "liblzma5_5.2.5-2ubuntu1_amd64",
 					"name": "liblzma5",
 					"version": "5.2.5-2ubuntu1"

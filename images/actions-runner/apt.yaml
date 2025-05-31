@@ -38,6 +38,7 @@ packages:
   - "gzip"
   - "gawk"
   - "sed"
+  - "findutils"
   - "xz-utils"
   - "sudo"
   - "lsb-release"

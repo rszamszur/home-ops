@@ -17,6 +17,7 @@ PACKAGES = [
     "@ubuntu_jammy//git",
     "@ubuntu_jammy//gawk",
     "@ubuntu_jammy//sed",
+    "@ubuntu_jammy//findutils",
     "@ubuntu_jammy//curl",
     "@ubuntu_jammy//tar",
     "@ubuntu_jammy//gzip",
