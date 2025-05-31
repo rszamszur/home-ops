@@ -33,3 +33,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Upload templates
         run: bazel run //terraform/coder/${{ matrix.template }}:coder.publish
+  image:
+    name: Publish image
+    runs-on: pve-talos
+    strategy:
+      matrix:
+        image: ["actions-runner"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push image
+        run: bazel run //images/${{ matrix.image }}:image.push
