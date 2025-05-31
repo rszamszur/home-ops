@@ -206,7 +206,7 @@ oci_image(
 )
 
 oci_push(
-    name = "push_image",
+    name = "image.push",
     image = ":image",
     remote_tags = ["latest"],
     repository = "harbor.puqu.io/rszamszur/actions-runner",
