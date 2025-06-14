@@ -97,9 +97,9 @@ file_repositories()
 
 http_archive(
     name = "aspect_bazel_lib",
-    sha256 = "8eb77bd902814bb1a0feb26f5ba5f7444ac18c55359845f5aee30f82f1599a6e",
-    strip_prefix = "bazel-lib-2.19.2",
-    url = "https://github.com/bazel-contrib/bazel-lib/releases/download/v2.19.2/bazel-lib-v2.19.2.tar.gz",
+    sha256 = "db7da732db4dece80cd6d368220930950c9306ff356ebba46498fe64e65a3945",
+    strip_prefix = "bazel-lib-2.19.3",
+    url = "https://github.com/bazel-contrib/bazel-lib/releases/download/v2.19.3/bazel-lib-v2.19.3.tar.gz",
 )
 
 load("@aspect_bazel_lib//lib:repositories.bzl", "aspect_bazel_lib_dependencies", "aspect_bazel_lib_register_toolchains")
