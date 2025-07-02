@@ -37,44 +37,6 @@ dns_records = {
       target    = "v=DMARC1; p=quarantine"
     }
   ],
-  "mlipiec.pl" = [
-    {
-      fieldtype = "TXT"
-      target    = "protonmail-verification=34a8fa99d62e94d82147647ca5683392c5e71a9d"
-    },
-    {
-      fieldtype = "MX"
-      target    = "10 mail.protonmail.ch."
-    },
-    {
-      fieldtype = "MX"
-      target    = "20 mailsec.protonmail.ch."
-    },
-    {
-      fieldtype = "TXT"
-      target    = "v=spf1 include:_spf.protonmail.ch ~all"
-    },
-    {
-      fieldtype = "CNAME"
-      subdomain = "protonmail._domainkey"
-      target    = "protonmail.domainkey.dnzfmeegtqt7bmahjveaekb6utn46n3i2rmnw7x34zcjb3ghz7vma.domains.proton.ch."
-    },
-    {
-      fieldtype = "CNAME"
-      subdomain = "protonmail2._domainkey"
-      target    = "protonmail2.domainkey.dnzfmeegtqt7bmahjveaekb6utn46n3i2rmnw7x34zcjb3ghz7vma.domains.proton.ch."
-    },
-    {
-      fieldtype = "CNAME"
-      subdomain = "protonmail3._domainkey"
-      target    = "protonmail3.domainkey.dnzfmeegtqt7bmahjveaekb6utn46n3i2rmnw7x34zcjb3ghz7vma.domains.proton.ch."
-    },
-    {
-      fieldtype = "TXT"
-      subdomain = "_dmarc"
-      target    = "v=DMARC1; p=quarantine"
-    }
-  ],
   "rsd.sh" = [
     {
       fieldtype = "TXT"
