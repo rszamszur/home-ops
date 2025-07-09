@@ -25,8 +25,8 @@ http_archive(
 http_archive(
     name = "coder",
     build_file = "@home-ops//bazel/third_party:coder.bazel",
-    sha256 = "50e0b34b2fa7ab7e0ab521f22484be9678463a930e232eee0af3ba4104b18157",
-    url = "https://github.com/coder/coder/releases/download/v2.23.1/coder_2.23.1_linux_amd64.tar.gz",
+    sha256 = "82a425c80d4bb566297811eea5b15314b0f42a61753fad4982ba240ada930e22",
+    url = "https://github.com/coder/coder/releases/download/v2.24.1/coder_2.24.1_linux_amd64.tar.gz",
 )
 
 # Bazelisk binary
