@@ -43,8 +43,8 @@ http_file(
 http_archive(
     name = "runner",
     build_file = "@home-ops//bazel/third_party:runner.bazel",
-    sha256 = "5020da7139d85c776059f351e0de8fdec753affc9c558e892472d43ebeb518f4",
-    url = "https://github.com/actions/runner/releases/download/v2.325.0/actions-runner-linux-x64-2.325.0.tar.gz",
+    sha256 = "9c74af9b4352bbc99aecc7353b47bcdfcd1b2a0f6d15af54a99f54a0c14a1de8",
+    url = "https://github.com/actions/runner/releases/download/v2.326.0/actions-runner-linux-x64-2.326.0.tar.gz",
 )
 
 # Skylib
