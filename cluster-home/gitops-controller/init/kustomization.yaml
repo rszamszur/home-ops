@@ -4,4 +4,4 @@ namespace: argocd
 
 resources:
 # renovate: datasource=github-releases depName=argoproj/argo-cd
-- https://raw.githubusercontent.com/argoproj/argo-cd/v3.0.11/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v3.0.12/manifests/install.yaml
