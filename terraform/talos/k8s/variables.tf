@@ -13,13 +13,13 @@ variable "cluster_endpoint" {
 variable "talos_version" {
   description = "The version of talos features to use in generated machine configuration"
   type        = string
-  default     = "1.10.0"
+  default     = "1.10.6"
 }
 
 variable "kubernetes_version" {
   description = "The version of kubernetes to use"
   type        = string
-  default     = "1.33.0"
+  default     = "1.33.3"
 }
 
 variable "node_data" {
