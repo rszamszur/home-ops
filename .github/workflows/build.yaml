@@ -18,7 +18,7 @@ jobs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
       build: ${{ steps.filter.outputs.build }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - id: skip_check
         uses: fkirc/skip-duplicate-actions@v5.3.1
         with:
@@ -45,7 +45,7 @@ jobs:
     runs-on: pve-talos
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Bazel Build
         run: |
           INVOCATION="$(cat /proc/sys/kernel/random/uuid)"
