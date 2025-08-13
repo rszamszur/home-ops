@@ -34,8 +34,8 @@ http_archive(
 http_file(
     name = "bazelisk",
     executable=True,
-    sha256 = "6539c12842ad76966f3d493e8f80d67caa84ec4a000e220d5459833c967c12bc",
-    url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazelisk-linux-amd64",
+    sha256 = "e1508323f347ad1465a887bc5d2bfb91cffc232d11e8e997b623227c6b32fb76",
+    url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.27.0/bazelisk-linux-amd64",
 )
 
 # GitHub Actions runner
