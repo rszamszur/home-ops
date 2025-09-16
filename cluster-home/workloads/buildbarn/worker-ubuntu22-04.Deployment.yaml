@@ -39,7 +39,7 @@ spec:
             fieldRef:
               fieldPath: metadata.name
       - command: [/bb/tini, -v, --, /bb/bb_runner, /config/runner-ubuntu22-04.jsonnet]
-        image: ghcr.io/catthehacker/ubuntu:act-22.04@sha256:8c196f1326178248b00f98659883d9c2e429aeb63e407a318cbf2155865fa141
+        image: ghcr.io/catthehacker/ubuntu:act-22.04@sha256:be81af292a67b26ff36d0d3fff90feb19ef031efba9be6fbbe8bf04fd5f7a320
         name: runner
         securityContext:
           runAsUser: 65534
