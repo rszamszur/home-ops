@@ -158,9 +158,9 @@ oci_pull(
 
 http_archive(
     name = "rules_distroless",
-    sha256 = "6d1d739617e48fc3579781e694d3fabb08fc6c9300510982c01882732c775b8e",
-    strip_prefix = "rules_distroless-0.3.8",
-    url = "https://github.com/GoogleContainerTools/rules_distroless/releases/download/v0.3.8/rules_distroless-v0.3.8.tar.gz",
+    sha256 = "38a64e819ba3209d01254b79ba70f5e996c53ba6b5e65fe20c9d2b5361391a69",
+    strip_prefix = "rules_distroless-0.5.3",
+    url = "https://github.com/GoogleContainerTools/rules_distroless/releases/download/v0.5.3/rules_distroless-v0.5.3.tar.gz",
 )
 
 load("@rules_distroless//distroless:dependencies.bzl", "distroless_dependencies")
