@@ -40,7 +40,7 @@ variable "puqu_users" {
       username = "suwara"
       first_name = "Michal"
       last_name = "Suwara"
-      email = "suwara.michal+proxmox@asml.com"
+      email = "michal.suwara+proxmox@protonmail.com"
     },
     konrad = {
       username = "konrad"
