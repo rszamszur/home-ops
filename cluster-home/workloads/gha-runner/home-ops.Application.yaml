@@ -9,7 +9,7 @@ spec:
   - repoURL: ghcr.io/actions/actions-runner-controller-charts
     chart: gha-runner-scale-set
     # renovate: datasource=helm depName=gha-runner-scale-set repository=oci://ghcr.io/actions/actions-runner-controller-charts
-    targetRevision: 0.10.1
+    targetRevision: 0.12.1
     helm:
       version: v3
       values: |-
