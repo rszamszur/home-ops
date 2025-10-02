@@ -9,7 +9,7 @@ spec:
     repoURL: https://helm.coder.com/v2
     chart: coder
     # renovate: datasource=helm depName=coder repository=https://helm.coder.com/v2
-    targetRevision: 2.26.0
+    targetRevision: 2.26.1
     helm:
       version: v3
       values: |-
