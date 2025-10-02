@@ -13,7 +13,7 @@ spec:
     helm:
       version: v3
       values: |
-        configVersion: 0.0.1
+        configVersion: 0.0.2
         groupName: acme.szamszur.cloud
         issuers:
           - name: letsencrypt
@@ -23,6 +23,7 @@ spec:
             acmeServerUrl: https://acme-v02.api.letsencrypt.org/directory
             email: acme@szamszur.cloud
             ovhEndpointName: ovh-eu
+            ovhAuthenticationMethod: application
             ovhAuthenticationRef:
               applicationKeyRef:
                 name: ovh-credentials
@@ -30,7 +31,7 @@ spec:
               applicationSecretRef:
                 name: ovh-credentials
                 key: applicationSecret
-              consumerKeyRef:
+              applicationConsumerKeyRef:
                 name: ovh-credentials
                 key: consumerKey
   syncPolicy:
