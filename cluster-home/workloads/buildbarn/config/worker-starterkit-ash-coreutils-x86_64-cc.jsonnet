@@ -22,7 +22,7 @@ local common = import 'common.libsonnet';
       platform: {
         properties: [
           { name: 'OSFamily', value: 'Linux' },
-          { name: 'container-image', value: 'docker://harbor.apps.morrigna.rules-nix.build/explore-bzl/ash-coreutils-x86_64-cc:vx92wppgyknsyyd4k80i58hb362wkpsc' },
+          { name: 'container-image', value: 'docker://harbor.puqu.io/starterkit/ash-coreutils-x86_64-cc:kc209hp20raqvsv62prkdn9rfd1vh2fd' },
         ],
       },
       workerId: {

@@ -39,7 +39,7 @@ spec:
             fieldRef:
               fieldPath: metadata.name
       - command: [/bb/tini, -v, --, /bb/bb_runner, /config/runner-starterkit-ash.jsonnet]
-        image: harbor.apps.morrigna.rules-nix.build/explore-bzl/ash:5mfaxwh59bw9g7747j33v4psf2g604vl
+        image: harbor.puqu.io/starterkit/ash:fd20kbbbywiih422ki32lwh6nkfnfgl7
         name: runner
         securityContext:
           runAsUser: 65534
