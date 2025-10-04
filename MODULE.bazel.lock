@@ -1,5 +1,5 @@
 {
-  "lockFileVersion": 13,
+  "lockFileVersion": 18,
   "registryFileHashes": {
     "https://bcr.bazel.build/bazel_registry.json": "8a28e4aff06ee60aed2a8c281907fb8bcbf3b753c91fb5a5c57da3215d5b3497",
     "https://bcr.bazel.build/modules/abseil-cpp/20210324.2/MODULE.bazel": "7cd0312e064fde87c8d1cd79ba06c876bd23630c83466e9500321be55c96ace2",
@@ -10,8 +10,6 @@
     "https://bcr.bazel.build/modules/abseil-cpp/20230802.1/MODULE.bazel": "fa92e2eb41a04df73cdabeec37107316f7e5272650f81d6cc096418fe647b915",
     "https://bcr.bazel.build/modules/abseil-cpp/20240116.1/MODULE.bazel": "37bcdb4440fbb61df6a1c296ae01b327f19e9bb521f9b8e26ec854b6f97309ed",
     "https://bcr.bazel.build/modules/abseil-cpp/20240116.1/source.json": "9be551b8d4e3ef76875c0d744b5d6a504a27e3ae67bc6b28f46415fd2d2957da",
-    "https://bcr.bazel.build/modules/apple_support/1.5.0/MODULE.bazel": "50341a62efbc483e8a2a6aec30994a58749bd7b885e18dd96aa8c33031e558ef",
-    "https://bcr.bazel.build/modules/apple_support/1.5.0/source.json": "eb98a7627c0bc486b57f598ad8da50f6625d974c8f723e9ea71bd39f709c9862",
     "https://bcr.bazel.build/modules/aspect_bazel_lib/2.14.0/MODULE.bazel": "2b31ffcc9bdc8295b2167e07a757dbbc9ac8906e7028e5170a3708cecaac119f",
     "https://bcr.bazel.build/modules/aspect_bazel_lib/2.19.3/MODULE.bazel": "253d739ba126f62a5767d832765b12b59e9f8d2bc88cc1572f4a73e46eb298ca",
     "https://bcr.bazel.build/modules/aspect_bazel_lib/2.21.2/MODULE.bazel": "276347663a25b0d5bd6cad869252bea3e160c4d980e764b15f3bae7f80b30624",
@@ -27,9 +25,11 @@
     "https://bcr.bazel.build/modules/bazel_features/1.19.0/MODULE.bazel": "59adcdf28230d220f0067b1f435b8537dd033bfff8db21335ef9217919c7fb58",
     "https://bcr.bazel.build/modules/bazel_features/1.20.0/MODULE.bazel": "8b85300b9c8594752e0721a37210e34879d23adc219ed9dc8f4104a4a1750920",
     "https://bcr.bazel.build/modules/bazel_features/1.21.0/MODULE.bazel": "675642261665d8eea09989aa3b8afb5c37627f1be178382c320d1b46afba5e3b",
-    "https://bcr.bazel.build/modules/bazel_features/1.21.0/source.json": "3e8379efaaef53ce35b7b8ba419df829315a880cb0a030e5bb45c96d6d5ecb5f",
+    "https://bcr.bazel.build/modules/bazel_features/1.30.0/MODULE.bazel": "a14b62d05969a293b80257e72e597c2da7f717e1e69fa8b339703ed6731bec87",
+    "https://bcr.bazel.build/modules/bazel_features/1.30.0/source.json": "b07e17f067fe4f69f90b03b36ef1e08fe0d1f3cac254c1241a1818773e3423bc",
     "https://bcr.bazel.build/modules/bazel_features/1.4.1/MODULE.bazel": "e45b6bb2350aff3e442ae1111c555e27eac1d915e77775f6fdc4b351b758b5d7",
     "https://bcr.bazel.build/modules/bazel_features/1.9.0/MODULE.bazel": "885151d58d90d8d9c811eb75e3288c11f850e1d6b481a8c9f766adee4712358b",
+    "https://bcr.bazel.build/modules/bazel_features/1.9.1/MODULE.bazel": "8f679097876a9b609ad1f60249c49d68bfab783dd9be012faf9d82547b14815a",
     "https://bcr.bazel.build/modules/bazel_skylib/1.0.3/MODULE.bazel": "bcb0fd896384802d1ad283b4e4eb4d718eebd8cb820b0a2c3a347fb971afd9d8",
     "https://bcr.bazel.build/modules/bazel_skylib/1.1.1/MODULE.bazel": "1add3e7d93ff2e6998f9e118022c84d163917d912f5afafb3058e3d2f1545b5e",
     "https://bcr.bazel.build/modules/bazel_skylib/1.2.0/MODULE.bazel": "44fe84260e454ed94ad326352a698422dbe372b21a1ac9f3eab76eb531223686",
@@ -62,21 +62,21 @@
     "https://bcr.bazel.build/modules/package_metadata/0.0.2/source.json": "e53a759a72488d2c0576f57491ef2da0cf4aab05ac0997314012495935531b73",
     "https://bcr.bazel.build/modules/platforms/0.0.10/MODULE.bazel": "8cb8efaf200bdeb2150d93e162c40f388529a25852b332cec879373771e48ed5",
     "https://bcr.bazel.build/modules/platforms/0.0.11/MODULE.bazel": "0daefc49732e227caa8bfa834d65dc52e8cc18a2faf80df25e8caea151a9413f",
-    "https://bcr.bazel.build/modules/platforms/0.0.11/source.json": "f7e188b79ebedebfe75e9e1d098b8845226c7992b307e28e1496f23112e8fc29",
     "https://bcr.bazel.build/modules/platforms/0.0.4/MODULE.bazel": "9b328e31ee156f53f3c416a64f8491f7eb731742655a47c9eec4703a71644aee",
     "https://bcr.bazel.build/modules/platforms/0.0.5/MODULE.bazel": "5733b54ea419d5eaf7997054bb55f6a1d0b5ff8aedf0176fef9eea44f3acda37",
     "https://bcr.bazel.build/modules/platforms/0.0.6/MODULE.bazel": "ad6eeef431dc52aefd2d77ed20a4b353f8ebf0f4ecdd26a807d2da5aa8cd0615",
     "https://bcr.bazel.build/modules/platforms/0.0.7/MODULE.bazel": "72fd4a0ede9ee5c021f6a8dd92b503e089f46c227ba2813ff183b71616034814",
     "https://bcr.bazel.build/modules/platforms/0.0.8/MODULE.bazel": "9f142c03e348f6d263719f5074b21ef3adf0b139ee4c5133e2aa35664da9eb2d",
-    "https://bcr.bazel.build/modules/platforms/0.0.9/MODULE.bazel": "4a87a60c927b56ddd67db50c89acaa62f4ce2a1d2149ccb63ffd871d5ce29ebc",
+    "https://bcr.bazel.build/modules/platforms/1.0.0/MODULE.bazel": "f05feb42b48f1b3c225e4ccf351f367be0371411a803198ec34a389fb22aa580",
+    "https://bcr.bazel.build/modules/platforms/1.0.0/source.json": "f4ff1fd412e0246fd38c82328eb209130ead81d62dcd5a9e40910f867f733d96",
     "https://bcr.bazel.build/modules/protobuf/21.7/MODULE.bazel": "a5a29bb89544f9b97edce05642fac225a808b5b7be74038ea3640fae2f8e66a7",
     "https://bcr.bazel.build/modules/protobuf/27.0/MODULE.bazel": "7873b60be88844a0a1d8f80b9d5d20cfbd8495a689b8763e76c6372998d3f64c",
     "https://bcr.bazel.build/modules/protobuf/27.1/MODULE.bazel": "703a7b614728bb06647f965264967a8ef1c39e09e8f167b3ca0bb1fd80449c0d",
     "https://bcr.bazel.build/modules/protobuf/29.0-rc2/MODULE.bazel": "6241d35983510143049943fc0d57937937122baf1b287862f9dc8590fc4c37df",
     "https://bcr.bazel.build/modules/protobuf/29.0-rc3/MODULE.bazel": "33c2dfa286578573afc55a7acaea3cada4122b9631007c594bf0729f41c8de92",
-    "https://bcr.bazel.build/modules/protobuf/29.0-rc3/source.json": "c16a6488fb279ef578da7098e605082d72ed85fc8d843eaae81e7d27d0f4625d",
+    "https://bcr.bazel.build/modules/protobuf/29.0/MODULE.bazel": "319dc8bf4c679ff87e71b1ccfb5a6e90a6dbc4693501d471f48662ac46d04e4e",
+    "https://bcr.bazel.build/modules/protobuf/29.0/source.json": "b857f93c796750eef95f0d61ee378f3420d00ee1dd38627b27193aa482f4f981",
     "https://bcr.bazel.build/modules/protobuf/3.19.0/MODULE.bazel": "6b5fbb433f760a99a22b18b6850ed5784ef0e9928a72668b66e4d7ccd47db9b0",
-    "https://bcr.bazel.build/modules/protobuf/3.19.6/MODULE.bazel": "9233edc5e1f2ee276a60de3eaa47ac4132302ef9643238f23128fea53ea12858",
     "https://bcr.bazel.build/modules/pybind11_bazel/2.11.1/MODULE.bazel": "88af1c246226d87e65be78ed49ecd1e6f5e98648558c14ce99176da041dc378e",
     "https://bcr.bazel.build/modules/pybind11_bazel/2.11.1/source.json": "be4789e951dd5301282729fe3d4938995dc4c1a81c2ff150afc9f1b0504c6022",
     "https://bcr.bazel.build/modules/re2/2023-09-01/MODULE.bazel": "cb3d511531b16cfc78a225a9e2136007a48cf8a677e4264baeab57fe78a80206",
@@ -86,6 +86,7 @@
     "https://bcr.bazel.build/modules/rules_cc/0.0.1/MODULE.bazel": "cb2aa0747f84c6c3a78dad4e2049c154f08ab9d166b1273835a8174940365647",
     "https://bcr.bazel.build/modules/rules_cc/0.0.10/MODULE.bazel": "ec1705118f7eaedd6e118508d3d26deba2a4e76476ada7e0e3965211be012002",
     "https://bcr.bazel.build/modules/rules_cc/0.0.13/MODULE.bazel": "0e8529ed7b323dad0775ff924d2ae5af7640b23553dfcd4d34344c7e7a867191",
+    "https://bcr.bazel.build/modules/rules_cc/0.0.14/MODULE.bazel": "5e343a3aac88b8d7af3b1b6d2093b55c347b8eefc2e7d1442f7a02dc8fea48ac",
     "https://bcr.bazel.build/modules/rules_cc/0.0.15/MODULE.bazel": "6704c35f7b4a72502ee81f61bf88706b54f06b3cbe5558ac17e2e14666cd5dcc",
     "https://bcr.bazel.build/modules/rules_cc/0.0.16/MODULE.bazel": "7661303b8fc1b4d7f532e54e9d6565771fea666fbdf839e0a86affcd02defe87",
     "https://bcr.bazel.build/modules/rules_cc/0.0.2/MODULE.bazel": "6915987c90970493ab97393024c156ea8fb9f3bea953b2f3ec05c34f19b5695c",
@@ -110,11 +111,11 @@
     "https://bcr.bazel.build/modules/rules_java/7.2.0/MODULE.bazel": "06c0334c9be61e6cef2c8c84a7800cef502063269a5af25ceb100b192453d4ab",
     "https://bcr.bazel.build/modules/rules_java/7.3.2/MODULE.bazel": "50dece891cfdf1741ea230d001aa9c14398062f2b7c066470accace78e412bc2",
     "https://bcr.bazel.build/modules/rules_java/7.6.1/MODULE.bazel": "2f14b7e8a1aa2f67ae92bc69d1ec0fa8d9f827c4e17ff5e5f02e91caa3b2d0fe",
-    "https://bcr.bazel.build/modules/rules_java/7.6.5/MODULE.bazel": "481164be5e02e4cab6e77a36927683263be56b7e36fef918b458d7a8a1ebadb1",
+    "https://bcr.bazel.build/modules/rules_java/8.14.0/MODULE.bazel": "717717ed40cc69994596a45aec6ea78135ea434b8402fb91b009b9151dd65615",
+    "https://bcr.bazel.build/modules/rules_java/8.14.0/source.json": "8a88c4ca9e8759da53cddc88123880565c520503321e2566b4e33d0287a3d4bc",
     "https://bcr.bazel.build/modules/rules_java/8.3.2/MODULE.bazel": "7336d5511ad5af0b8615fdc7477535a2e4e723a357b6713af439fe8cf0195017",
     "https://bcr.bazel.build/modules/rules_java/8.5.1/MODULE.bazel": "d8a9e38cc5228881f7055a6079f6f7821a073df3744d441978e7a43e20226939",
     "https://bcr.bazel.build/modules/rules_java/8.8.0/MODULE.bazel": "de589d0880911ac007abd521b9f0ddcd8b0dbd05c8553e6f8124a050b83acf7d",
-    "https://bcr.bazel.build/modules/rules_java/8.8.0/source.json": "63c0c14a917082cddc3956eedbf2098410651e75fc7d29aa3e732c30a0099458",
     "https://bcr.bazel.build/modules/rules_jvm_external/4.4.2/MODULE.bazel": "a56b85e418c83eb1839819f0b515c431010160383306d13ec21959ac412d2fe7",
     "https://bcr.bazel.build/modules/rules_jvm_external/5.1/MODULE.bazel": "33f6f999e03183f7d088c9be518a63467dfd0be94a11d0055fe2d210f89aa909",
     "https://bcr.bazel.build/modules/rules_jvm_external/5.2/MODULE.bazel": "d9351ba35217ad0de03816ef3ed63f89d411349353077348a45348b096615036",
@@ -141,12 +142,12 @@
     "https://bcr.bazel.build/modules/rules_proto/7.0.2/MODULE.bazel": "bf81793bd6d2ad89a37a40693e56c61b0ee30f7a7fdbaf3eabbf5f39de47dea2",
     "https://bcr.bazel.build/modules/rules_proto/7.0.2/source.json": "1e5e7260ae32ef4f2b52fd1d0de8d03b606a44c91b694d2f1afb1d3b28a48ce1",
     "https://bcr.bazel.build/modules/rules_python/0.10.2/MODULE.bazel": "cc82bc96f2997baa545ab3ce73f196d040ffb8756fd2d66125a530031cd90e5f",
-    "https://bcr.bazel.build/modules/rules_python/0.22.1/MODULE.bazel": "26114f0c0b5e93018c0c066d6673f1a2c3737c7e90af95eff30cfee38d0bbac7",
     "https://bcr.bazel.build/modules/rules_python/0.23.1/MODULE.bazel": "49ffccf0511cb8414de28321f5fcf2a31312b47c40cc21577144b7447f2bf300",
     "https://bcr.bazel.build/modules/rules_python/0.25.0/MODULE.bazel": "72f1506841c920a1afec76975b35312410eea3aa7b63267436bfb1dd91d2d382",
     "https://bcr.bazel.build/modules/rules_python/0.28.0/MODULE.bazel": "cba2573d870babc976664a912539b320cbaa7114cd3e8f053c720171cde331ed",
     "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel": "93a43dc47ee570e6ec9f5779b2e64c1476a6ce921c48cc9a1678a91dd5f8fd58",
     "https://bcr.bazel.build/modules/rules_python/0.4.0/MODULE.bazel": "9208ee05fd48bf09ac60ed269791cf17fb343db56c8226a720fbb1cdf467166c",
+    "https://bcr.bazel.build/modules/rules_python/0.40.0/MODULE.bazel": "9d1a3cd88ed7d8e39583d9ffe56ae8a244f67783ae89b60caafc9f5cf318ada7",
     "https://bcr.bazel.build/modules/rules_python/1.0.0/MODULE.bazel": "898a3d999c22caa585eb062b600f88654bf92efb204fa346fb55f6f8edffca43",
     "https://bcr.bazel.build/modules/rules_python/1.0.0/source.json": "b0162a65c6312e45e7912e39abd1a7f8856c2c7e41ecc9b6dc688a6f6400a917",
     "https://bcr.bazel.build/modules/rules_shell/0.2.0/MODULE.bazel": "fda8a652ab3c7d8fee214de05e7a9916d8b28082234e8d2c0094505c5268ed3c",
@@ -168,52 +169,22 @@
     "https://bcr.bazel.build/modules/yq.bzl/0.1.1/MODULE.bazel": "9039681f9bcb8958ee2c87ffc74bdafba9f4369096a2b5634b88abc0eaefa072",
     "https://bcr.bazel.build/modules/yq.bzl/0.1.1/source.json": "2d2bad780a9f2b9195a4a370314d2c17ae95eaa745cefc2e12fbc49759b15aa3",
     "https://bcr.bazel.build/modules/zlib/1.2.11/MODULE.bazel": "07b389abc85fdbca459b69e2ec656ae5622873af3f845e1c9d80fe179f3effa0",
-    "https://bcr.bazel.build/modules/zlib/1.2.12/MODULE.bazel": "3b1a8834ada2a883674be8cbd36ede1b6ec481477ada359cd2d3ddc562340b27",
-    "https://bcr.bazel.build/modules/zlib/1.3.1.bcr.3/MODULE.bazel": "af322bc08976524477c79d1e45e241b6efbeb918c497e8840b8ab116802dda79",
-    "https://bcr.bazel.build/modules/zlib/1.3.1.bcr.3/source.json": "2be409ac3c7601245958cd4fcdff4288be79ed23bd690b4b951f500d54ee6e7d",
+    "https://bcr.bazel.build/modules/zlib/1.3.1.bcr.5/MODULE.bazel": "eec517b5bbe5492629466e11dae908d043364302283de25581e3eb944326c4ca",
+    "https://bcr.bazel.build/modules/zlib/1.3.1.bcr.5/source.json": "22bc55c47af97246cfc093d0acf683a7869377de362b5d1c552c2c2e16b7a806",
     "https://bcr.bazel.build/modules/zlib/1.3.1/MODULE.bazel": "751c9940dcfe869f5f7274e1295422a34623555916eb98c174c1e945594bf198"
   },
   "selectedYankedVersions": {},
   "moduleExtensions": {
-    "@@apple_support~//crosstool:setup.bzl%apple_cc_configure_extension": {
+    "@@rules_kotlin+//src/main/starlark/core/repositories:bzlmod_setup.bzl%rules_kotlin_extensions": {
       "general": {
-        "bzlTransitiveDigest": "PjIds3feoYE8SGbbIq2SFTZy3zmxeO2tQevJZNDo7iY=",
-        "usagesDigest": "+hz7IHWN6A1oVJJWNDB6yZRG+RYhF76wAYItpAeIUIg=",
-        "recordedFileInputs": {},
-        "recordedDirentsInputs": {},
-        "envVariables": {},
-        "generatedRepoSpecs": {
-          "local_config_apple_cc_toolchains": {
-            "bzlFile": "@@apple_support~//crosstool:setup.bzl",
-            "ruleClassName": "_apple_cc_autoconf_toolchains",
-            "attributes": {}
-          },
-          "local_config_apple_cc": {
-            "bzlFile": "@@apple_support~//crosstool:setup.bzl",
-            "ruleClassName": "_apple_cc_autoconf",
-            "attributes": {}
-          }
-        },
-        "recordedRepoMappingEntries": [
-          [
-            "apple_support~",
-            "bazel_tools",
-            "bazel_tools"
-          ]
-        ]
-      }
-    },
-    "@@rules_kotlin~//src/main/starlark/core/repositories:bzlmod_setup.bzl%rules_kotlin_extensions": {
-      "general": {
-        "bzlTransitiveDigest": "fus14IFJ/1LGWWGKPH/U18VnJCoMjfDt1ckahqCnM0A=",
-        "usagesDigest": "aJF6fLy82rR95Ff5CZPAqxNoFgOMLMN5ImfBS0nhnkg=",
+        "bzlTransitiveDigest": "OlvsB0HsvxbR8ZN+J9Vf00X/+WVz/Y/5Xrq2LgcVfdo=",
+        "usagesDigest": "QI2z8ZUR+mqtbwsf2fLqYdJAkPOHdOV+tF2yVAUgRzw=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
         "generatedRepoSpecs": {
           "com_github_jetbrains_kotlin_git": {
-            "bzlFile": "@@rules_kotlin~//src/main/starlark/core/repositories:compiler.bzl",
-            "ruleClassName": "kotlin_compiler_git_repository",
+            "repoRuleId": "@@rules_kotlin+//src/main/starlark/core/repositories:compiler.bzl%kotlin_compiler_git_repository",
             "attributes": {
               "urls": [
                 "https://github.com/JetBrains/kotlin/releases/download/v1.9.23/kotlin-compiler-1.9.23.zip"
@@ -222,16 +193,14 @@
             }
           },
           "com_github_jetbrains_kotlin": {
-            "bzlFile": "@@rules_kotlin~//src/main/starlark/core/repositories:compiler.bzl",
-            "ruleClassName": "kotlin_capabilities_repository",
+            "repoRuleId": "@@rules_kotlin+//src/main/starlark/core/repositories:compiler.bzl%kotlin_capabilities_repository",
             "attributes": {
               "git_repository_name": "com_github_jetbrains_kotlin_git",
               "compiler_version": "1.9.23"
             }
           },
           "com_github_google_ksp": {
-            "bzlFile": "@@rules_kotlin~//src/main/starlark/core/repositories:ksp.bzl",
-            "ruleClassName": "ksp_compiler_plugin_repository",
+            "repoRuleId": "@@rules_kotlin+//src/main/starlark/core/repositories:ksp.bzl%ksp_compiler_plugin_repository",
             "attributes": {
               "urls": [
                 "https://github.com/google/ksp/releases/download/1.9.23-1.0.20/artifacts.zip"
@@ -241,8 +210,7 @@
             }
           },
           "com_github_pinterest_ktlint": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_file",
+            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_file",
             "attributes": {
               "sha256": "01b2e0ef893383a50dbeb13970fe7fa3be36ca3e83259e01649945b09d736985",
               "urls": [
@@ -252,8 +220,7 @@
             }
           },
           "rules_android": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
+            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
             "attributes": {
               "sha256": "cd06d15dd8bb59926e4d65f9003bfc20f9da4b2519985c27e190cddc8b7a7806",
               "strip_prefix": "rules_android-0.1.1",
@@ -265,24 +232,23 @@
         },
         "recordedRepoMappingEntries": [
           [
-            "rules_kotlin~",
+            "rules_kotlin+",
             "bazel_tools",
             "bazel_tools"
           ]
         ]
       }
     },
-    "@@rules_oci~//oci:extensions.bzl%oci": {
+    "@@rules_oci+//oci:extensions.bzl%oci": {
       "general": {
-        "bzlTransitiveDigest": "WhsIo4s4VFq9NiC0VparY9GjiQ1ZsO0HZIThH3EJKSw=",
-        "usagesDigest": "bAVBE4KgKRyxKJKoJCyEGoUgtccXgQRo0cBi+zEQfnY=",
+        "bzlTransitiveDigest": "UG6/u9Dl5qNozcG8E6ehAcOG2nhh8rw191ishRnBR24=",
+        "usagesDigest": "VEfW9hK6hXnkqjq7DV7mOdApATzfT7iAUQZK/CfvZGM=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
         "generatedRepoSpecs": {
           "distroless_base_linux_amd64": {
-            "bzlFile": "@@rules_oci~//oci/private:pull.bzl",
-            "ruleClassName": "oci_pull",
+            "repoRuleId": "@@rules_oci+//oci/private:pull.bzl%oci_pull",
             "attributes": {
               "www_authenticate_challenges": {},
               "scheme": "https",
@@ -295,8 +261,7 @@
             }
           },
           "distroless_base": {
-            "bzlFile": "@@rules_oci~//oci/private:pull.bzl",
-            "ruleClassName": "oci_alias",
+            "repoRuleId": "@@rules_oci+//oci/private:pull.bzl%oci_alias",
             "attributes": {
               "target_name": "distroless_base",
               "www_authenticate_challenges": {},
@@ -312,130 +277,113 @@
             }
           },
           "oci_crane_darwin_amd64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "darwin_amd64",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_darwin_arm64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "darwin_arm64",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_linux_arm64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "linux_arm64",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_linux_armv6": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "linux_armv6",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_linux_i386": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "linux_i386",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_linux_s390x": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "linux_s390x",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_linux_amd64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "linux_amd64",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_windows_armv6": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "windows_armv6",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_windows_amd64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "crane_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%crane_repositories",
             "attributes": {
               "platform": "windows_amd64",
               "crane_version": "v0.18.0"
             }
           },
           "oci_crane_toolchains": {
-            "bzlFile": "@@rules_oci~//oci/private:toolchains_repo.bzl",
-            "ruleClassName": "toolchains_repo",
+            "repoRuleId": "@@rules_oci+//oci/private:toolchains_repo.bzl%toolchains_repo",
             "attributes": {
               "toolchain_type": "@rules_oci//oci:crane_toolchain_type",
               "toolchain": "@oci_crane_{platform}//:crane_toolchain"
             }
           },
           "oci_regctl_darwin_amd64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "regctl_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%regctl_repositories",
             "attributes": {
               "platform": "darwin_amd64"
             }
           },
           "oci_regctl_darwin_arm64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "regctl_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%regctl_repositories",
             "attributes": {
               "platform": "darwin_arm64"
             }
           },
           "oci_regctl_linux_arm64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "regctl_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%regctl_repositories",
             "attributes": {
               "platform": "linux_arm64"
             }
           },
           "oci_regctl_linux_s390x": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "regctl_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%regctl_repositories",
             "attributes": {
               "platform": "linux_s390x"
             }
           },
           "oci_regctl_linux_amd64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "regctl_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%regctl_repositories",
             "attributes": {
               "platform": "linux_amd64"
             }
           },
           "oci_regctl_windows_amd64": {
-            "bzlFile": "@@rules_oci~//oci:repositories.bzl",
-            "ruleClassName": "regctl_repositories",
+            "repoRuleId": "@@rules_oci+//oci:repositories.bzl%regctl_repositories",
             "attributes": {
               "platform": "windows_amd64"
             }
           },
           "oci_regctl_toolchains": {
-            "bzlFile": "@@rules_oci~//oci/private:toolchains_repo.bzl",
-            "ruleClassName": "toolchains_repo",
+            "repoRuleId": "@@rules_oci+//oci/private:toolchains_repo.bzl%toolchains_repo",
             "attributes": {
               "toolchain_type": "@rules_oci//oci:regctl_toolchain_type",
               "toolchain": "@oci_regctl_{platform}//:regctl_toolchain"
@@ -453,86 +401,79 @@
         },
         "recordedRepoMappingEntries": [
           [
-            "aspect_bazel_lib~",
+            "aspect_bazel_lib+",
             "bazel_tools",
             "bazel_tools"
           ],
           [
-            "bazel_features~",
+            "bazel_features+",
             "bazel_tools",
             "bazel_tools"
           ],
           [
-            "rules_oci~",
+            "rules_oci+",
             "aspect_bazel_lib",
-            "aspect_bazel_lib~"
+            "aspect_bazel_lib+"
           ],
           [
-            "rules_oci~",
+            "rules_oci+",
             "bazel_features",
-            "bazel_features~"
+            "bazel_features+"
           ],
           [
-            "rules_oci~",
+            "rules_oci+",
             "bazel_skylib",
-            "bazel_skylib~"
+            "bazel_skylib+"
           ]
         ]
       }
     },
-    "@@tar.bzl~//tar:extensions.bzl%toolchains": {
+    "@@tar.bzl+//tar:extensions.bzl%toolchains": {
       "general": {
         "bzlTransitiveDigest": "/2afh6fPjq/rcyE/jztQDK3ierehmFFngfvmqyRv72M=",
-        "usagesDigest": "I6HvqeURBJAsVftolZUnMjAJqsIpyPsnCw4Sngx2dSg=",
+        "usagesDigest": "maF8qsAIqeH1ey8pxP0gNZbvJt34kLZvTFeQ0ntrJVA=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
         "generatedRepoSpecs": {
           "bsd_tar_toolchains": {
-            "bzlFile": "@@tar.bzl~//tar/toolchain:toolchain.bzl",
-            "ruleClassName": "tar_toolchains_repo",
+            "repoRuleId": "@@tar.bzl+//tar/toolchain:toolchain.bzl%tar_toolchains_repo",
             "attributes": {
               "user_repository_name": "bsd_tar_toolchains"
             }
           },
           "bsd_tar_toolchains_darwin_amd64": {
-            "bzlFile": "@@tar.bzl~//tar/toolchain:platforms.bzl",
-            "ruleClassName": "bsdtar_binary_repo",
+            "repoRuleId": "@@tar.bzl+//tar/toolchain:platforms.bzl%bsdtar_binary_repo",
             "attributes": {
               "platform": "darwin_amd64"
             }
           },
           "bsd_tar_toolchains_darwin_arm64": {
-            "bzlFile": "@@tar.bzl~//tar/toolchain:platforms.bzl",
-            "ruleClassName": "bsdtar_binary_repo",
+            "repoRuleId": "@@tar.bzl+//tar/toolchain:platforms.bzl%bsdtar_binary_repo",
             "attributes": {
               "platform": "darwin_arm64"
             }
           },
           "bsd_tar_toolchains_linux_amd64": {
-            "bzlFile": "@@tar.bzl~//tar/toolchain:platforms.bzl",
-            "ruleClassName": "bsdtar_binary_repo",
+            "repoRuleId": "@@tar.bzl+//tar/toolchain:platforms.bzl%bsdtar_binary_repo",
             "attributes": {
               "platform": "linux_amd64"
             }
           },
           "bsd_tar_toolchains_linux_arm64": {
-            "bzlFile": "@@tar.bzl~//tar/toolchain:platforms.bzl",
-            "ruleClassName": "bsdtar_binary_repo",
+            "repoRuleId": "@@tar.bzl+//tar/toolchain:platforms.bzl%bsdtar_binary_repo",
             "attributes": {
               "platform": "linux_arm64"
             }
           },
           "bsd_tar_toolchains_windows_amd64": {
-            "bzlFile": "@@tar.bzl~//tar/toolchain:platforms.bzl",
-            "ruleClassName": "bsdtar_binary_repo",
+            "repoRuleId": "@@tar.bzl+//tar/toolchain:platforms.bzl%bsdtar_binary_repo",
             "attributes": {
               "platform": "windows_amd64"
             }
           },
           "bsd_tar_toolchains_windows_arm64": {
-            "bzlFile": "@@tar.bzl~//tar/toolchain:platforms.bzl",
-            "ruleClassName": "bsdtar_binary_repo",
+            "repoRuleId": "@@tar.bzl+//tar/toolchain:platforms.bzl%bsdtar_binary_repo",
             "attributes": {
               "platform": "windows_arm64"
             }
