@@ -10,5 +10,3 @@ build --remote_cache=grpcs://buildbarn-grpc.szamszur.cloud
 
 build --bes_results_url=https://buildbuddy.szamszur.cloud/invocation/
 build --bes_backend=grpcs://buildbuddy-grpc.szamszur.cloud
-
-common --enable_bzlmod=false

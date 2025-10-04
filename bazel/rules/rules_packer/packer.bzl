@@ -1,6 +1,19 @@
 load("@bazel_skylib//lib:shell.bzl", "shell")
-load("@rules_file//util:path.bzl", "runfile_path")
-load("@rules_file//generate:providers.bzl", "FormatterInfo")
+
+FormatterInfo = provider(
+    doc = "Formatter",
+    fields = {
+        "fn": "Function",
+    },
+)
+
+def _runfile_path(workspace, file):
+    path = file.short_path
+    if path.startswith("../"):
+        path = path[len("../"):]
+    else:
+        path = "%s/%s" % (workspace, path)
+    return path
 
 def _packer_build(ctx):
     actions = ctx.actions
@@ -24,7 +37,7 @@ def _packer_build(ctx):
         output = executable,
         substitutions = {
             "%{options}": " ".join([shell.quote(option) for option in options]),
-            "%{packer}": shell.quote(runfile_path(workspace, packer)),
+            "%{packer}": shell.quote(_runfile_path(workspace, packer)),
             "%{path}": shell.quote(path),
         },
         template = runner,
@@ -70,7 +83,7 @@ def _packer_init(ctx):
         is_executable = True,
         output = executable,
         substitutions = {
-            "%{packer}": shell.quote(runfile_path(workspace, packer)),
+            "%{packer}": shell.quote(_runfile_path(workspace, packer)),
             "%{path}": shell.quote(path),
         },
         template = runner,
