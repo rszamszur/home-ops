@@ -169,6 +169,7 @@ pkg_tar(
     strip_prefix = ".",
     remap_paths = {
       "external/runner": "",
+      "external/+_repo_rules2+runner": "",
     },
     package_dir = "/home/runner",
     owner = "{}.{}".format(RUNNER_UID, RUNNER_GID),
