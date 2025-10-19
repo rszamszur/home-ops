@@ -28,7 +28,7 @@ source "proxmox-iso" "nixos-node" {
     iso_checksum = var.nixos_iso_checksum
     unmount = true
   }
-  vm_id = "666"
+  vm_id = "300"
 
   network_adapters {
     bridge   = var.proxmox_interface
@@ -42,16 +42,16 @@ source "proxmox-iso" "nixos-node" {
     type         = "scsi"
     storage_pool = var.proxmox_storage
     format       = "raw"
-    disk_size    = "100G"
+    disk_size    = "150G"
     io_thread    = "true"
     cache_mode   = "writethrough"
   }
 
   cpu_type = "host"
-  cores = 3
+  cores = 4
   sockets = 2
   numa = true
-  memory   = 12288 
+  memory   = 16384
   serials = ["socket"]
 
   ssh_username = "root"

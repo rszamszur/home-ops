@@ -18,7 +18,7 @@ variable "proxmox_token_secret" {
 variable "proxmox_nodename" {
   description = "Proxmox node name"
   type        = string
-  default     = "pve"
+  default     = "pve-t630"
 }
 
 variable "proxmox_storage" {
