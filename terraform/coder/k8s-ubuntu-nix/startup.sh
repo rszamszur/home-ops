@@ -42,8 +42,10 @@ max-jobs = auto
 build-users-group = coder
 trusted-users = root coder
 experimental-features = nix-command flakes
-substituters = https://cache.nixos.org/ https://nix-community.cachix.org
-trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+substituters = https://nixgard.szamszur.cloud https://cache.nixos.org/
+trusted-public-keys = nixgard.szamszur.cloud:HaXsNyMojj3pVViZDoH8n9uJgqGcoZ6V1yYIFSigOxY= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+# Ensure we can still build when missing-server is not accessible
+fallback = true
 EOF
 
 if [[ ! -e "${HOME}/.bash_profile" ]]; then
