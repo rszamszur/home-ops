@@ -85,7 +85,7 @@ oci.pull(
 use_repo(oci, "distroless_base")
 
 # rules_distroless
-bazel_dep(name = "rules_distroless", version = "0.5.3")
+bazel_dep(name = "rules_distroless", version = "0.6.1")
 
 apt = use_extension(
     "@rules_distroless//apt:extensions.bzl",
