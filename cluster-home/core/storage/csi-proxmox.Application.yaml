@@ -8,7 +8,7 @@ spec:
   sources:
   - repoURL: ghcr.io/sergelogvinov/charts
     chart: proxmox-csi-plugin
-    # renovate: datasource=helm depName=proxmox-csi-plugin repository=oci://ghcr.io/sergelogvinov/charts
+    # renovate: datasource=docker depName=proxmox-csi-plugin repository=oci://ghcr.io/sergelogvinov/charts
     targetRevision: 0.3.6
     helm:
       version: v3
