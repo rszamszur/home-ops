@@ -18,7 +18,7 @@ variable "proxmox_token_secret" {
 variable "proxmox_nodename" {
   description = "Proxmox node name"
   type        = string
-  default     = "pve"
+  default     = "pve-t630"
 }
 
 variable "proxmox_storage" {
@@ -42,11 +42,11 @@ variable "network_vlan_tag" {
 variable "nixos_iso" {
   description = "NixOS installation iso url"
   type        = string
-  default     = "https://ghetto-artifactory.s3.eu-central-1.amazonaws.com/nixos-24.05.20241028.64b80bf-x86_64-linux.iso"
+  default     = "https://ghetto-artifactory.s3.eu-central-1.amazonaws.com/nixos-minimal-25.05.20251016.98ff3f9-x86_64-linux.iso"
 }
 
 variable "nixos_iso_checksum" {
   description = "NixOS installation iso checksum"
   type        = string
-  default     = "sha256:3974e10067e93592cd546a90cd3611803c8792c6777fb546f9546dfed9d2099a"
+  default     = "sha256:95d903bf6d93303fb7bfcfa97f87f3dcc9d2f03ad7bb28efd49c46b3e02abfec"
 }
