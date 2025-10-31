@@ -9,7 +9,7 @@ spec:
   - repoURL: ghcr.io/actions/actions-runner-controller-charts
     chart: gha-runner-scale-set-controller
     # renovate: datasource=docker depName=ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
-    targetRevision: 0.12.1
+    targetRevision: 0.13.0
     helm:
       version: v3
       values: |-
