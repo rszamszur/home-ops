@@ -159,8 +159,10 @@ resource "kubernetes_deployment" "main" {
       }
       spec {
         security_context {
-          run_as_user = 1000
-          fs_group    = 1000
+          run_as_user  = 1000
+          run_as_group = 1000
+          fs_group     = 1000
+          fs_group_change_policy = "OnRootMismatch"
         }
 
         container {
@@ -169,7 +171,8 @@ resource "kubernetes_deployment" "main" {
           image_pull_policy = "Always"
           command           = ["sh", "-c", coder_agent.main.init_script]
           security_context {
-            run_as_user = "1000"
+            run_as_user  = 1000
+            run_as_group = 1000
           }
           env {
             name  = "CODER_AGENT_TOKEN"
