@@ -26,6 +26,7 @@ CODER_AGENT_HEADER="cookie: coder_session_token=${CODER_AGENT_TOKEN}"
 CODER_SSH_KEY_API_ENDPOINT="${CODER_AGENT_URL}api/v2/workspaceagents/me/gitsshkey"
 # Install nix environment variables
 WORKDIR=$(mktemp -d)
+# renovate: datasource=github-tags depName=NixOS/nix
 NIX_VERSION="2.23.3"
 NIX_CHANNEL="https://nixos.org/channels/nixpkgs-unstable"
 HM_CHANNEL="https://github.com/rycee/home-manager/archive/master.tar.gz"
