@@ -9,7 +9,7 @@ spec:
   - repoURL: ghcr.io/sergelogvinov/charts
     chart: proxmox-csi-plugin
     # renovate: datasource=docker depName=ghcr.io/sergelogvinov/charts/proxmox-csi-plugin
-    targetRevision: 0.3.17
+    targetRevision: 0.3.18
     helm:
       version: v3
       values: |
