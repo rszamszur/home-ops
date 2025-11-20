@@ -21,7 +21,7 @@ jobs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
       build: ${{ steps.filter.outputs.build }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: skip_check
         uses: fkirc/skip-duplicate-actions@v5.3.1
         with:
@@ -43,6 +43,6 @@ jobs:
       - uses: cachix/install-nix-action@v31
         with:
           nix_path: ${{ env.NIX_CHANNEL }}
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Run yamllint checks
         run: nix-shell -p yamllint --run "yamllint -f github cluster-home/"
