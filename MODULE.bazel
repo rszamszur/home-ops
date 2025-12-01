@@ -3,6 +3,7 @@ module(
 )
 
 http_file = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
+
 http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 ############
@@ -40,7 +41,7 @@ http_archive(
 
 http_file(
     name = "bazelisk",
-    executable=True,
+    executable = True,
     sha256 = "e1508323f347ad1465a887bc5d2bfb91cffc232d11e8e997b623227c6b32fb76",
     url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.27.0/bazelisk-linux-amd64",
 )
@@ -82,7 +83,7 @@ oci.pull(
         "linux/amd64",
     ],
 )
-use_repo(oci, "distroless_base")
+use_repo(oci, "distroless_base", "distroless_base_linux_amd64")
 
 # rules_distroless
 bazel_dep(name = "rules_distroless", version = "0.6.1")
