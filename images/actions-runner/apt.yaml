@@ -11,11 +11,11 @@ version: 1
 
 sources:
   - channel: jammy main
-    url: https://snapshot.ubuntu.com/ubuntu/20240901T030400Z
+    url: https://snapshot.ubuntu.com/ubuntu/20251201T030400Z
   - channel: jammy-updates main
-    url: https://snapshot.ubuntu.com/ubuntu/20240901T030400Z
+    url: https://snapshot.ubuntu.com/ubuntu/20251201T030400Z
   - channel: jammy-security main
-    url: https://snapshot.ubuntu.com/ubuntu/20240901T030400Z
+    url: https://snapshot.ubuntu.com/ubuntu/20251201T030400Z
 
 archs:
   - "amd64"
