@@ -28,6 +28,7 @@ packages:
   - "libicu70"
   - "libssl3"
   - "libstdc++6"
+  - "libc-dev"
   - "tzdata"
   - "zlib1g"
   # packages
