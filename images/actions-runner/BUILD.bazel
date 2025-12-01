@@ -15,6 +15,7 @@ PACKAGES = [
     "@ubuntu_jammy//tzdata",
     "@ubuntu_jammy//zlib1g",
     "@ubuntu_jammy//gcc",
+    "@ubuntu_jammy//g++",
     "@ubuntu_jammy//git",
     "@ubuntu_jammy//gawk",
     "@ubuntu_jammy//sed",

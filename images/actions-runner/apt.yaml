@@ -33,6 +33,7 @@ packages:
   - "zlib1g"
   # packages
   - "gcc"
+  - "g++"
   - "git"
   - "curl"
   - "tar"
