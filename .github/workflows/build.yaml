@@ -33,12 +33,14 @@ jobs:
               - ".github/workflows/build.yaml"
               - ".bazelversion"
               - ".bazelrc"
-              - "WORKSPACE"
+              - "MODULE.bazel"
+              - "MODULE.bazel.lock"
               - "**/BUILD"
               - "**/BUILD.bazel"
               - "**/*.bzl"
               - "**/*.bazel"
               - "bazel/**"
+              - "images/**"
   build:
     needs: pre_job
     if: ${{ needs.pre_job.outputs.should_skip != 'true' && needs.pre_job.outputs.build == 'true' }}

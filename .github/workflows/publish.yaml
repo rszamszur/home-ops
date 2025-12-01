@@ -24,7 +24,8 @@ jobs:
               - ".github/workflows/publish.yaml"
               - "images/**"
               - "bazel/**"
-              - "WORKSPACE"
+              - "MODULE.bazel"
+              - "MODULE.bazel.lock"
               - ".bazelrc"
               - ".bazelversion"
   coder:
