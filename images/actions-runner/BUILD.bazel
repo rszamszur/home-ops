@@ -11,6 +11,7 @@ PACKAGES = [
     "@ubuntu_jammy//libicu70",
     "@ubuntu_jammy//libssl3",
     "@ubuntu_jammy//libstdc++6",
+    "@ubuntu_jammy//libc6-dev",
     "@ubuntu_jammy//tzdata",
     "@ubuntu_jammy//zlib1g",
     "@ubuntu_jammy//gcc",
