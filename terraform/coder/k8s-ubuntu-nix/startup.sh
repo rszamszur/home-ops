@@ -59,7 +59,7 @@ ${NIX_INSTALLER_OUT} --no-daemon --no-channel-add --yes --nix-extra-conf-file ${
 mkdir -p ${HOME}/.config/nix
 cp ${WORKDIR}/nix.conf ${HOME}/.config/nix/nix.conf
 
-. /home/coder/.nix-profile/etc/profile.d/nix.sh
+. ${HOME}/.nix-profile/etc/profile.d/nix.sh
 nix-channel --add ${NIX_CHANNEL} nixpkgs
 # Needed for manix
 nix-channel --add ${HM_CHANNEL} home-manager
