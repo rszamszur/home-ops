@@ -1,6 +1,6 @@
 module "dotfiles" {
   source        = "registry.coder.com/modules/dotfiles/coder"
-  version       = "1.2.2"
+  version       = "1.2.3"
   agent_id      = coder_agent.main.id
   manual_update = true
 }
