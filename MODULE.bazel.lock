@@ -137,8 +137,8 @@
     "https://bcr.bazel.build/modules/rules_license/0.0.7/MODULE.bazel": "088fbeb0b6a419005b89cf93fe62d9517c0a2b8bb56af3244af65ecfe37e7d5d",
     "https://bcr.bazel.build/modules/rules_license/1.0.0/MODULE.bazel": "a7fda60eefdf3d8c827262ba499957e4df06f659330bbe6cdbdb975b768bb65c",
     "https://bcr.bazel.build/modules/rules_license/1.0.0/source.json": "a52c89e54cc311196e478f8382df91c15f7a2bfdf4c6cd0e2675cc2ff0b56efb",
-    "https://bcr.bazel.build/modules/rules_oci/2.2.6/MODULE.bazel": "2ba6ddd679269e00aeffe9ca04faa2d0ca4129650982c9246d0d459fe2da47d9",
-    "https://bcr.bazel.build/modules/rules_oci/2.2.6/source.json": "94e7decb8f95d9465b0bbea71c65064cd16083be1350c7468f131818641dc4a5",
+    "https://bcr.bazel.build/modules/rules_oci/2.2.7/MODULE.bazel": "f6150e4b224d459f7f6523ef65967464ca4efdd266c7fbf2f5a2a51011957e0c",
+    "https://bcr.bazel.build/modules/rules_oci/2.2.7/source.json": "b099f02af330f47f19dc67fc9300ef6e1937a8c86882690db0e7a2fcea8c7f6b",
     "https://bcr.bazel.build/modules/rules_pkg/0.7.0/MODULE.bazel": "df99f03fc7934a4737122518bb87e667e62d780b610910f0447665a7e2be62dc",
     "https://bcr.bazel.build/modules/rules_pkg/1.0.1/MODULE.bazel": "5b1df97dbc29623bccdf2b0dcd0f5cb08e2f2c9050aab1092fd39a41e82686ff",
     "https://bcr.bazel.build/modules/rules_pkg/1.1.0/MODULE.bazel": "9db8031e71b6ef32d1846106e10dd0ee2deac042bd9a2de22b4761b0c3036453",
@@ -250,8 +250,8 @@
     },
     "@@rules_oci+//oci:extensions.bzl%oci": {
       "general": {
-        "bzlTransitiveDigest": "UG6/u9Dl5qNozcG8E6ehAcOG2nhh8rw191ishRnBR24=",
-        "usagesDigest": "VEfW9hK6hXnkqjq7DV7mOdApATzfT7iAUQZK/CfvZGM=",
+        "bzlTransitiveDigest": "nPQREyNP77X2BnD54LEgI6Dk2Y8Y9c3lKtOidsxfwTQ=",
+        "usagesDigest": "GvEghwNWGb3ONqDDuTI/zmECr0tnp0WGIHhiuLZEjg4=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -263,7 +263,7 @@
               "scheme": "https",
               "registry": "gcr.io",
               "repository": "distroless/base",
-              "identifier": "sha256:9e9b50d2048db3741f86a48d939b4e4cc775f5889b3496439343301ff54cdba8",
+              "identifier": "sha256:f5a3067027c2b322cd71b844f3d84ad3deada45ceb8a30f301260a602455070e",
               "platform": "linux/amd64",
               "target_name": "distroless_base_linux_amd64",
               "bazel_tags": []
@@ -277,7 +277,7 @@
               "scheme": "https",
               "registry": "gcr.io",
               "repository": "distroless/base",
-              "identifier": "sha256:9e9b50d2048db3741f86a48d939b4e4cc775f5889b3496439343301ff54cdba8",
+              "identifier": "sha256:f5a3067027c2b322cd71b844f3d84ad3deada45ceb8a30f301260a602455070e",
               "platforms": {
                 "@@platforms//cpu:x86_64": "@distroless_base_linux_amd64"
               },
