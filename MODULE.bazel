@@ -51,8 +51,8 @@ http_file(
 http_archive(
     name = "runner",
     build_file = "@home-ops//bazel/third_party:runner.bazel",
-    sha256 = "01066fad3a2893e63e6ca880ae3a1fad5bf9329d60e77ee15f2b97c148c3cd4e",
-    url = "https://github.com/actions/runner/releases/download/v2.328.0/actions-runner-linux-x64-2.328.0.tar.gz",
+    sha256 = "af5c33fa94f3cc33b8e97937939136a6b04197e6dadfcfb3b6e33ae1bf41e79a",
+    url = "https://github.com/actions/runner/releases/download/v2.330.0/actions-runner-linux-x64-2.330.0.tar.gz",
 )
 
 #########
