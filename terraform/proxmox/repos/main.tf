@@ -10,9 +10,9 @@ resource "proxmox_virtual_environment_apt_standard_repository" "enterprise" {
   node   = each.value
 }
 
-resource "proxmox_virtual_environment_apt_standard_repository" "ceph-reef-no-subscription" {
+resource "proxmox_virtual_environment_apt_standard_repository" "ceph-squid-no-subscription" {
   for_each  = var.proxmox_nodes
-  handle = "ceph-reef-no-subscription"
+  handle = "ceph-squid-no-subscription"
   node   = each.value
 }
 
@@ -32,10 +32,10 @@ resource "proxmox_virtual_environment_apt_repository" "enterprise" {
   node      = proxmox_virtual_environment_apt_standard_repository.enterprise[each.value].node
 }
 
-resource "proxmox_virtual_environment_apt_repository" "ceph-reef-no-subscription" {
+resource "proxmox_virtual_environment_apt_repository" "ceph-squid-no-subscription" {
   for_each  = var.proxmox_nodes
   enabled   = true
-  file_path = proxmox_virtual_environment_apt_standard_repository.ceph-reef-no-subscription[each.value].file_path
-  index     = proxmox_virtual_environment_apt_standard_repository.ceph-reef-no-subscription[each.value].index
-  node      = proxmox_virtual_environment_apt_standard_repository.ceph-reef-no-subscription[each.value].node
+  file_path = proxmox_virtual_environment_apt_standard_repository.ceph-squid-no-subscription[each.value].file_path
+  index     = proxmox_virtual_environment_apt_standard_repository.ceph-squid-no-subscription[each.value].index
+  node      = proxmox_virtual_environment_apt_standard_repository.ceph-squid-no-subscription[each.value].node
 }
