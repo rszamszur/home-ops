@@ -30,7 +30,6 @@ resource "proxmox_virtual_environment_role" "puqu-admin" {
     "VM.Config.Options",
     "VM.Console",
     "VM.Migrate",
-    "VM.Monitor",
     "VM.PowerMgmt",
     "VM.Snapshot.Rollback",
     "VM.Snapshot",
