@@ -20,6 +20,9 @@ spec:
     helm:
       version: v3
       values: |-
+        image:
+          registry: docker.io
+          repository: bitnamilegacy/mysql
         auth:
           database: buildbuddy
           username: buildbuddy
