@@ -1,7 +1,7 @@
 variable "proxmox_host" {
   description = "Proxmox host"
   type        = string
-  default     = "192.168.10.10"
+  default     = "192.168.10.11"
 }
 
 variable "proxmox_token_id" {
@@ -24,7 +24,7 @@ variable "proxmox_vm_template" {
 variable "proxmox_nodename" {
   description = "Proxmox node name"
   type        = string
-  default     = "pve"
+  default     = "pve-r740xd"
 }
 
 variable "proxmox_vm_template_id" {

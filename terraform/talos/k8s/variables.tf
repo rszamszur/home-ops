@@ -57,7 +57,7 @@ variable "node_data" {
         labels       = [
           "project.io/node-pool: worker",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-t630"
+          "topology.kubernetes.io/zone: pve-r740xd"
         ]
       },
       "192.168.20.22" = {
@@ -66,7 +66,7 @@ variable "node_data" {
         labels       = [
           "project.io/node-pool: worker",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-t630"
+          "topology.kubernetes.io/zone: pve-r740xd"
         ]
       },
       "192.168.20.23" = {
@@ -75,7 +75,7 @@ variable "node_data" {
         labels       = [
           "project.io/node-pool: worker",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-t630"
+          "topology.kubernetes.io/zone: pve-r740xd"
         ]
       },
       "192.168.20.24" = {
@@ -84,7 +84,7 @@ variable "node_data" {
         labels       = [
           "project.io/node-pool: worker",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-t630"
+          "topology.kubernetes.io/zone: pve-r740xd"
         ]
       },
       "192.168.20.20" = {
@@ -93,7 +93,7 @@ variable "node_data" {
         labels       = [
           "project.io/node-pool: ingress",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-t630"
+          "topology.kubernetes.io/zone: pve-r740xd"
         ]
       }
     }

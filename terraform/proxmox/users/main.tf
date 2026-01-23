@@ -43,7 +43,7 @@ resource "proxmox_virtual_environment_role" "puqu-admin" {
 resource "proxmox_virtual_environment_user" "puqu-user" {
   for_each  = var.puqu_users
   acl {
-    path      = "/vms/100"
+    path      = "/vms/120"
     propagate = true
     role_id   = "NoAccess"
   }
