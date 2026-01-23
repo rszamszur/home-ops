@@ -18,5 +18,5 @@ variable "proxmox_token_secret" {
 variable "proxmox_nodes" {
   description = "Proxmox nodes names"
   type        = set(string)
-  default     = ["pve-r740xd", "pve-t630"]
+  default     = ["pve-r740xd"]
 }
