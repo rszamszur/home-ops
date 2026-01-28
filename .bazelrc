@@ -1,6 +1,11 @@
 build:remote-exec --remote_executor=grpcs://buildbarn-grpc.szamszur.cloud
 build:remote-exec --remote_default_exec_properties OSFamily=linux 
-build:remote-exec --remote_default_exec_properties container-image="docker://ghcr.io/catthehacker/ubuntu:act-22.04@sha256:9a3ab6ef4bb782a3fa9484d78ecfec5d8e1b5254dd25e7cf367640b87c14e746"
+build:remote-exec --remote_default_exec_properties container-image="docker://harbor.puqu.io/starterkit/bash-coreutils-x86_64-cc:2wgjj260ff4aclgbgf8fi5wx7sbfxy9p"
+# The rules_oci/oci/private/descriptor.sh fails remotely on starterkit because its sheabang expects to have /usr/bin/env to find bash.
+# Which is not present on starterkit.
+build:remote-exec --strategy=OCIDescriptor=sandboxed
+build:remote-exec --strategy=PackageTar=sandboxed
+build:remote-exec --repo_env=HERMETIC_CC_TOOLCHAIN_CACHE_PREFIX=/proc/self/cwd
 
 # Only download the final result, the intermediate files can stay on the
 # server side.
@@ -10,3 +15,13 @@ build --remote_cache=grpcs://buildbarn-grpc.szamszur.cloud
 
 build --bes_results_url=https://buildbuddy.szamszur.cloud/invocation/
 build --bes_backend=grpcs://buildbuddy-grpc.szamszur.cloud
+
+common --enable_platform_specific_config
+build:linux --sandbox_add_mount_pair=/tmp
+build:macos --sandbox_add_mount_pair=/var/tmp
+build:windows --sandbox_add_mount_pair=C:\Temp
+#build --incompatible_disallow_empty_glob
+#build --verbose_failures
+#build --worker_sandboxing
+#build --experimental_output_directory_naming_scheme=diff_against_dynamic_baseline
+#build --action_env BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
