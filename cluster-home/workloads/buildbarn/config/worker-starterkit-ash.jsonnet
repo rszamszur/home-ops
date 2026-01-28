@@ -21,7 +21,7 @@ local common = import 'common.libsonnet';
       concurrency: 8,
       platform: {
         properties: [
-          { name: 'OSFamily', value: 'Linux' },
+          { name: 'OSFamily', value: 'linux' },
           { name: 'container-image', value: 'docker://harbor.puqu.io/starterkit/ash:fd20kbbbywiih422ki32lwh6nkfnfgl7' },
         ],
       },
