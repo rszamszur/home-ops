@@ -14,9 +14,11 @@ configMapGenerator:
     - runner-starterkit-ash.jsonnet
     - runner-starterkit-ash-x86_64-cc.jsonnet
     - runner-starterkit-ash-coreutils-x86_64-cc.jsonnet
+    - runner-starterkit-bash-coreutils-x86_64-cc.jsonnet
     - scheduler.jsonnet
     - storage.jsonnet
     - worker-ubuntu22-04.jsonnet
     - worker-starterkit-ash.jsonnet
     - worker-starterkit-ash-x86_64-cc.jsonnet
     - worker-starterkit-ash-coreutils-x86_64-cc.jsonnet
+    - worker-starterkit-bash-coreutils-x86_64-cc.jsonnet
