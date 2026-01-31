@@ -1,6 +1,10 @@
 build:remote-exec --remote_executor=grpcs://buildbarn-grpc.szamszur.cloud
 build:remote-exec --remote_default_exec_properties OSFamily=linux 
 build:remote-exec --remote_default_exec_properties container-image="docker://ghcr.io/catthehacker/ubuntu:act-22.04@sha256:9a3ab6ef4bb782a3fa9484d78ecfec5d8e1b5254dd25e7cf367640b87c14e746"
+build:remote-exec --strategy=OCIDescriptor=sandboxed
+build:remote-exec --strategy=PackageTar=sandboxed
+build:remote-exec --repo_env=HERMETIC_CC_TOOLCHAIN_CACHE_PREFIX=/tmp
+build:remote-exec --sandbox_add_mount_pair=/tmp
 
 # Only download the final result, the intermediate files can stay on the
 # server side.
