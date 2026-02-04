@@ -58,6 +58,7 @@ spec:
       accessModes:
       - ReadWriteOnce
       storageClassName: "pve-nvme-wd-blue"
+      volumeAttributesClassName: csi-proxmox-backup-disable
       resources:
         requests:
           storage: 50Gi
@@ -67,6 +68,7 @@ spec:
       accessModes:
       - ReadWriteOnce
       storageClassName: "pve-nvme-wd-blue"
+      volumeAttributesClassName: csi-proxmox-backup-disable
       resources:
         requests:
           storage: 10Gi
