@@ -2,7 +2,6 @@ build:remote-exec --remote_executor=grpcs://buildbarn-grpc.szamszur.cloud
 build:remote-exec --remote_default_exec_properties OSFamily=linux 
 build:remote-exec --remote_default_exec_properties container-image="docker://ghcr.io/catthehacker/ubuntu:act-22.04@sha256:9a3ab6ef4bb782a3fa9484d78ecfec5d8e1b5254dd25e7cf367640b87c14e746"
 build:remote-exec --strategy=OCIDescriptor=sandboxed
-build:remote-exec --strategy=PackageTar=sandboxed
 build:remote-exec --repo_env=HERMETIC_CC_TOOLCHAIN_CACHE_PREFIX=/tmp
 build:remote-exec --sandbox_add_mount_pair=/tmp
 
@@ -14,3 +13,14 @@ build --remote_cache=grpcs://buildbarn-grpc.szamszur.cloud
 
 build --bes_results_url=https://buildbuddy.szamszur.cloud/invocation/
 build --bes_backend=grpcs://buildbuddy-grpc.szamszur.cloud
+
+# Some actions are always IO-intensive but require little compute. It's wasteful to put the output
+# in the remote cache, it just saturates the network and fills the cache storage causing earlier
+# evictions. It's also not worth sending them for remote execution.
+# For actions like PackageTar it's usually faster to just re-run the work locally every time.
+# You'll have to look at an execution log to figure out what other action mnemonics you care about.
+# In some cases you may need to patch rulesets to add a mnemonic to actions that don't have one.
+# https://bazel.build/reference/command-line-reference#flag--modify_execution_info
+build --modify_execution_info=PackageTar=+no-cache
+build --modify_execution_info=Tar=+no-cache
+
