@@ -1,0 +1,91 @@
+From e4a24b3c500642c828e86158cff31fbd8fcd43d0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rados=C5=82aw=20Szamszur?= <github@rsd.sh>
+Date: Thu, 5 Feb 2026 20:52:05 +0000
+Subject: [PATCH] patch: scripts sheabangs
+
+---
+ oci/private/authn.bzl          | 2 +-
+ oci/private/descriptor.sh      | 2 +-
+ oci/private/image.sh           | 2 +-
+ oci/private/image_index.sh.tpl | 2 +-
+ oci/private/load.sh.tpl        | 2 +-
+ oci/private/push.sh.tpl        | 2 +-
+ oci/private/tarball.sh.tpl     | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/oci/private/authn.bzl b/oci/private/authn.bzl
+index bd590d8..ccd660d 100644
+--- a/oci/private/authn.bzl
++++ b/oci/private/authn.bzl
+@@ -124,7 +124,7 @@ echo %1 | docker-credential-{} get """.format(helper_name),
+         rctx.file(
+             executable,
+             content = """\
+-#!/usr/bin/env bash
++#!/bin/bash
+ exec "docker-credential-{}" get <<< "$1" """.format(helper_name),
+         )
+     result = rctx.execute([rctx.path(executable), raw_host])
+diff --git a/oci/private/descriptor.sh b/oci/private/descriptor.sh
+index 2145ca3..ca69b4a 100755
+--- a/oci/private/descriptor.sh
++++ b/oci/private/descriptor.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ # This shell script creates a partial `descriptor` for the given archive to be later used by image.sh.
+diff --git a/oci/private/image.sh b/oci/private/image.sh
+index d1dd610..261ab01 100644
+--- a/oci/private/image.sh
++++ b/oci/private/image.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ # Replace PATH with hermetically built jq, regctl, coreutils.
+diff --git a/oci/private/image_index.sh.tpl b/oci/private/image_index.sh.tpl
+index f02d5f4..6d50f30 100644
+--- a/oci/private/image_index.sh.tpl
++++ b/oci/private/image_index.sh.tpl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ readonly JQ="{{jq_path}}"
+diff --git a/oci/private/load.sh.tpl b/oci/private/load.sh.tpl
+index 9cf76c1..cfdc8d3 100644
+--- a/oci/private/load.sh.tpl
++++ b/oci/private/load.sh.tpl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ {{BASH_RLOCATION_FUNCTION}}
+diff --git a/oci/private/push.sh.tpl b/oci/private/push.sh.tpl
+index 324107e..8538790 100644
+--- a/oci/private/push.sh.tpl
++++ b/oci/private/push.sh.tpl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ {{BASH_RLOCATION_FUNCTION}}
+diff --git a/oci/private/tarball.sh.tpl b/oci/private/tarball.sh.tpl
+index cfc69bb..9d65487 100644
+--- a/oci/private/tarball.sh.tpl
++++ b/oci/private/tarball.sh.tpl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ # Produce an mtree specification file for creating a tarball in the form needed for `docker load`.
+ # This doesn't actually run `tar` because that large output is often not required by any other actions in the graph and causes load on the cache.
+ set -o pipefail -o errexit -o nounset
+-- 
+2.51.2
+

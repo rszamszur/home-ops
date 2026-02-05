@@ -1,0 +1,5 @@
+""" This package contains solely a patch to github.com/bazel-contrib/rules_oci. """
+
+package(default_visibility = ["//visibility:public"])
+
+exports_files(["0001-patch-scripts-sheabangs.patch"])

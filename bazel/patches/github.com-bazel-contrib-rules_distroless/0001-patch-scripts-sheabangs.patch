@@ -1,0 +1,91 @@
+From 446f75cb8550ec1e194a6eac5ca054ed5d6dcd6b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rados=C5=82aw=20Szamszur?= <github@rsd.sh>
+Date: Thu, 5 Feb 2026 20:38:04 +0000
+Subject: [PATCH] patch: scripts sheabangs
+
+---
+ apt/private/copy.sh.tmpl      | 2 +-
+ apt/private/dpkg_status.sh    | 2 +-
+ apt/private/dpkg_statusd.sh   | 2 +-
+ distroless/private/cacerts.sh | 2 +-
+ distroless/private/flatten.sh | 2 +-
+ distroless/private/locale.sh  | 2 +-
+ distroless/tests/asserts.bzl  | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/apt/private/copy.sh.tmpl b/apt/private/copy.sh.tmpl
+index 2fa408d..523e992 100644
+--- a/apt/private/copy.sh.tmpl
++++ b/apt/private/copy.sh.tmpl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ 
+ set -o pipefail -o errexit -o nounset
+ 
+diff --git a/apt/private/dpkg_status.sh b/apt/private/dpkg_status.sh
+index 258dbfa..c305634 100755
+--- a/apt/private/dpkg_status.sh
++++ b/apt/private/dpkg_status.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ readonly bsdtar="$1"
+diff --git a/apt/private/dpkg_statusd.sh b/apt/private/dpkg_statusd.sh
+index 9220d45..6ec7180 100755
+--- a/apt/private/dpkg_statusd.sh
++++ b/apt/private/dpkg_statusd.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ readonly bsdtar="$1"
+diff --git a/distroless/private/cacerts.sh b/distroless/private/cacerts.sh
+index 4035900..d573906 100755
+--- a/distroless/private/cacerts.sh
++++ b/distroless/private/cacerts.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ readonly bsdtar="$1"
+diff --git a/distroless/private/flatten.sh b/distroless/private/flatten.sh
+index 4809ec1..8c9e46a 100755
+--- a/distroless/private/flatten.sh
++++ b/distroless/private/flatten.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit
+ 
+ bsdtar="$1";
+diff --git a/distroless/private/locale.sh b/distroless/private/locale.sh
+index 9b90d3e..97d2b40 100755
+--- a/distroless/private/locale.sh
++++ b/distroless/private/locale.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ readonly bsdtar="$1"
+diff --git a/distroless/tests/asserts.bzl b/distroless/tests/asserts.bzl
+index a9704b6..1f5422e 100644
+--- a/distroless/tests/asserts.bzl
++++ b/distroless/tests/asserts.bzl
+@@ -83,7 +83,7 @@ def assert_jks_listing(name, actual, expected):
+         ],
+         outs = ["_{}.listing".format(name)],
+         cmd = """
+-#!/usr/bin/env bash
++#!/bin/bash
+ set -o pipefail -o errexit -o nounset
+ 
+ BINS=($(locations @rules_java//toolchains:current_java_runtime))
+-- 
+2.51.2
+

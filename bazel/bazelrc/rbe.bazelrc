@@ -3,13 +3,12 @@
 build --action_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
 
 # Specific mnemonic
-build --strategy=OCIDescriptor=sandboxed
 build --strategy=PackageTar=sandboxed
 build --strategy=Tar=sandboxed
 
 ## Register platforms that should be used by default 
-build --platforms=//:x86_64_linux_remote_ubuntu
-build --extra_execution_platforms=//:x86_64_linux_remote_ubuntu
+build --platforms=//:x86_64_linux_remote
+build --extra_execution_platforms=//:x86_64_linux_remote
 
 # Only download the final result, the intermediate files can stay on the
 # server side.
