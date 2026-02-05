@@ -1,20 +1,22 @@
 # This is /dev/null platform that is purposefully unusable
 platform(name = "DEV_NULL_PLATFORM")
 
-constraint_setting(name = "package")
+constraint_setting(name = "coreutils")
+constraint_setting(name = "cc")
+constraint_setting(name = "bash")
 constraint_setting(name = "distro")
 
 constraint_value(
-    name = "coreutils",
-    constraint_setting = ":package"
+    name = "x86_64_coreutils",
+    constraint_setting = ":coreutils"
 )
 constraint_value(
-    name = "cc",
-    constraint_setting = ":package"
+    name = "x86_64_cc",
+    constraint_setting = ":cc"
 )
 constraint_value(
-    name = "bash",
-    constraint_setting = ":package"
+    name = "x86_64_bash",
+    constraint_setting = ":bash"
 )
 constraint_value(
     name = "ubuntu",
@@ -39,9 +41,9 @@ platform(
     constraint_values = [
         "@platforms//os:linux",
         "@platforms//cpu:x86_64",
-        "//:cc",
-        "//:coreutils",
-        "//:bash",
+        "//:x86_64_cc",
+        "//:x86_64_coreutils",
+        "//:x86_64_bash",
     ],
     exec_properties = {
         "OSFamily": "linux",
