@@ -52,8 +52,7 @@ jobs:
         run: |
           INVOCATION="$(cat /proc/sys/kernel/random/uuid)"
           echo "INVOCATION=${INVOCATION}" >> $GITHUB_ENV
-          bazel build \
-            --config=remote-exec \
+          bazel --bazelrc=bazel/bazelrc/remote-execution.bazelrc build \
             --invocation_id=${INVOCATION} \
             --build_tag_filters="-age-secret" \
             //...

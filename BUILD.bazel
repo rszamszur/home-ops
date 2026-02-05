@@ -1,0 +1,65 @@
+# This is /dev/null platform that is purposefully unusable
+platform(name = "DEV_NULL_PLATFORM")
+
+constraint_setting(name = "package")
+constraint_setting(name = "distro")
+
+constraint_value(
+    name = "coreutils",
+    constraint_setting = ":package"
+)
+constraint_value(
+    name = "cc",
+    constraint_setting = ":package"
+)
+constraint_value(
+    name = "bash",
+    constraint_setting = ":package"
+)
+constraint_value(
+    name = "ubuntu",
+    constraint_setting = ":distro"
+)
+
+platform(
+    name = "x86_64_linux_remote_minimal",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+    ],
+    exec_properties = {
+        "OSFamily": "linux",
+        "container-image": "harbor.puqu.io/starterkit/ash:fd20kbbbywiih422ki32lwh6nkfnfgl7",
+    },
+    visibility = ["//visibility:public"],
+)
+
+platform(
+    name = "x86_64_linux_remote",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+        "//:cc",
+        "//:coreutils",
+        "//:bash",
+    ],
+    exec_properties = {
+        "OSFamily": "linux",
+        "container-image": "docker://harbor.puqu.io/starterkit/bash-coreutils-x86_64-cc:2wgjj260ff4aclgbgf8fi5wx7sbfxy9p",
+    },
+    visibility = ["//visibility:public"],
+)
+
+platform(
+    name = "x86_64_linux_remote_ubuntu",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+        "//:ubuntu",
+    ],
+    exec_properties = {
+        "OSFamily": "linux",
+        "container-image": "docker://ghcr.io/catthehacker/ubuntu:act-22.04@sha256:9a3ab6ef4bb782a3fa9484d78ecfec5d8e1b5254dd25e7cf367640b87c14e746",
+    },
+    visibility = ["//visibility:public"],
+)

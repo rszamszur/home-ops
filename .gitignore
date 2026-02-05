@@ -17,3 +17,4 @@ xanmanning.k3s*
 .direnv/
 # bazel
 bazel-*
+.bazelrc.user

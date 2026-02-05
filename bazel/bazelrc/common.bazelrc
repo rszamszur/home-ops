@@ -1,0 +1,21 @@
+## Ensure bzlmod is enabled, workspaces are disabled
+## Docs: https://bazel.build/versions/8.2.0/reference/command-line-reference#flag--enable_workspace
+common --enable_bzlmod
+common --noenable_workspace
+
+## Do not allow any network actions in the sandbox
+## Docs: https://bazel.build/versions/8.2.0/reference/command-line-reference#flag--sandbox_default_allow_network
+build --nosandbox_default_allow_network
+
+## Force sandboxing for all possible tests
+## Docs: https://bazel.build/versions/8.2.0/reference/command-line-reference#flag--incompatible_exclusive_test_sandboxed
+test --incompatible_exclusive_test_sandboxed
+
+## Do not 'inherit' client $PATH, $LD_LIBRARY_PATH in the build env
+## Docs: https://bazel.build/versions/8.2.0/reference/command-line-reference#flag--incompatible_strict_action_env
+build --incompatible_strict_action_env
+
+## Be extremely strict about used shell executable
+## (By default it is embedded - not great for cross-compatibility)
+## Docs: https://bazel.build/versions/8.2.0/reference/command-line-reference#flag--shell_executable
+build --shell_executable=/bin/sh
