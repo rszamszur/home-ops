@@ -89,7 +89,7 @@ oci.pull(
 use_repo(oci, "distroless_base", "distroless_base_linux_amd64")
 
 # rules_distroless
-bazel_dep(name = "rules_distroless", version = "0.6.1")
+bazel_dep(name = "rules_distroless", version = "0.6.2")
 
 apt = use_extension(
     "@rules_distroless//apt:extensions.bzl",
@@ -127,4 +127,27 @@ register_toolchains(
     "@gcc_toolchain_x86_64//:cc_toolchain",
     "@gcc_toolchain_x86_64//:fortran_toolchain",
     dev_dependency = True,
+)
+
+register_execution_platforms(
+    "@home-ops//:x86_64_linux_remote",
+    dev_dependency = True,
+)
+
+archive_override(
+    module_name = "rules_distroless",
+    patch_args = ["-p1"],
+    patches = ["@home-ops//bazel/patches/github.com-bazel-contrib-rules_distroless:0001-patch-scripts-sheabangs.patch"],
+    sha256 = "f508831f306945f7d65c62121f92e2b454291e465eb9e79918e4e28157416255",
+    strip_prefix = "rules_distroless-0.6.2",
+    url = "https://github.com/bazel-contrib/rules_distroless/releases/download/v0.6.2/rules_distroless-v0.6.2.tar.gz",
+)
+
+archive_override(
+    module_name = "rules_oci",
+    patch_args = ["-p1"],
+    patches = ["@home-ops//bazel/patches/github.com-bazel-contrib-rules_oci:0001-patch-scripts-sheabangs.patch"],
+    sha256 = "b8db7ab889d501db33313620b2c8040dbb07e95c26a0fefe06004b35baf80e08",
+    strip_prefix = "rules_oci-2.2.7",
+    url = "https://github.com/bazel-contrib/rules_oci/releases/download/v2.2.7/rules_oci-v2.2.7.tar.gz",
 )
