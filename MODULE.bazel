@@ -109,7 +109,7 @@ bazel_dep(name = "gcc_toolchain", version = "0.9.0")
 git_override(
     module_name = "gcc_toolchain",
     remote = "https://github.com/f0rmiga/gcc-toolchain",
-    commit = "afb8939c503cebc6c6a44d34d091365ebfc8edc3",
+    commit = "93d5d8532523027d54e60d6e9d9a9d13b55ee5b7",
 )
 
 gcc_toolchains = use_extension(
