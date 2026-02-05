@@ -1,0 +1,16 @@
+## Force local CPP_TOOLCHAIN resolution to be skipped
+## Docs: https://github.com/bazelbuild/rules_cc/blob/15c158886752ceddb4d6bac17e7b5a74feab53b5/cc/private/toolchain/cc_configure.bzl#L33
+build --action_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
+
+# Specific mnemonic
+build --strategy=OCIDescriptor=sandboxed
+build --strategy=PackageTar=sandboxed
+build --strategy=Tar=sandboxed
+
+## Register platforms that should be used by default 
+build --platforms=//:x86_64_linux_remote_ubuntu
+build --extra_execution_platforms=//:x86_64_linux_remote_ubuntu
+
+# Only download the final result, the intermediate files can stay on the
+# server side.
+build --remote_download_toplevel

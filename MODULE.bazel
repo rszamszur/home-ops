@@ -105,12 +105,26 @@ apt.install(
 )
 use_repo(apt, "ubuntu_jammy")
 
-bazel_dep(name = "hermetic_cc_toolchain", version = "4.1.0")
+bazel_dep(name = "gcc_toolchain", version = "0.9.0")
+git_override(
+    module_name = "gcc_toolchain",
+    remote = "https://github.com/f0rmiga/gcc-toolchain",
+    commit = "afb8939c503cebc6c6a44d34d091365ebfc8edc3",
+)
 
-toolchains = use_extension("@hermetic_cc_toolchain//toolchain:ext.bzl", "toolchains")
-use_repo(toolchains, "zig_sdk")
+gcc_toolchains = use_extension(
+    "@gcc_toolchain//toolchain:module_extensions.bzl",
+    "gcc_toolchains",
+    dev_dependency = True,
+)
+gcc_toolchains.toolchain(
+    name = "gcc_toolchain_x86_64",
+    target_arch = "x86_64",
+)
+use_repo(gcc_toolchains, "gcc_toolchain_x86_64")
 
 register_toolchains(
-    "@zig_sdk//libc_aware/toolchain:linux_amd64_gnu.2.31",
-    "@zig_sdk//toolchain:linux_amd64_gnu.2.28",
+    "@gcc_toolchain_x86_64//:cc_toolchain",
+    "@gcc_toolchain_x86_64//:fortran_toolchain",
+    dev_dependency = True,
 )
