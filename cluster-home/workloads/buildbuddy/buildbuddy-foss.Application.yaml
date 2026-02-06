@@ -26,9 +26,7 @@ spec:
         disk:
           data:
             enabled: true
-            size: 10Gi
-            storageClass: "pve-nvme-wd-blue"
-            accessMode: ReadWriteOnce
+            existingClaim: buildbuddy-foss
         mysql:
           enabled: false
         config:

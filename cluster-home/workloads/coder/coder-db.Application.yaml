@@ -18,8 +18,7 @@ spec:
           existingSecret: coder-db-postgresql
         primary:
           persistence:
-            storageClass: pve-nvme-wd-blue
-            size: 5Gi
+            existingClaim: data-coder-db-postgresql-0
   syncPolicy:
     automated:
       prune: true
