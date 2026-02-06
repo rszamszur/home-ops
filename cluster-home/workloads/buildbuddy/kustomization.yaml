@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
 - buildbuddy-db.Application.yaml
 - buildbuddy-foss.Application.yaml
+- buildbuddy-foss.PersistentVolumeClaim.yaml
 - buildbuddy-http.Ingress.yaml
 - buildbuddy.Namespace.yaml
 - buildbuddy-tls.Certificate.yaml
+- data-buildbuddy-db-mysql-0.PersistentVolumeClaim.yaml

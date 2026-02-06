@@ -6,3 +6,4 @@ resources:
 - coder-db.Application.yaml
 - coder-v2.Application.yaml
 - coder-tls.Certificate.yaml
+- data-coder-db-postgresql-0.PersistentVolumeClaim.yaml
