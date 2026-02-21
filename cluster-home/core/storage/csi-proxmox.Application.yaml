@@ -18,11 +18,6 @@ spec:
         existingConfigSecret: proxmox-csi-plugin-config
         existingConfigSecretKey: config.yaml
         storageClass:
-          - name: pve-hddexos
-            storage: hddexos
-            ssd: false
-            reclaimPolicy: Delete
-            fstype: ext4
           - name: pve-nvme-pm963
             storage: nvme-PM963
             ssd: true
@@ -30,6 +25,11 @@ spec:
             fstype: ext4
           - name: pve-nvme-wd-blue
             storage: nvme-wd-blue
+            ssd: true
+            reclaimPolicy: Delete
+            fstype: ext4
+          - name: pve-ssd-870-evo
+            storage: pve-ssd-870-evo
             ssd: true
             reclaimPolicy: Delete
             fstype: ext4
