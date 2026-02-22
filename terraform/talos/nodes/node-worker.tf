@@ -10,8 +10,8 @@ locals {
         cpu : lookup(try(var.instances[zone]["worker"], {}), "cpu", 1)
         cpu_sockets : lookup(try(var.instances[zone]["worker"], {}), "sockets", 1)
         mem : lookup(try(var.instances[zone]["worker"], {}), "mem", 2048)
-        numa : lookup(try(var.instances[zone]["ingress"], {}), "numa", false)
-        ipv4 : "${cidrhost(local.subnets[zone], 3 + inx)}/24"
+        numa : lookup(try(var.instances[zone]["worker"], {}), "numa", false)
+        ipv4 : "${cidrhost(local.subnets[zone], inx)}/24"
         gwv4 : local.gwv4
       }
     ]
@@ -21,7 +21,7 @@ locals {
 resource "proxmox_virtual_environment_vm" "talos-worker" {
   for_each  = local.workers
   name      = each.value.name
-  tags      = ["talos-worker"]
+  tags      = ["talos-worker", "szamszur.cloud"]
   node_name = each.value.node_name
   vm_id     = each.value.id
 
@@ -42,7 +42,7 @@ resource "proxmox_virtual_environment_vm" "talos-worker" {
     datastore_id = var.proxmox_disk_storage
     interface    = "scsi0"
     ssd          = true
-    size         = 32
+    size         = 50
     file_format  = "raw"
   }
   cpu {
@@ -58,9 +58,7 @@ resource "proxmox_virtual_environment_vm" "talos-worker" {
 
   network_device {
     model   = "virtio"
-    bridge  = "vmbr0"
-    vlan_id = "3"
-    # firewall = true
+    bridge  = "vmbr1"
   }
 
   operating_system {

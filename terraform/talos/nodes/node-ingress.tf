@@ -11,7 +11,7 @@ locals {
         cpu_sockets : lookup(try(var.instances[zone]["ingress"], {}), "sockets", 1)
         mem : lookup(try(var.instances[zone]["ingress"], {}), "mem", 2048)
         numa : lookup(try(var.instances[zone]["ingress"], {}), "numa", false)
-        ipv4 : "${cidrhost(local.subnets[zone], inx)}/24"
+        ipv4 : "${cidrhost(local.subnets[zone], var.instances[zone]["worker"].count + inx)}/24"
         gwv4 : local.gwv4
       }
     ]
@@ -21,7 +21,7 @@ locals {
 resource "proxmox_virtual_environment_vm" "talos-ingress" {
   for_each  = local.ingress
   name      = each.value.name
-  tags      = ["talos-ingress"]
+  tags      = ["talos-ingress", "szamszur.cloud"]
   node_name = each.value.node_name
   vm_id     = each.value.id
 
@@ -42,7 +42,7 @@ resource "proxmox_virtual_environment_vm" "talos-ingress" {
     datastore_id = var.proxmox_disk_storage
     interface    = "scsi0"
     ssd          = true
-    size         = 32
+    size         = 50
     file_format  = "raw"
   }
   cpu {
@@ -58,9 +58,7 @@ resource "proxmox_virtual_environment_vm" "talos-ingress" {
 
   network_device {
     model   = "virtio"
-    bridge  = "vmbr0"
-    vlan_id = "3"
-    # firewall = true
+    bridge  = "vmbr1"
   }
 
   operating_system {
