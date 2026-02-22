@@ -1,5 +1,8 @@
 machine:
   install:
     disk: ${install_disk}
-  network:
-    hostname: ${hostname}
+---
+apiVersion: v1alpha1
+kind: HostnameConfig
+hostname: ${hostname}
+auto: off
