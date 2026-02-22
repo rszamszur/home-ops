@@ -7,13 +7,13 @@ variable "cluster_name" {
 variable "cluster_endpoint" {
   description = "The endpoint for the Talos cluster"
   type        = string
-  default     = "https://192.168.20.10:6443"
+  default     = "https://192.168.20.8:6443"
 }
 
 variable "talos_version" {
   description = "The version of talos features to use in generated machine configuration"
   type        = string
-  default     = "1.10.6"
+  default     = "1.12.4"
 }
 
 variable "kubernetes_version" {
@@ -37,21 +37,21 @@ variable "node_data" {
   })
   default = {
     controlplanes = {
-      "192.168.20.10" = {
+      "192.168.20.8" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-controlplane-1"
       },
-      "192.168.20.11" = {
+      "192.168.20.9" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-controlplane-2"
       },
-      "192.168.20.12" = {
+      "192.168.20.10" = {
         install_disk = "/dev/mmcblk0"
         hostname     = "pve-talos-controlplane-3"
       },
     }
     workers = {
-      "192.168.20.21" = {
+      "192.168.20.16" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-1"
         labels       = [
@@ -60,7 +60,7 @@ variable "node_data" {
           "topology.kubernetes.io/zone: pve-r740xd"
         ]
       },
-      "192.168.20.22" = {
+      "192.168.20.17" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-2"
         labels       = [
@@ -69,7 +69,7 @@ variable "node_data" {
           "topology.kubernetes.io/zone: pve-r740xd"
         ]
       },
-      "192.168.20.23" = {
+      "192.168.20.18" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-3"
         labels       = [
@@ -78,7 +78,7 @@ variable "node_data" {
           "topology.kubernetes.io/zone: pve-r740xd"
         ]
       },
-      "192.168.20.24" = {
+      "192.168.20.19" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-4"
         labels       = [

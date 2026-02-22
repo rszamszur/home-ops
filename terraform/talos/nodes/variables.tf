@@ -1,7 +1,7 @@
 variable "proxmox_host" {
   description = "Proxmox host"
   type        = string
-  default     = "192.168.10.11"
+  default     = "pve-r740xd.szamszur.cloud"
 }
 
 variable "proxmox_token_id" {
@@ -42,13 +42,13 @@ variable "proxmox_cloudinit_storage" {
 variable "proxmox_disk_storage" {
   description = "Proxmox storage name for main disk"
   type        = string
-  default     = "nvme-samsung"
+  default     = "ssd-870-evo"
 }
 
 variable "network_shift" {
   description = "Network number shift"
   type        = number
-  default     = 5
+  default     = 1
 }
 
 variable "vpc_main_cidr" {
@@ -61,9 +61,9 @@ variable "instances" {
   description = "Map of VMs launched on proxmox hosts"
   type        = map(any)
   default = {
-    "pve" = {
+    "pve-r740xd" = {
       "controlplane" : {
-        id      = 600
+        id      = 1000
         cpu     = 3,
         sockets = 2,
         mem     = 12288,
@@ -71,7 +71,7 @@ variable "instances" {
         count   = 2,
       },
       "worker" : {
-        id      = 1000
+        id      = 1100
         cpu     = 4,
         sockets = 2,
         mem     = 16384,
@@ -79,7 +79,7 @@ variable "instances" {
         count   = 4,
       },
       "ingress" : {
-        id      = 2000
+        id      = 1200
         cpu     = 3,
         sockets = 2,
         mem     = 12288,

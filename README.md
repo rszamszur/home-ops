@@ -159,8 +159,10 @@ age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/argocd-ghcr-
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/buildbuddy-db-mysql-secret.yaml.age | kubectl apply -f -
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/coder-db-postgresql-secret.yaml.age | kubectl apply -f -
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/coder-db-url-secret.yaml.age | kubectl apply -f -
+age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/docker-auth-secret.yaml.age | kubectl apply -f -
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/gha-runner-home-ops-secret.yaml.age | kubectl apply -f -
 age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/ovh-credentials-secret.yaml.age | kubectl apply -f -
+age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/proxmox-csi-pugin-config-secret.yaml.age | kubectl apply -f -
 ```
 
 Then, just apply this repo:

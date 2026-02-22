@@ -16,10 +16,10 @@ source "proxmox-iso" "talos-node" {
 
   boot_iso {
     iso_storage_pool = "local"
-    iso_url  = "https://mirror.rackspace.com/archlinux/iso/2025.05.01/archlinux-2025.05.01-x86_64.iso"
-    #iso_file = "local:iso/archlinux-2024.02.01-x86_64.iso"
+    iso_url  = "https://mirror.rackspace.com/archlinux/iso/2026.02.01/archlinux-2026.02.01-x86_64.iso"
+    #iso_file = "local:iso/archlinux-2026.02.01-x86_64.iso"
     iso_download_pve = true
-    iso_checksum = "sha256:2008e6becc86d207272625c94a388d2ee3b14d6a24b401552d8105c4e82c96db"
+    iso_checksum = "sha256:c0ee0dab0a181c1d6e3d290a81ae9bc41c329ecaa00816ca7d62a685aeb8d972"
     unmount = true
   }
   vm_id = "200"

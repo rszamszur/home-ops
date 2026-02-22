@@ -24,7 +24,7 @@ variable "proxmox_nodename" {
 variable "proxmox_storage" {
   description = "Proxmox storage name"
   type        = string
-  default     = "hddexos"
+  default     = "nvme-PM963"
 }
 
 variable "proxmox_interface" {

@@ -24,7 +24,7 @@ variable "proxmox_nodename" {
 variable "proxmox_storage" {
   description = "Proxmox storage name"
   type        = string
-  default     = "hddexos"
+  default     = "ssd-870-evo"
 }
 
 variable "proxmox_interface" {
@@ -42,10 +42,10 @@ variable "network_vlan_tag" {
 variable "talos_version" {
   description = "Talos release version"
   type        = string
-  default     = "v1.10.0"
+  default     = "v1.12.4"
 }
 
 locals {
-  # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Fiscsi-tools&platform=nocloud&target=cloud&version=1.7.7
+  # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Fiscsi-tools&platform=nocloud&target=cloud&version=1.10.0
   image = "https://factory.talos.dev/image/c9078f9419961640c712a8bf2bb9174933dfcf1da383fd8ea2b7dc21493f8bac/${var.talos_version}/nocloud-amd64.raw.xz"
 }

@@ -21,7 +21,7 @@ locals {
 resource "proxmox_virtual_environment_vm" "talos-controlplane" {
   for_each  = local.controlplanes
   name      = each.value.name
-  tags      = ["talos-controlplane"]
+  tags      = ["talos-controlplane", "szamszur.cloud"]
   node_name = each.value.node_name
   vm_id     = each.value.id
 
@@ -37,6 +37,8 @@ resource "proxmox_virtual_environment_vm" "talos-controlplane" {
   boot_order = ["scsi0"]
   clone {
     vm_id = var.proxmox_vm_template_id
+
+    full  = false
   }
   disk {
     datastore_id = var.proxmox_disk_storage
@@ -58,9 +60,7 @@ resource "proxmox_virtual_environment_vm" "talos-controlplane" {
 
   network_device {
     model   = "virtio"
-    bridge  = "vmbr0"
-    vlan_id = "3"
-    # firewall = true
+    bridge  = "vmbr1"
   }
 
   operating_system {
