@@ -22,7 +22,9 @@ spec:
                   key: url
             - name: CODER_ACCESS_URL
               value: "https://coder.szamszur.cloud"
-            - name: CODER_TELEMETRY
+            - name: CODER_TELEMETRY_ENABLE
+              value: "false"
+            - name: CODER_OAUTH2_GITHUB_DEFAULT_PROVIDER_ENABLE
               value: "false"
           ingress:
             enable: true
