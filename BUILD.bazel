@@ -31,7 +31,7 @@ platform(
     ],
     exec_properties = {
         "OSFamily": "linux",
-        "container-image": "harbor.puqu.io/starterkit/ash:fd20kbbbywiih422ki32lwh6nkfnfgl7",
+        "container-image": "docker://harbor.puqu.io/starterkit/ash:fd20kbbbywiih422ki32lwh6nkfnfgl7",
     },
     visibility = ["//visibility:public"],
 )
