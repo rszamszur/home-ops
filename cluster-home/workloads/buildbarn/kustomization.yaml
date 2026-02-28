@@ -22,4 +22,5 @@ resources:
 - worker-starterkit-ash.Deployment.yaml
 - worker-starterkit-ash-x86_64-cc.Deployment.yaml
 - worker-starterkit-bash-coreutils-x86_64-cc.Deployment.yaml
+- worker-starterkit-ash-bash-x86_64.Deployment.yaml
 - worker-ubuntu22-04.Deployment.yaml
