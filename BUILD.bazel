@@ -37,6 +37,20 @@ platform(
 )
 
 platform(
+    name = "x86_64_linux_remote_starterkit_ash_bash",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+        "//:x86_64_bash",
+    ],
+    exec_properties = {
+        "OSFamily": "linux",
+        "container-image": "docker://harbor.puqu.io/starterkit/ash-bash-x86_64:agpd0bzgi9089b5blqv3wr1iy2fkalvd",
+    },
+    visibility = ["//visibility:public"],
+)
+
+platform(
     name = "x86_64_linux_remote",
     constraint_values = [
         "@platforms//os:linux",
