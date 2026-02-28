@@ -2,4 +2,7 @@
 
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["0001-patch-scripts-sheabangs.patch"])
+exports_files([
+    "0001-patch-scripts-sheabangs.patch",
+    "0002-patch-override-mktemp-default-tempdir.patch",
+])
