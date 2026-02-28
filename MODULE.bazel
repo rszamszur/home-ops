@@ -137,10 +137,13 @@ register_execution_platforms(
 archive_override(
     module_name = "rules_distroless",
     patch_args = ["-p1"],
-    patches = ["@home-ops//bazel/patches/github.com-bazel-contrib-rules_distroless:0001-patch-scripts-sheabangs.patch"],
-    sha256 = "f508831f306945f7d65c62121f92e2b454291e465eb9e79918e4e28157416255",
-    strip_prefix = "rules_distroless-0.6.2",
-    url = "https://github.com/bazel-contrib/rules_distroless/releases/download/v0.6.2/rules_distroless-v0.6.2.tar.gz",
+    patches = [
+        "@home-ops//bazel/patches/github.com-bazel-contrib-rules_distroless:0001-patch-scripts-sheabangs.patch",
+        "@home-ops//bazel/patches/github.com-bazel-contrib-rules_distroless:0002-patch-override-mktemp-default-tempdir.patch",
+    ],
+    sha256 = "0e2486fb33280a7534241efb76e76d63f613b7c89a23e6990cb8c937349901f5",
+    strip_prefix = "rules_distroless-bd2acda8015d464fa2dd26995617e6ebd9749899",
+    url = "https://github.com/rszamszur/rules_distroless/archive/bd2acda8015d464fa2dd26995617e6ebd9749899.tar.gz",
 )
 
 archive_override(

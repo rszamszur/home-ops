@@ -1,0 +1,80 @@
+From 65e56d170ebb6f83e56b4bc1c6d52d43220ea9dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rados=C5=82aw=20Szamszur?= <github@rsd.sh>
+Date: Sat, 28 Feb 2026 13:30:43 +0000
+Subject: [PATCH] patch: override mktemp default tempdir
+
+---
+ apt/private/dpkg_status.sh    | 2 +-
+ apt/private/dpkg_statusd.sh   | 2 +-
+ distroless/private/cacerts.sh | 2 +-
+ distroless/private/flatten.sh | 2 +-
+ distroless/private/locale.sh  | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/apt/private/dpkg_status.sh b/apt/private/dpkg_status.sh
+index 3689ca5..cee3868 100755
+--- a/apt/private/dpkg_status.sh
++++ b/apt/private/dpkg_status.sh
+@@ -7,7 +7,7 @@ readonly awk="$3"
+ readonly coreutils="$4"
+ shift 4
+
+-tmp_out=$($coreutils mktemp)
++tmp_out=$($coreutils mktemp --tmpdir=/proc/self/cwd)
+
+ while  (( $# > 0 )); do
+     $bsdtar -xf "$1" --to-stdout ./control |
+diff --git a/apt/private/dpkg_statusd.sh b/apt/private/dpkg_statusd.sh
+index 1704aac..29de9f3 100755
+--- a/apt/private/dpkg_statusd.sh
++++ b/apt/private/dpkg_statusd.sh
+@@ -11,7 +11,7 @@ shift 6
+
+ include=(--include "^./control$" --include "^./md5sums$")
+
+-tmp=$($coreutils mktemp -d)
++tmp=$($coreutils mktemp -d --tmpdir=/proc/self/cwd)
+ "$bsdtar" -xf "$control_path" "${include[@]}" -C "$tmp"
+
+ "$bsdtar" -cf - $@ --format=mtree "${include[@]}" --options '!gname,!uname,!sha1,!nlink,!time' "@$control_path" | \
+diff --git a/distroless/private/cacerts.sh b/distroless/private/cacerts.sh
+index 9f515d8..b62c2e9 100755
+--- a/distroless/private/cacerts.sh
++++ b/distroless/private/cacerts.sh
+@@ -6,7 +6,7 @@ readonly package_path="$2"
+ readonly cacerts_out="$3"
+ readonly copyright_out="$4"
+ readonly coreutils="$5"
+-readonly tmp="$($coreutils mktemp -d)"
++readonly tmp="$($coreutils mktemp -d --tmpdir=/proc/self/cwd)"
+
+ "$bsdtar" -xf "$package_path" -C "$tmp" ./usr/share/ca-certificates ./usr/share/doc/ca-certificates/copyright
+
+diff --git a/distroless/private/flatten.sh b/distroless/private/flatten.sh
+index 3fdcbd9..68790e7 100755
+--- a/distroless/private/flatten.sh
++++ b/distroless/private/flatten.sh
+@@ -10,7 +10,7 @@ shift 4;
+ # Deduplication requested, use this complex pipeline to deduplicate.
+ if [[ "$deduplicate" == "True" ]]; then
+
+-    mtree=$($coreutils mktemp)
++    mtree=$($coreutils mktemp --tmpdir=/proc/self/cwd)
+
+     # List files in all archives and append to single column mtree.
+     for arg in "$@"; do
+diff --git a/distroless/private/locale.sh b/distroless/private/locale.sh
+index be42219..134296d 100755
+--- a/distroless/private/locale.sh
++++ b/distroless/private/locale.sh
+@@ -14,7 +14,7 @@ shift 6
+ # "$bsdtar" -cf to.mtree $@ --format=mtree --options '!gname,!uname,!sha1,!nlink' "@$package_path"
+ # "$bsdtar" --older "0" -Uf $out @to.mtree
+
+-tmp=$($coreutils mktemp -d)
++tmp=$($coreutils mktemp -d --tmpdir=/proc/self/cwd)
+ "$bsdtar" -xf "$package_path" $@ -C "$tmp"
+ "$bsdtar" -cf - $@ --format=mtree --options '!gname,!uname,!sha1,!nlink,!time' "@$package_path" |
+     $awk '{ print $0 " time='"$time"'" }' |
+--
+2.51.2
