@@ -18,4 +18,4 @@ build --incompatible_strict_action_env
 ## Be extremely strict about used shell executable
 ## (By default it is embedded - not great for cross-compatibility)
 ## Docs: https://bazel.build/versions/8.2.0/reference/command-line-reference#flag--shell_executable
-build --shell_executable=/bin/sh
+build --shell_executable=/bin/bash
