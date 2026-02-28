@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Upload templates
-        run: bazel run //terraform/coder/${{ matrix.template }}:coder.publish
+        run: bazel --bazelrc=bazel/bazelrc/remote-execution.bazelrc run //terraform/coder/${{ matrix.template }}:coder.publish
   image:
     needs: pre_job
     if: ${{ needs.pre_job.outputs.images == 'true' }}
@@ -54,4 +54,4 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Push image
-        run: bazel run //images/${{ matrix.image }}:image.push
+        run: bazel --bazelrc=bazel/bazelrc/remote-execution.bazelrc run //images/${{ matrix.image }}:image.push
