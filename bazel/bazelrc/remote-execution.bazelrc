@@ -2,3 +2,4 @@ import %workspace%/bazel/bazelrc/rbe.bazelrc
 
 build --remote_executor=grpcs://buildbarn-grpc.szamszur.cloud
 build --remote_cache=grpcs://buildbarn-grpc.szamszur.cloud
+startup --experimental_remote_repo_contents_cache
