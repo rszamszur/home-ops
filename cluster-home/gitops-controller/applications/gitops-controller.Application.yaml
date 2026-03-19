@@ -7,6 +7,10 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
+    syncOptions:
+      # The --server-side flag is required because some Argo CD CRDs (like ApplicationSet) exceed the 262KB annotation size limit imposed by client-side kubectl apply.
+      # Server-side apply avoids this limitation by not storing the last-applied-configuration annotation.
+      - ServerSideApply=true
     automated:
       prune: true
       selfHeal: true
