@@ -21,7 +21,7 @@ spec:
       containers:
       - args:
         - /config/worker-starterkit-ash-coreutils-x86_64-cc.jsonnet
-        image: ghcr.io/buildbarn/bb-worker:20240716T044555Z-9850e82
+        image: ghcr.io/buildbarn/bb-worker:20260319t042723z-cd89f05
         name: worker
         volumeMounts:
         - mountPath: /config/
@@ -38,7 +38,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
-      - command: [/bb/tini, -v, --, /bb/bb_runner, /config/runner-starterkit-ash-coreutils-x86_64-cc.jsonnet]
+      - command: [/bb/bb_runner, /config/runner-common.jsonnet]
         image: harbor.puqu.io/starterkit/ash-coreutils-x86_64-cc:kc209hp20raqvsv62prkdn9rfd1vh2fd
         name: runner
         securityContext:
@@ -55,7 +55,7 @@ spec:
           readOnly: true
       initContainers:
       - name: bb-runner-installer
-        image: ghcr.io/buildbarn/bb-runner-installer:20240716T044555Z-9850e82
+        image: ghcr.io/buildbarn/bb-runner-installer:20260319t042723z-cd89f05
         volumeMounts:
         - mountPath: /bb/
           name: empty
@@ -77,8 +77,8 @@ spec:
           items:
           - key: common.libsonnet
             path: common.libsonnet
-          - key: runner-starterkit-ash-coreutils-x86_64-cc.jsonnet
-            path: runner-starterkit-ash-coreutils-x86_64-cc.jsonnet
+          - key: runner-common.jsonnet
+            path: runner-common.jsonnet
           - key: worker-starterkit-ash-coreutils-x86_64-cc.jsonnet
             path: worker-starterkit-ash-coreutils-x86_64-cc.jsonnet
       - emptyDir: {}
