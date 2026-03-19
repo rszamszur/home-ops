@@ -10,12 +10,7 @@ configMapGenerator:
     - browser.jsonnet
     - common.libsonnet
     - frontend.jsonnet
-    - runner-ubuntu22-04.jsonnet
-    - runner-starterkit-ash.jsonnet
-    - runner-starterkit-ash-bash-x86_64.jsonnet
-    - runner-starterkit-ash-x86_64-cc.jsonnet
-    - runner-starterkit-ash-coreutils-x86_64-cc.jsonnet
-    - runner-starterkit-bash-coreutils-x86_64-cc.jsonnet
+    - runner-common.jsonnet
     - scheduler.jsonnet
     - storage.jsonnet
     - worker-ubuntu22-04.jsonnet
