@@ -15,7 +15,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Labeler
-        uses: actions/labeler@v6
+        uses: actions/labeler@e52e4fb63ed5cd0e07abaad9826b2a893ccb921f
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           configuration-path: .github/labeler.yaml

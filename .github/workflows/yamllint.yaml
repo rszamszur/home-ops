@@ -21,14 +21,14 @@ jobs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
       build: ${{ steps.filter.outputs.build }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98
       - id: skip_check
-        uses: fkirc/skip-duplicate-actions@v5.3.1
+        uses: fkirc/skip-duplicate-actions@04a1aebece824b56e6ad6a401d015479cd1c50b3
         with:
           skip_after_successful_duplicate: 'true'
           concurrent_skipping: same_content
           do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
-      - uses: dorny/paths-filter@v4
+      - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d
         id: filter
         with:
           filters: |
@@ -40,9 +40,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: cachix/install-nix-action@v31
+      - uses: cachix/install-nix-action@51f3067b56fe8ae331890c77d4e454f6d60615ff
         with:
           nix_path: ${{ env.NIX_CHANNEL }}
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98
       - name: Run yamllint checks
         run: nix-shell -p yamllint --run "yamllint -f github cluster-home/"
