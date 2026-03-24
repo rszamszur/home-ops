@@ -12,13 +12,13 @@
       "matchUpdateTypes": ["minor"],
       "labels": ["type: minor"],
       "automerge": true,
-      "minimumReleaseAge": "14 days"
+      "minimumReleaseAge": "30 days"
     },
     {
       "matchUpdateTypes": ["patch"],
       "labels": ["type: patch"],
       "automerge": true,
-      "minimumReleaseAge": "14 days"
+      "minimumReleaseAge": "30 days"
     },
     {
       "matchUpdateTypes": ["digest"],
