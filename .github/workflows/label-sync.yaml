@@ -18,7 +18,7 @@ jobs:
           sparse-checkout: .github/labels.yml
 
       - name: Sync Labels
-        uses: EndBug/label-sync@47e556d4358c3e71820e6dd3327698af80f6bd5e
+        uses: EndBug/label-sync@56ccbe98b802346e4909344c4bd7c5375d8e37a2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: .github/labels.yaml
