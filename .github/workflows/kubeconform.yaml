@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: cachix/install-nix-action@51f3067b56fe8ae331890c77d4e454f6d60615ff
+      - uses: cachix/install-nix-action@96951a368ba55167b55f1c916f7d416bac6505fe
         with:
           nix_path: ${{ env.NIX_CHANNEL }}
       - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98
