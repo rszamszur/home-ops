@@ -1,0 +1,69 @@
+#
+# cgit configuration file
+#
+
+# Page title
+root-title=My Git Repositories
+
+# Page description
+root-desc=A collection of git repositories
+
+# Path to cgit CSS/logo
+css=/cgit-css/cgit.css
+logo=/cgit-css/cgit.png
+favicon=/favicon.ico
+
+# Enable caching (set cache size, 0 = disabled)
+cache-size=1000
+cache-root=/var/cache/cgit
+
+# Repository scan path — auto-discover repos
+scan-path=/git
+
+# Enable blame page
+enable-blame=1
+
+# Show owner on index page
+enable-index-owner=1
+
+# Enable log-hierarchical commit graph
+enable-commit-graph=1
+
+# Show file line count in tree view
+enable-tree-linenumbers=1
+
+# Allow download of tar.gz, tar.bz2, zip
+snapshots=tar.gz tar.bz2 zip
+
+# Use a syntax highlighting filter
+source-filter=/usr/lib/cgit/filters/syntax-highlighting.sh
+
+# About page filter (render markdown)
+about-filter=/usr/lib/cgit/filters/about-formatting.sh
+
+# Readme file to display on about tab
+readme=:README.md
+readme=:readme.md
+readme=:README
+readme=:readme
+
+# Max message length on log page
+max-message-length=80
+
+# Clone URL template
+clone-url=https://$HTTP_HOST/$CGIT_REPO_URL
+
+# Sort repositories by name
+repository-sort=name
+
+# Virtual root
+virtual-root=/
+
+#
+# Alternatively, define individual repos:
+#
+# repo.url=my-project
+# repo.path=/var/lib/git/my-project.git
+# repo.desc=My awesome project
+# repo.owner=John Doe
+#

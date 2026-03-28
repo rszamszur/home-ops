@@ -1,0 +1,37 @@
+# To generate the apt.lock.json run the following command
+#
+#     bazel run @debian_trixie//:lock
+#
+# See deb_index at MODULE.bazel
+version: 1
+
+sources:
+  - channel: trixie main contrib
+    url: https://snapshot.debian.org/archive/debian/20260328T082450Z
+  - channel: trixie-updates main
+    url: https://snapshot.debian.org/archive/debian/20260328T082450Z
+  - channel: trixie-security main
+    url: https://snapshot.debian.org/archive/debian-security/20260327T223745Z
+
+archs:
+  - "amd64"
+
+packages:
+  # base
+  - "libc-bin"
+  - "ca-certificates"
+  - "tzdata"
+  # libs
+  - "libc++1"
+  - "lua5.4"
+  - "zlib1g"
+  # packages
+  - "git"
+  - "cgit"
+  - "nginx"
+  - "supervisor"
+  - "fcgiwrap"
+  - "spawn-fcgi"
+  - "highlight"
+  # debug
+  - "bash"

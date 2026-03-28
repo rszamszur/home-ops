@@ -5,6 +5,7 @@ build --action_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
 # Specific mnemonic
 build --strategy=PackageTar=sandboxed
 build --strategy=Tar=sandboxed
+build --strategy=Flatten=sandboxed
 
 ## Register platforms that should be used by default 
 build --platforms=//:x86_64_linux_remote
