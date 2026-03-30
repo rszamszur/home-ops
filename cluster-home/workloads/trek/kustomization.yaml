@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- trek.Namespace.yaml
+- trek-config.ConfigMap.yaml
+- trek-data.PersistentVolumeClaim..yaml
+- trek.Deployment.yaml
+- trek.Ingress.yaml
+- trek.Service.yaml
+- trek-tls.Certificate.yaml
+- trek-uploads.PersistentVolumeClaim.yaml
