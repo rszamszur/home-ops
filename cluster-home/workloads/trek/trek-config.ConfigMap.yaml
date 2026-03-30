@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trek-config
+  namespace: trek
+  labels:
+    app: trek
+data:
+  NODE_ENV: "production"
+  PORT: "3000"
+  ALLOWED_ORIGINS: "https://trek.szamszur.cloud"
