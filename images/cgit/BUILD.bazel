@@ -1,0 +1,223 @@
+load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push")
+load("@rules_distroless//apt:defs.bzl", "dpkg_status")
+load("@rules_distroless//distroless:defs.bzl", "locale", "group", "home", "passwd")
+load("@aspect_bazel_lib//lib:tar.bzl", "tar")
+load("//images/common:variables.bzl", "MTIME", "ROOT")
+
+
+NONEROOT_UID = 1000
+NONEROOT_GID = 1000
+COMPATIBLE_WITH = select({
+    "@platforms//cpu:x86_64": ["@platforms//cpu:x86_64"]
+}) + [
+    "@platforms//os:linux",
+]
+
+tar(
+    name = "symlinks",
+    srcs = [],
+    args = [
+        "--format",
+        "gnutar",
+    ],
+    compress = "gzip",
+    mtree = [
+        "./bin/ uid=0 gid=0 mode=0755 time=0.0 type=dir",
+        "./bin/sh uid=0 gid=0 mode=0755 time=0.0 type=link link=/bin/bash",
+        "./usr/bin uid=0 gid=0 mode=0755 time=0.0 type=dir",
+    ],
+)
+
+group(
+    name = "nonroot-group",
+    entries = [
+        {
+            "name": "root",  # root_group
+            "gid": ROOT,
+            "password": "x",
+        },
+        {
+            "name": "tty",  # tty_group
+            "gid": 5,
+            "password": "x",
+        },
+        {
+            "name": "staff",  # staff_group
+            "gid": 50,
+            "password": "x",
+        },
+        {
+            "name": "nonroot",
+            "gid": NONEROOT_GID,
+            "password": "x",
+        },
+    ],
+    time = MTIME,
+)
+
+passwd(
+    name = "nonroot-passwd",
+    entries = [
+        {
+            "gecos": ["root"],
+            "gid": ROOT,
+            "shell": "/sbin/nologin",
+            "home": "/root",
+            "uid": ROOT,
+            "username": "root",
+        },
+        {
+            "gecos": ["nonroot"],
+            "gid": NONEROOT_GID,
+            "home": "/home/nonroot",
+            "shell": "/sbin/nologin",
+            "uid": NONEROOT_UID,
+            "username": "nonroot",
+        },
+    ],
+)
+
+home(
+    name = "nonroot-home",
+    dirs = [
+                {
+            "home": "/root",
+            "uid": ROOT,
+            "gid": ROOT,
+            "mode": 700,
+        },
+        {
+            "home": "/home",
+            "uid": ROOT,
+            "gid": ROOT,
+            "mode": 755,
+        },
+        {
+            "home": "/home/nonroot",
+            "uid": NONEROOT_UID,
+            "gid": NONEROOT_GID,
+            "mode": 700,
+        },
+    ],
+)
+
+locale(
+    name = "locale",
+    charset = "C.utf8",
+    time = MTIME,
+    package = select({
+        "@platforms//cpu:x86_64": "@debian_trixie//libc-bin/amd64:data",
+    }),
+)
+
+tar(
+    name = "directories",
+    srcs = [],
+    args = [
+        "--format",
+        "gnutar",
+    ],
+    compress = "gzip",
+    mtree = [
+        "./etc/ uid=0 gid=0 mode=0755 time=0.0 type=dir",
+        "./git/ uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./var/log/nginx uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./var/log/fcgiwrap uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./var/log/supervisor uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./var/cache/cgit uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./var/lib/nginx uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./var/lib/nginx uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./run/fcgiwrap/ uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./run/supervisor/ uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+        "./run/nginx/ uid={} gid={} mode=0755 time=0.0 type=dir".format(NONEROOT_UID, NONEROOT_GID),
+    ],
+)
+
+    # chown -R nonroot:nonroot \
+    # /run/nginx \
+    # /var/log/nginx \
+    # /var/log/supervisor \
+    # /var/run/fcgiwrap \
+    # /var/cache/cgit \
+    # /var/lib/nginx \
+    # /tmp/nginx \
+    # /usr/share/webapps/cgit \
+    # /etc/cgitrc
+
+pkg_tar(
+    name = "nginx.conf.tar",
+    srcs = ["nginx.conf"],
+    package_dir = "/etc/nginx/",
+    # owner = "{}.{}".format(RUNNER_UID, RUNNER_GID),
+    # mode = "0755"
+)
+
+pkg_tar(
+    name = "cgitrc.tar",
+    srcs = ["cgitrc"],
+    package_dir = "/etc/cgit",
+    # owner = "{}.{}".format(RUNNER_UID, RUNNER_GID),
+    # mode = "0755"
+)
+
+pkg_tar(
+    name = "supervisor.conf.tar",
+    srcs = ["supervisord.conf"],
+    package_dir = "/etc/",
+    # owner = "{}.{}".format(RUNNER_UID, RUNNER_GID),
+    # mode = "0755"
+)
+
+oci_image(
+    name = "image",
+    # base = "@distroless_base",
+    env = {
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt",
+        "DEBIAN_FRONTEND": "noninteractive",
+    },
+    os = "linux",
+    architecture = select({
+        "@platforms//cpu:x86_64": "amd64",
+    }),
+    target_compatible_with = COMPATIBLE_WITH,
+    tars = [
+        "//images/common:rootfs",
+        ":nonroot-passwd",
+        ":nonroot-home",
+        ":nonroot-group",
+        "//images/common:tmp",
+        "@debian_trixie//ca-certificates:ca-certificates",
+        ":locale",
+        "@debian_trixie//:dpkg_status",
+        ":symlinks",
+        #"@debian_trixie//fcgiwrap/amd64:data"
+    ] + select({
+        "@platforms//cpu:x86_64": [
+            # This target contains all the installed packages.
+            "@debian_trixie//:flat",
+        ],
+    }) + [
+        ":directories",
+        ":cgitrc.tar",
+        ":nginx.conf.tar",
+        ":supervisor.conf.tar",
+    ],
+    cmd = [
+        "/usr/bin/supervisord",
+        "-c",
+        "/etc/supervisord.conf",
+    ],
+    volumes =["/git"],
+    exposed_ports = ["8080/tcp"],
+    user = "%d" % NONEROOT_UID,
+    workdir = "/home/nonroot",
+)
+
+oci_push(
+    name = "image.push",
+    image = ":image",
+    remote_tags = ["latest"],
+    repository = "harbor.puqu.io/rszamszur/cgit",
+)
