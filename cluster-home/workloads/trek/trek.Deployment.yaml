@@ -18,7 +18,7 @@ spec:
       containers:
         - name: trek
           # renovate: datasource=docker depName=docker.io/mauriceboe/trek
-          image: "mauriceboe/trek:2.9.13"
+          image: "mauriceboe/trek:2.9.14"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
