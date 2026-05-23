@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudnative-pg
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://cloudnative-pg.github.io/charts
+    chart: cloudnative-pg
+    # renovate: datasource=helm depName=cloudnative-pg repository=https://cloudnative-pg.github.io/charts
+    targetRevision: 0.28.2
+    helm:
+      version: v3
+      values: |
+        namespaceOverride: cnpg-system
+        replicaCount: 1
+        crds:
+          create: true
+        image:
+          # renovate: datasource=github-releases depName=cloudnative-pg/cloudnative-pg
+          tag: "1.29.1"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+    - ServerSideApply=true
+  destination:
+    namespace: cnpg-system
+    server: https://kubernetes.default.svc
