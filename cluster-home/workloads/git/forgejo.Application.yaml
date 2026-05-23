@@ -56,6 +56,11 @@ spec:
             - ReadWriteOnce
           storageClass: "pve-nvme-wd-blue"
 
+        service:
+          ssh:
+            type: NodePort
+            nodePort: 22
+
         gitea:
           admin:
             existingSecret: forgejo-config-admin
@@ -75,6 +80,13 @@ spec:
             #   REPO_INDEXER_ENABLED: true
             APP_NAME: 'Radoslaw Szamszur Git'
             RUN_MODE: prod
+            actions:
+              LOG_RETENTION_DAYS: 90
+              ARTIFACT_RETENTION_DAYS: 60
+            service:
+              DISABLE_REGISTRATION: true
+            server:
+              DOMAIN: git.szamszur.cloud
   syncPolicy:
     automated:
       prune: true
