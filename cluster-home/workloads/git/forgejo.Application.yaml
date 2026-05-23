@@ -1,0 +1,92 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: forgejo
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: oci://code.forgejo.org/forgejo-helm/forgejo
+    chart: forgejo
+    # renovate: datasource=helm depName=forgejo repository=oci://code.forgejo.org/forgejo-helm/forgejo
+    targetRevision: 17.1.0
+    helm:
+      version: v3
+      values: |
+        global:
+          storageClass: "pve-nvme-wd-blue"
+
+        namespaceOverride: "git"
+        replicaCount: 1
+        checkDeprecation: true
+
+        test:
+          enabled: true
+          image:
+            name: busybox
+            tag: latest
+
+        image:
+          registry: code.forgejo.org
+          repository: forgejo/forgejo
+          # renovate: datasource=docker depName=code.forgejo.org/forgejo/forgejo
+          tag: '15-rootless'
+          digest: 'sha256:cc2d74fb4c30385a8ee34de8c8f83344f7316cec70bd2cc7eb82b2802fa28e0b'
+          pullPolicy: IfNotPresent
+          rootless: true
+
+        ingress:
+          enabled: true
+          className: nginx
+          hosts:
+            - host: git.szamszur.cloud
+              paths:
+                - path: /
+                  pathType: Prefix
+                  port: http
+          tls:
+          - secretName: git-szamszur-cloud-tls
+            hosts:
+              - git.szamszur.cloud
+
+        persistence:
+          enabled: true
+          size: 50Gi
+          accessModes:
+            - ReadWriteOnce
+          storageClass: "pve-nvme-wd-blue"
+
+        gitea:
+          admin:
+            existingSecret: forgejo-config-admin
+            passwordMode: initialOnlyNoReset
+
+          ssh:
+            logLevel: 'INFO'
+
+          additionalConfigSources:
+            - secret:
+                secretName: forgejo-config-database
+            - secret:
+                secretName: forgejo-config-mailer
+
+          config:
+            # indexer:
+            #   REPO_INDEXER_ENABLED: true
+            APP_NAME: 'Radoslaw Szamszur Git'
+            RUN_MODE: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+    - ServerSideApply=true
+  destination:
+    namespace: git
+    server: https://kubernetes.default.svc
