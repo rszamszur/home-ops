@@ -9,7 +9,7 @@ spec:
   - repoURL: https://cloudnative-pg.github.io/charts
     chart: cloudnative-pg
     # renovate: datasource=helm depName=cloudnative-pg repository=https://cloudnative-pg.github.io/charts
-    targetRevision: 0.28.2
+    targetRevision: 0.28.3
     helm:
       version: v3
       values: |
