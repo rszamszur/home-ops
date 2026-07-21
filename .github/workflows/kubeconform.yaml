@@ -34,6 +34,7 @@ jobs:
           filters: |
             build:
               - "cluster-home/**"
+              - ".github/workflows/kubeconform.yaml" 
   kubeconform:
     needs: pre_job
     if: ${{ needs.pre_job.outputs.should_skip != 'true' && needs.pre_job.outputs.build == 'true' }}
@@ -48,8 +49,9 @@ jobs:
         run: |
           nix-shell -p kubeconform --run "\
             kubeconform \
+            -kubernetes-version 1.33.1 \
             -schema-location default \
             -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
             -schema-location "http://json.schemastore.org/kustomization.json" \
-            -ignore-filename-pattern ".*.json" \
+            -ignore-filename-pattern '.*\.json' \
             -summary -output json cluster-home"
