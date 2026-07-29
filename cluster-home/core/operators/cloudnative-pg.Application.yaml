@@ -19,7 +19,7 @@ spec:
           create: true
         image:
           # renovate: datasource=github-releases depName=cloudnative-pg/cloudnative-pg
-          tag: "1.29.1"
+          tag: "1.30.0"
   syncPolicy:
     automated:
       prune: true
