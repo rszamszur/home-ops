@@ -51,7 +51,8 @@ resource "talos_machine_configuration_apply" "worker" {
     }),
     templatefile("${path.module}/templates/node-labels.yaml.tmpl", {
       labels = each.value.labels == null ? "project.io/node-pool: worker" : join(indent(4, "\n"), each.value.labels)
-    })
+    }),
+    file("${path.module}/files/UserNamespacesSupport.yaml"),
   ]
 }
 
