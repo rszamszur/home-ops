@@ -1,0 +1,71 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jupyterhub
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://jupyterhub.github.io/helm-chart
+    chart: jupyterhub
+    # renovate: datasource=helm depName=jupyterhub repository=https://jupyterhub.github.io/helm-chart
+    targetRevision: 5.0.0-0.dev.git.7464.hda3e7fac
+    helm:
+      version: v3
+      values: |-
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          hosts:
+            - jupyter.szamszur.cloud
+          tls:
+            - secretName: jupyter-szamszur-cloud-tls
+              hosts:
+                - jupyter.szamszur.cloud
+        hub:
+          baseUrl: /
+          db:
+            type: postgres
+          extraEnv:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: jupyterhub-db
+                  key: password
+            - name: PGUSERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: jupyterhub-db
+                  key: username
+          extraConfig:
+            db-url: |
+              import os
+              c.JupyterHub.db_url = 'postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}'.format(
+                  user=os.environ['PGUSERNAME'],
+                  password=os.environ['PGPASSWORD'],
+                  host='jupyterhub-db-rw.jupyterhub.svc.cluster.local',
+                  port=5432,
+                  db='jupyterhub',
+              )
+        singleuser:
+          cloudMetadata:
+            blockWithIptables: false
+          storage:
+            capacity: 10Gi
+            dynamic:
+              storageClass: pve-nvme-pm963
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+    - ServerSideApply=true
+  destination:
+    namespace: jupyterhub
+    server: https://kubernetes.default.svc

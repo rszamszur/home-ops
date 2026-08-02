@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- jupyter.Certificate.yaml
+- jupyterhub.Application.yaml
+- jupyterhub-db.Cluster.yaml
+- jupyterhub.Namespace.yaml

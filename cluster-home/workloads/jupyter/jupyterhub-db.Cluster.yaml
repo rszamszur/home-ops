@@ -1,0 +1,18 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: jupyterhub-db
+  namespace: jupyterhub
+spec:
+  # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.4
+  instances: 1
+  bootstrap:
+    initdb:
+      database: jupyterhub
+      owner: jupyterhub
+      secret:
+        name: jupyterhub-db
+  storage:
+    size: 10Gi
+    storageClass: pve-nvme-pm963
