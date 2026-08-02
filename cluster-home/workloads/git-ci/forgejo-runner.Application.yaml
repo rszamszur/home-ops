@@ -1,0 +1,101 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: forgejo-runner
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://code.forgejo.org/forgejo-helm/forgejo-runner
+    path: .
+    targetRevision: e763586db44f2f8d8311e891d59ada37276e2a85
+    helm:
+      version: v3
+      values: |
+        replicaCount: 10
+
+        runner:
+          config:
+            create: true
+            existingInitSecret: "forgejo-runner"
+
+            file:
+              log:
+                level: "info"
+                job_level: info
+              runner:
+                file: ".runner"
+                capacity: 1
+                timeout: 3h
+                insecure: false
+                fetch_timeout: 5s
+                fetch_interval: 2s
+                labels:
+                  - ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-24.04
+                  - ubuntu-act:docker://ghcr.io/catthehacker/ubuntu:act-22.04
+                  - pve-talos:docker://ghcr.io/catthehacker/ubuntu:act-22.04
+              container:
+                network: "host"
+                enable_ipv6: false
+                privileged: false
+
+        dind:
+          image:
+            registry: docker.io
+            repository: library/docker
+            pullPolicy: IfNotPresent
+            tag: 29-dind-rootless@sha256:212a9e782c7119fd6a212beaab6b7665a29b663d894d0f6201710c89575ad0ae
+          env:
+            - name: XDG_RUNTIME_DIR
+              value: /var/run
+            - name: DOCKER_HOST
+              value: unix:///var/run/docker.sock
+          securityContext:
+            privileged: false
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: Unconfined
+
+        podSecurityContext:
+          fsGroup: 1000
+
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          runAsNonRoot: true
+
+        autoscaling:
+          enabled: true
+          minReplicas: 10
+          maxReplicas: 100
+          behavior:
+            scaleDown:
+              stabilizationWindowSeconds: 300
+              policies:
+                - type: Pods
+                  value: 1
+                  periodSeconds: 60
+            scaleUp:
+              stabilizationWindowSeconds: 0
+              policies:
+                - type: Pods
+                  value: 1
+                  periodSeconds: 60
+          targetCPUUtilizationPercentage: 80
+          targetMemoryUtilizationPercentage: 80
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+    - ServerSideApply=true
+  destination:
+    namespace: forgejo-runner
+    server: https://kubernetes.default.svc
