@@ -53,9 +53,9 @@
     {
       "customType": "regex",
       "description": ["Process custom dependencies"],
-      "fileMatch": [
-        "(^|/)cluster-home/.+\\.ya?ml(\\.j2)?$",
-        "(^|/)terraform/coder/k8s-ubuntu-nix/startup.sh$"
+      "managerFilePatterns": [
+        "/(^|/)cluster-home/.+\\.ya?ml(\\.j2)?$/",
+        "/(^|/)terraform/coder/k8s-ubuntu-nix/startup.sh$/"
       ],
       "matchStrings": [
         "(?m:# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+?: \"?(?<currentValue>\\S+?)\"?$)",
@@ -65,13 +65,13 @@
     }
   ],
   "helm-values": {
-    "fileMatch": [
-      "(^|/)cluster-home/.+\\.ya?ml(\\.j2)?$"
+    "managerFilePatterns": [
+      "/(^|/)cluster-home/.+\\.ya?ml(\\.j2)?$/"
     ]
   },
   "kubernetes": {
-    "fileMatch": [
-      "(^|/)cluster-home/.+\\.ya?ml(\\.j2)?$"
+    "managerFilePatterns": [
+      "/(^|/)cluster-home/.+\\.ya?ml(\\.j2)?$/"
     ]
   }
 }
