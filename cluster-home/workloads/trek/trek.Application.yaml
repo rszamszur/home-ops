@@ -1,0 +1,64 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: trek-app
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://github.com/liketrek/TREK
+    path: charts/trek
+    # renovate: datasource=github-releases depName=liketrek/TREK
+    targetRevision: v3.4.1
+    helm:
+      version: v3
+      values: |
+        updateStrategy: Recreate
+
+        generateEncryptionKey: false
+        existingSecret: "trek-secret"
+        existingSecretKey: JWT_SECRET
+
+        env:
+          NODE_ENV: production
+          PORT: 3000
+          ALLOWED_ORIGINS: "https://trek.szamszur.cloud"
+
+        ingress:
+          enabled: true
+          className: "nginx"
+          annotations:
+            kubernetes.io/ingress.class: "nginx"
+            nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+          hosts:
+            - host: trek.szamszur.cloud
+              paths:
+                - /
+          tls:
+            - hosts:
+              - trek.szamszur.cloud
+              secretName: trek-szamszur-cloud-tls
+
+        persistence:
+          enabled: true
+          data:
+            size: 2Gi
+            storageClassName: "pve-nvme-wd-blue"
+          uploads:
+            size: 10Gi
+            storageClassName: "pve-nvme-wd-blue"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+    - ServerSideApply=true
+  destination:
+    namespace: trek
+    server: https://kubernetes.default.svc
