@@ -8,7 +8,7 @@ spec:
   sources:
   - repoURL: oci://code.forgejo.org/forgejo-helm/forgejo
     chart: forgejo
-    # renovate: datasource=helm depName=forgejo repository=oci://code.forgejo.org/forgejo-helm/forgejo
+    # renovate: datasource=docker depName=code.forgejo.org/forgejo-helm/forgejo
     targetRevision: 17.1.0
     helm:
       version: v3
