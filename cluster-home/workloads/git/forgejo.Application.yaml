@@ -87,6 +87,8 @@ spec:
               DISABLE_REGISTRATION: true
             server:
               DOMAIN: git.szamszur.cloud
+            git.timeout:
+              MIGRATE: 1800
   syncPolicy:
     automated:
       prune: true
