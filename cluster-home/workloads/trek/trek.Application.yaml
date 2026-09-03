@@ -9,7 +9,7 @@ spec:
   - repoURL: https://github.com/liketrek/TREK
     path: charts/trek
     # renovate: datasource=github-releases depName=liketrek/TREK
-    targetRevision: v3.4.1
+    targetRevision: v4.2.0
     helm:
       version: v3
       values: |
