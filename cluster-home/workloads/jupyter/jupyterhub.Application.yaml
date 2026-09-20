@@ -9,7 +9,7 @@ spec:
   - repoURL: https://jupyterhub.github.io/helm-chart
     chart: jupyterhub
     # renovate: datasource=helm depName=jupyterhub repository=https://jupyterhub.github.io/helm-chart
-    targetRevision: 5.0.0-0.dev.git.7487.hf961cb60
+    targetRevision: 5.0.0-0.dev.git.7489.hdda8e639
     helm:
       version: v3
       values: |-
