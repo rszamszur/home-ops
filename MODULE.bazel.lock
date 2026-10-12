@@ -235,7 +235,7 @@
   "moduleExtensions": {
     "@@gcc_toolchain+//:internal.bzl%non_bazel_dependencies": {
       "general": {
-        "bzlTransitiveDigest": "e4gklxHD/UI2nGdpOC7xk4MRhWx57NhY/8LE8fQjFdw=",
+        "bzlTransitiveDigest": "1Tl8gNDYKNLwM1L435EfTXDlrC2wLwGKvKHwUAGvOnI=",
         "usagesDigest": "sWe6gvmFpdWalNUJUWNZF23cgclfU+ijKXCf9JEbTjs=",
         "recordedInputs": [
           "REPO_MAPPING:gcc_toolchain+,bazel_tools bazel_tools",
@@ -277,7 +277,7 @@
     },
     "@@pybind11_bazel+//:internal_configure.bzl%internal_configure_extension": {
       "general": {
-        "bzlTransitiveDigest": "06cynZ1bCvvy8zHPrrDlXq+Z68xmjctHpfFxi+zEpJY=",
+        "bzlTransitiveDigest": "b+RP7Sgl8KN0VHamrgTqzGLuYPcQ/Mo4ptNkkHUIIlA=",
         "usagesDigest": "D1r3lfzMuUBFxgG8V6o0bQTLMk3GkaGOaPzw53wrwyw=",
         "recordedInputs": [
           "REPO_MAPPING:pybind11_bazel+,bazel_tools bazel_tools",
