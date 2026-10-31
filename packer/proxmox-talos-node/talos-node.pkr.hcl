@@ -16,10 +16,10 @@ source "proxmox-iso" "talos-node" {
 
   boot_iso {
     iso_storage_pool = "local"
-    iso_url  = "https://mirror.rackspace.com/archlinux/iso/2026.02.01/archlinux-2026.02.01-x86_64.iso"
-    #iso_file = "local:iso/archlinux-2026.02.01-x86_64.iso"
+    iso_url  = "https://mirror.rackspace.com/archlinux/iso/2026.10.01/archlinux-2026.10.01-x86_64.iso"
+    #iso_file = "local:iso/archlinux-2026.10.01-x86_64.iso"
     iso_download_pve = true
-    iso_checksum = "sha256:c0ee0dab0a181c1d6e3d290a81ae9bc41c329ecaa00816ca7d62a685aeb8d972"
+    iso_checksum = "sha256:684ded26c63240ff4a41e8c25ee84ea6da233f557364821f13d12c2b0a9059a5"
     unmount = true
   }
   vm_id = "200"
@@ -42,9 +42,9 @@ source "proxmox-iso" "talos-node" {
   }
 
   cpu_type = "host"
-  cores = 3
-  sockets = 2
-  numa = true
+  cores = 6
+  sockets = 1
+  numa = false
   memory   = 12288 
   # vga {
   #   type = "serial0"

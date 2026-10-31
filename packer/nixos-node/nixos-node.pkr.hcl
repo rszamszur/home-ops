@@ -48,9 +48,9 @@ source "proxmox-iso" "nixos-node" {
   }
 
   cpu_type = "host"
-  cores = 4
-  sockets = 2
-  numa = true
+  cores = 8
+  sockets = 1
+  numa = false
   memory   = 16384
   serials = ["socket"]
 

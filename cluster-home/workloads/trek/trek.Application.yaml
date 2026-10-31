@@ -43,10 +43,10 @@ spec:
           enabled: true
           data:
             size: 2Gi
-            storageClassName: "pve-nvme-wd-blue"
+            storageClassName: "pve-ssd-870-evo"
           uploads:
             size: 10Gi
-            storageClassName: "pve-nvme-wd-blue"
+            storageClassName: "pve-ssd-870-evo"
   syncPolicy:
     automated:
       prune: true

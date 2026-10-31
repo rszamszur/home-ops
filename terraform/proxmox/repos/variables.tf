@@ -1,7 +1,7 @@
 variable "proxmox_host" {
   description = "Proxmox host"
   type        = string
-  default     = "192.168.10.11"
+  default     = "192.168.10.10"
 }
 
 variable "proxmox_token_id" {
@@ -18,5 +18,5 @@ variable "proxmox_token_secret" {
 variable "proxmox_nodes" {
   description = "Proxmox nodes names"
   type        = set(string)
-  default     = ["pve-r740xd"]
+  default     = ["pve-odin"]
 }

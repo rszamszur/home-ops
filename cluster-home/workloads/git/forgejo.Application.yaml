@@ -14,7 +14,7 @@ spec:
       version: v3
       values: |
         global:
-          storageClass: "pve-nvme-wd-blue"
+          storageClass: "pve-nvme-wd-red"
 
         namespaceOverride: "git"
         replicaCount: 1
@@ -54,7 +54,7 @@ spec:
           size: 200Gi
           accessModes:
             - ReadWriteOnce
-          storageClass: "pve-nvme-wd-blue"
+          storageClass: "pve-nvme-wd-red"
 
         service:
           ssh:

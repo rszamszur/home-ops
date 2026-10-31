@@ -7,7 +7,7 @@ resource "proxmox_virtual_environment_acme_account" "letsencrypt" {
 
 resource "proxmox_virtual_environment_acme_dns_plugin" "acme-ovh" {
   plugin = "ACME-OVH"
-  api    = "OVH"
+  api    = "ovh"
   data = {
     OVH_AK = var.ovh_application_key
     OVH_AS = var.ovh_application_secret

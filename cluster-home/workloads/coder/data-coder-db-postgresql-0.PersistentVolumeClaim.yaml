@@ -13,5 +13,5 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  storageClassName: pve-nvme-wd-blue
+  storageClassName: pve-nvme-wd-red
   volumeAttributesClassName: csi-proxmox-backup-enable
