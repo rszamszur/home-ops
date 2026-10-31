@@ -14,5 +14,5 @@ spec:
       secret:
         name: jupyterhub-db
   storage:
-    size: 10Gi
-    storageClass: pve-nvme-pm963
+    size: 5Gi
+    storageClass: pve-nvme-wd-blue

@@ -48,12 +48,17 @@ spec:
                   db='jupyterhub',
               )
         singleuser:
+          image:
+            # name: quay.io/jupyterhub/k8s-singleuser-sample
+            # tag: "5.0.0-0.dev.git.7449.h058b1b03"
+            name: quay.io/jupyter/minimal-notebook
+            tag: "hub-5.5.0@sha256:230b7474518c193143d253822fd86fa0a850aa31e18a74952d940782157d373d"
           cloudMetadata:
             blockWithIptables: false
           storage:
             capacity: 10Gi
             dynamic:
-              storageClass: pve-nvme-pm963
+              storageClass: pve-nvme-wd-blue
   syncPolicy:
     automated:
       prune: true

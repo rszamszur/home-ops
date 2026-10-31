@@ -15,4 +15,4 @@ spec:
         name: forgejo-db
   storage:
     size: 10Gi
-    storageClass: pve-nvme-wd-blue
+    storageClass: pve-nvme-wd-red

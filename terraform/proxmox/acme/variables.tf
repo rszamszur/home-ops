@@ -1,7 +1,7 @@
 variable "proxmox_host" {
   description = "Proxmox host"
   type        = string
-  default     = "192.168.10.11"
+  default     = "192.168.10.10"
 }
 
 variable "proxmox_root_password" {

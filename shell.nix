@@ -3,7 +3,6 @@
 pkgs.mkShell {
   buildInputs = [
     pkgs.gnumake
-    pkgs.minikube
     pkgs.kubernetes-helm
     pkgs.jq
     pkgs.kubectl

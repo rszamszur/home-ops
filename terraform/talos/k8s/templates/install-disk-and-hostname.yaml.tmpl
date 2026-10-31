@@ -1,6 +1,8 @@
-machine:
-  install:
-    disk: ${install_disk}
+apiVersion: v1alpha1
+kind: UnattendedInstallConfig
+provisioning:
+  diskSelector:
+    match: '"${install_disk}" in disk.symlinks'
 ---
 apiVersion: v1alpha1
 kind: HostnameConfig

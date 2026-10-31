@@ -1,7 +1,7 @@
 variable "proxmox_host" {
   description = "Proxmox host"
   type        = string
-  default     = "192.168.10.11"
+  default     = "192.168.10.10"
 }
 
 variable "proxmox_token_id" {
@@ -18,13 +18,13 @@ variable "proxmox_token_secret" {
 variable "proxmox_nodename" {
   description = "Proxmox node name"
   type        = string
-  default     = "pve-r740xd"
+  default     = "pve-odin"
 }
 
 variable "proxmox_storage" {
   description = "Proxmox storage name"
   type        = string
-  default     = "nvme-PM963"
+  default     = "ssd-870-evo"
 }
 
 variable "proxmox_interface" {

@@ -39,7 +39,7 @@ data "coder_parameter" "memory" {
   name         = "memory"
   display_name = "Memory"
   description  = "The amount of memory in GB"
-  default      = "2"
+  default      = "4"
   icon         = "/icon/memory.svg"
   mutable      = true
   option {
@@ -72,16 +72,16 @@ data "coder_parameter" "storage_class" {
   name         = "storage_class"
   display_name = "StorageClass name"
   description  = "The name of the storage class to use when creating the PVC."
-  default      = "pve-hddexos"
+  default      = "pve-nvme-wd-blue"
   icon         = "/emojis/1f4be.png"
   mutable      = false
   option {
-    name  = "Proxmox hddexos pool"
-    value = "pve-hddexos"
+    name  = "Proxmox ssd-870-evo pool"
+    value = "pve-ssd-870-evo"
   }
   option {
-    name  = "Proxmox nvme-pm963 pool"
-    value = "pve-nvme-pm963"
+    name  = "Proxmox nvme-wd-red pool"
+    value = "pve-nvme-wd-red"
   }
   option {
     name  = "Proxmox nvme-wd-blue pool"
