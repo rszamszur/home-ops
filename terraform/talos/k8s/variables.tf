@@ -13,13 +13,13 @@ variable "cluster_endpoint" {
 variable "talos_version" {
   description = "The version of talos features to use in generated machine configuration"
   type        = string
-  default     = "1.12.4"
+  default     = "1.14.5"
 }
 
 variable "kubernetes_version" {
   description = "The version of kubernetes to use"
   type        = string
-  default     = "1.33.3"
+  default     = "1.37.1"
 }
 
 variable "node_data" {
@@ -41,14 +41,14 @@ variable "node_data" {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-controlplane-1"
       },
-      "192.168.20.9" = {
-        install_disk = "/dev/sda"
-        hostname     = "pve-talos-controlplane-2"
-      },
-      "192.168.20.10" = {
-        install_disk = "/dev/mmcblk0"
-        hostname     = "pve-talos-controlplane-3"
-      },
+      # "192.168.20.9" = {
+      #   install_disk = "/dev/sda"
+      #   hostname     = "pve-talos-controlplane-2"
+      # },
+      # "192.168.20.10" = {
+      #   install_disk = "/dev/mmcblk0"
+      #   hostname     = "pve-talos-controlplane-3"
+      # },
     }
     workers = {
       "192.168.20.16" = {
@@ -57,7 +57,7 @@ variable "node_data" {
         labels       = [
           "project.io/node-pool: worker",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-r740xd"
+          "topology.kubernetes.io/zone: pve-odin"
         ]
       },
       "192.168.20.17" = {
@@ -66,7 +66,7 @@ variable "node_data" {
         labels       = [
           "project.io/node-pool: worker",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-r740xd"
+          "topology.kubernetes.io/zone: pve-odin"
         ]
       },
       "192.168.20.18" = {
@@ -75,25 +75,16 @@ variable "node_data" {
         labels       = [
           "project.io/node-pool: worker",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-r740xd"
+          "topology.kubernetes.io/zone: pve-odin"
         ]
       },
       "192.168.20.19" = {
         install_disk = "/dev/sda"
         hostname     = "pve-talos-worker-4"
         labels       = [
-          "project.io/node-pool: worker",
-          "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-r740xd"
-        ]
-      },
-      "192.168.20.20" = {
-        install_disk = "/dev/sda"
-        hostname     = "pve-talos-ingress-1"
-        labels       = [
           "project.io/node-pool: ingress",
           "topology.kubernetes.io/region: homelab", 
-          "topology.kubernetes.io/zone: pve-r740xd"
+          "topology.kubernetes.io/zone: pve-odin"
         ]
       }
     }

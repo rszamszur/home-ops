@@ -44,7 +44,7 @@ resource "proxmox_virtual_environment_vm" "talos-controlplane" {
     datastore_id = var.proxmox_disk_storage
     interface    = "scsi0"
     ssd          = true
-    size         = 32
+    size         = 50
     file_format  = "raw"
   }
   cpu {

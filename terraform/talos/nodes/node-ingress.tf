@@ -42,7 +42,7 @@ resource "proxmox_virtual_environment_vm" "talos-ingress" {
     datastore_id = var.proxmox_disk_storage
     interface    = "scsi0"
     ssd          = true
-    size         = 50
+    size         = 100
     file_format  = "raw"
   }
   cpu {

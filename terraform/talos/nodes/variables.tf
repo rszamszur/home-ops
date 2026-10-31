@@ -1,7 +1,7 @@
 variable "proxmox_host" {
   description = "Proxmox host"
   type        = string
-  default     = "pve-r740xd.szamszur.cloud"
+  default     = "pve-odin.szamszur.cloud"
 }
 
 variable "proxmox_token_id" {
@@ -24,7 +24,7 @@ variable "proxmox_vm_template" {
 variable "proxmox_nodename" {
   description = "Proxmox node name"
   type        = string
-  default     = "pve-r740xd"
+  default     = "pve-odin"
 }
 
 variable "proxmox_vm_template_id" {
@@ -36,13 +36,13 @@ variable "proxmox_vm_template_id" {
 variable "proxmox_cloudinit_storage" {
   description = "Proxmox storage name for CloudInit"
   type        = string
-  default     = "local-zfs"
+  default     = "ssd-870-evo"
 }
 
 variable "proxmox_disk_storage" {
   description = "Proxmox storage name for main disk"
   type        = string
-  default     = "ssd-870-evo"
+  default     = "nvme-wd-red"
 }
 
 variable "network_shift" {
@@ -61,29 +61,29 @@ variable "instances" {
   description = "Map of VMs launched on proxmox hosts"
   type        = map(any)
   default = {
-    "pve-r740xd" = {
+    "pve-odin" = {
       "controlplane" : {
         id      = 1000
-        cpu     = 3,
-        sockets = 2,
+        cpu     = 8,
+        sockets = 1,
         mem     = 12288,
-        numa    = true,
-        count   = 2,
+        numa    = false,
+        count   = 1,
       },
       "worker" : {
         id      = 1100
-        cpu     = 4,
-        sockets = 2,
-        mem     = 16384,
-        numa    = true,
-        count   = 4,
+        cpu     = 12,
+        sockets = 1,
+        mem     = 32768,
+        numa    = false,
+        count   = 3,
       },
       "ingress" : {
         id      = 1200
-        cpu     = 3,
-        sockets = 2,
-        mem     = 12288,
-        numa    = true,
+        cpu     = 12,
+        sockets = 1,
+        mem     = 32768,
+        numa    = false,
         count   = 1,
       }
     }
