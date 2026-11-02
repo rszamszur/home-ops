@@ -13,7 +13,6 @@ spec:
     helm:
       version: v3
       values: |
-        configVersion: 0.0.2
         groupName: acme.szamszur.cloud
         issuers:
           - name: letsencrypt
