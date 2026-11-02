@@ -3,4 +3,3 @@ kind: Kustomization
 
 resources:
 - gitops-controller.Application.yaml
-- fastapi-mvc-example.Application.yaml
