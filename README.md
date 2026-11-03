@@ -155,20 +155,13 @@ First apply secrets:
 _These cannot be applied with `kubectl` in the regular fashion due to be encrypted with age_
 
 ```shell
-age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/argocd-ghcr-repo-secret.yaml.age | kubectl apply -f -
-age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/buildbuddy-db-mysql-secret.yaml.age | kubectl apply -f -
-age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/coder-db-postgresql-secret.yaml.age | kubectl apply -f -
-age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/coder-db-url-secret.yaml.age | kubectl apply -f -
-age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/docker-auth-secret.yaml.age | kubectl apply -f -
-age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/gha-runner-home-ops-secret.yaml.age | kubectl apply -f -
-age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/ovh-credentials-secret.yaml.age | kubectl apply -f -
-age -d -i ~/.config/age/key.txt cluster-home/bootstrap/base/secrets/proxmox-csi-pugin-config-secret.yaml.age | kubectl apply -f -
+find cluster-home/bootstrap/base/ -name "*.age" -exec bash -c "age -d -i ~/.config/age/key.txt {} | kubectl apply -f -" \;
 ```
 
 Then, just apply this repo:
 
 ```shell
-until kubectl apply -k https://github.com/rszamszur/home-ops/cluster-home/bootstrap/overlays/default; do sleep 3; done
+until kubectl apply --server-side=true -k https://github.com/rszamszur/home-ops/cluster-home/bootstrap/overlays/default; do sleep 3; done
 ```
 
 This should give you the following applications:
