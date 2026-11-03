@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
 - coder.Namespace.yaml
-- coder-db.Application.yaml
+- coder-db.Cluster.yaml
 - coder-v2.Application.yaml
 - coder-tls.Certificate.yaml
-- data-coder-db-postgresql-0.PersistentVolumeClaim.yaml
