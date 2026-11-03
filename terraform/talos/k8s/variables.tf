@@ -80,7 +80,7 @@ variable "node_data" {
       },
       "192.168.20.19" = {
         install_disk = "/dev/sda"
-        hostname     = "pve-talos-worker-4"
+        hostname     = "pve-talos-ingress-1"
         labels       = [
           "project.io/node-pool: ingress",
           "topology.kubernetes.io/region: homelab", 
