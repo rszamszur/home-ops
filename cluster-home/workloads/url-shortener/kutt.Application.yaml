@@ -1,0 +1,84 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kutt
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://charts.christianhuth.de
+    chart: kutt
+    # renovate: datasource=helm depName=kutt repository=https://charts.christianhuth.de
+    targetRevision: 10.1.1
+    helm:
+      version: v3
+      values: |
+        kutt:
+          admin:
+            emails: "kutt@szamszur.cloud"
+          config:
+            siteName: golink.pl
+          domain:
+            defaultDomain: golink.pl
+            customDomainUseHttps: true
+          mail:
+            enabled: true
+            contactEmail: kutt@szamszur.cloud
+            existingSecret: "kutt-secure-config"
+            from: "no-reply@szamszur.cloud"
+            host: "smtp.protonmail.ch"
+            port: 587
+            reportEmail: "kutt-report@szamszur.cloud"
+            secure: false
+            username: "no-reply@szamszur.cloud"
+        postgresql:
+          enabled: false
+
+        externalDatabase:
+          hostname: kutt-db-rw.url-shortener.svc.cluster.local
+          port: 5432
+          database: kutt
+          username: kutt
+          existingSecret: kutt-db
+          existingSecretPasswordKey: password
+
+        valkey:
+          auth:
+            enabled: true
+            usersExistingSecret: kutt-valkey
+            aclUsers:
+              default:
+                permissions: "~* &* +@all"
+                passwordKey: password
+                password: ""
+
+        ingress:
+          enabled: true
+          className: "nginx"
+          annotations:
+            kubernetes.io/ingress.class: "nginx"
+            nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+          hosts:
+            - host: golink.pl
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
+          tls:
+            - hosts:
+                - golink.pl
+              secretName: golink-pl-tls
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 15
+      backoff:
+        duration: 15s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+    - ServerSideApply=true
+  destination:
+    namespace: url-shortener
+    server: https://kubernetes.default.svc
